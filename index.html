@@ -763,6 +763,168 @@
 </section>
 </div>
 
+<!-- ENGINEERING DEPTH -->
+<div style="background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section style="max-width:1200px;">
+  <div class="section-header">
+    <p class="section-tag">// demonstrated in production code · not claimed</p>
+    <h2 class="section-title">Engineering <span>Depth</span></h2>
+    <div class="section-line"></div>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:.8rem;max-width:680px;">
+      Each discipline maps directly to verified patterns in real project code — not textbook exercises.
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.2rem;">
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">⚡</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Distributed Systems</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Jarvis · Mod System</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        DAG-based task dependency resolution with per-step queue routing over AMQP. RabbitMQ virtual hosts, heartbeats, and per-workflow ephemeral result queues. Multi-worker dispatch (Python + Node.js) coordinated through a shared state store.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">DAG Orchestration</span><span class="skill-tag">RabbitMQ / AMQP</span><span class="skill-tag">Multi-worker Dispatch</span><span class="skill-tag">State Stores</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🗄️</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Database Engineering</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Mod System · Discord Bot</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        Dual PostgreSQL pool (catalog + runtime) with <code style="color:var(--accent);font-size:.78rem;">set_config('app.tenant_id')</code> session-variable RLS for multi-tenant isolation. JSONB columns, UUID PKs, versioned migrations, pool tuning (<code style="color:var(--accent);font-size:.78rem;">MaxOpenConns / ConnMaxLifetime</code>).
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">PostgreSQL RLS</span><span class="skill-tag">Multi-tenant SaaS</span><span class="skill-tag">Connection Pooling</span><span class="skill-tag">Schema Migrations</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🔐</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Security Engineering</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · Diagnostic Platform</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        AES-256-CBC with <code style="color:var(--accent);font-size:.78rem;">crypto.randomBytes(16)</code> IV per call, SHA-256 key derivation, bcrypt hashing. OWASP Top 10 input sanitization at every boundary. Audit logging, rate limiting, boot-time env validation with hard process exit on failure.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">AES-256-CBC</span><span class="skill-tag">OWASP Top 10</span><span class="skill-tag">Audit Logging</span><span class="skill-tag">Rate Limiting</span><span class="skill-tag">bcrypt</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🏗️</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Systems Architecture</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Mod System · Diagnostic Platform</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        Go <code style="color:var(--accent);font-size:.78rem;">internal/</code> package isolation. Service layer + repository pattern. Multi-tier FastAPI + SQLAlchemy + Pydantic v2 architecture. 140+ diagnostic rules across 20+ categories with deterministic scoring. AI policy gating with per-tenant budget enforcement.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">Service Layer</span><span class="skill-tag">Repository Pattern</span><span class="skill-tag">Rule Engines</span><span class="skill-tag">Multi-tier Architecture</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🤖</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">AI / LLM Engineering</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Jarvis · Mod System</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        LLM intent parsing with graceful degradation to pattern-based fallback. Full voice pipeline: hotword → Whisper STT → LLM NLU → TTS. Intel NPU acceleration. Anthropic API AI-gated deployment decisions with token budget controls. OpenAI + Anthropic provider abstraction.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">LLM Orchestration</span><span class="skill-tag">Whisper STT</span><span class="skill-tag">Voice Pipeline</span><span class="skill-tag">AI-Gated Deploys</span><span class="skill-tag">NPU Acceleration</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">👁️</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Computer Vision &amp; 3D Graphics</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">CAD App</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        Real-time MediaPipe hand landmark detection (21 keypoints) piped into Three.js scene transforms — webcam-only gesture control of 3D objects, no hardware required. WebGL via React Three Fiber, Zustand scene state, Vite HMR build pipeline.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">MediaPipe</span><span class="skill-tag">Three.js / WebGL</span><span class="skill-tag">Real-time CV</span><span class="skill-tag">React Three Fiber</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🟢</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Production Reliability</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · All Projects</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        Boot readiness gating blocks all commands until subsystems initialize. <code style="color:var(--accent);font-size:.78rem;">process.on('uncaughtException')</code> with security-aware logging. DB health check with timeout + retry before accepting traffic. Restart-safe idempotent event keys. CloudWatch on AWS EC2.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">Boot Readiness Gating</span><span class="skill-tag">Health Checks</span><span class="skill-tag">Idempotent Design</span><span class="skill-tag">CloudWatch</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🔑</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Applied Cryptography</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · Mod System</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        AES-256-CBC via Node.js native <code style="color:var(--accent);font-size:.78rem;">crypto</code> — random IV per operation (never reused), correct IV-prepend format, SHA-256 key derivation before cipher use. Mod signature verification with public key validation. Encrypted backup pipeline with isolated key management.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">AES-256-CBC</span><span class="skill-tag">IV Management</span><span class="skill-tag">Key Derivation</span><span class="skill-tag">Signature Verification</span>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
+        <span style="font-size:1.3rem;">🔢</span>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">Combinatorics &amp; Constraint Systems</div>
+          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Hytale Mods</div>
+        </div>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
+        958+ billion valid character combinations from 139 feature axes — too large to enumerate, requiring constraint-based generation. Age-gate content tiering as a policy layer over the combination engine. Asset pipeline resolves each configuration to textures + models.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+        <span class="skill-tag">Combinatorial Systems</span><span class="skill-tag">Constraint-based Generation</span><span class="skill-tag">Policy Layers</span><span class="skill-tag">Asset Pipelines</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
