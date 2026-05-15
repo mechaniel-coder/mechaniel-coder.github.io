@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Pall (mechaniel-coder) | Portfolio</title>
+  <style>
+    :root {
+      --bg:       #080b12;
+      --bg2:      #0d1117;
+      --bg3:      #161b27;
+      --border:   #1e2d40;
+      --accent:   #00d9ff;
+      --accent2:  #7c5cfc;
+      --accent3:  #ff6b35;
+      --green:    #39d353;
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --card:     #0d1117;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,11,18,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+    }
+    .nav-brand {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .nav-brand span { color: var(--text); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .85rem;
+      letter-spacing: .5px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,217,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,217,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+    }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(57,211,83,0.1);
+      border: 1px solid rgba(57,211,83,0.3);
+      border-radius: 20px;
+      padding: .3rem .9rem;
+      font-size: .75rem; color: var(--green);
+      margin-bottom: 1.5rem;
+      letter-spacing: .5px;
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(1.4); }
+    }
+    .hero-name {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      opacity: .85;
+    }
+    .hero-tag {
+      font-family: 'Courier New', monospace;
+      font-size: .85rem; color: var(--accent);
+      margin-bottom: .6rem; letter-spacing: 2px;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    h1 .glow { color: var(--accent); text-shadow: 0 0 30px rgba(0,217,255,.4); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+      justify-content: center; margin-bottom: 2.5rem;
+    }
+    .hero-badges span {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .3rem .8rem;
+      font-size: .75rem; color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: .65rem 1.5rem;
+      border-radius: 8px;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none; cursor: pointer;
+      border: none; transition: all .2s;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover { background: #00c4e8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,217,255,.25); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex; flex-wrap: wrap; gap: 0;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: .1rem 0;
+      margin: 0;
+    }
+    .stat-item {
+      flex: 1; min-width: 120px;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 1.2rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.9rem; font-weight: 800; color: var(--accent);
+      font-family: 'Courier New', monospace;
+    }
+    .stat-label { font-size: .72rem; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-header { margin-bottom: 3rem; }
+    .section-tag {
+      font-family: 'Courier New', monospace;
+      font-size: .75rem; color: var(--accent);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; letter-spacing: -.5px;
+    }
+    .section-title span { color: var(--accent); }
+    .section-line {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px; margin-top: .6rem;
+    }
+
+    /* ── SKILLS ── */
+    #skills { border-top: 1px solid var(--border); background: var(--bg2); max-width: 100%; }
+    #skills > * { max-width: 1200px; margin: 0 auto; }
+    #skills section { border: none; padding: 5rem 2rem; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card-header {
+      display: flex; align-items: center; gap: .7rem;
+      margin-bottom: 1rem;
+    }
+    .skill-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .skill-card-title { font-weight: 600; font-size: .95rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .skill-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .15rem .5rem;
+      font-size: .7rem; color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex; flex-direction: column;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity .25s;
+    }
+    .project-card:hover { border-color: rgba(0,217,255,.35); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,217,255,.08); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card.featured { border-color: rgba(0,217,255,.25); }
+    .project-card.featured::before { opacity: 1; }
+    .project-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .project-badges { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
+    .badge {
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      font-size: .67rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .4px;
+    }
+    .badge-new  { background: rgba(57,211,83,.15);  color: #39d353; border: 1px solid rgba(57,211,83,.3); }
+    .badge-hot  { background: rgba(255,107,53,.15); color: #ff6b35; border: 1px solid rgba(255,107,53,.3); }
+    .badge-live { background: rgba(0,217,255,.12);  color: var(--accent); border: 1px solid rgba(0,217,255,.3); }
+    .badge-sec  { background: rgba(124,92,252,.15); color: #a78bfa; border: 1px solid rgba(124,92,252,.3); }
+    .badge-ai   { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
+    .project-name {
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: .35rem;
+    }
+    .project-tagline {
+      font-size: .8rem; color: var(--accent);
+      font-family: 'Courier New', monospace;
+      margin-bottom: .6rem;
+    }
+    .project-desc {
+      color: var(--muted); font-size: .85rem;
+      line-height: 1.65; flex: 1;
+      margin-bottom: 1.2rem;
+    }
+    .project-tech { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tech-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .2rem .55rem;
+      font-size: .7rem; color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+    .tech-tag.highlight { border-color: rgba(0,217,255,.3); color: var(--accent); }
+    .project-footer {
+      border-top: 1px solid var(--border);
+      padding-top: .9rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .project-meta { font-size: .72rem; color: var(--muted); }
+    .project-links { display: flex; gap: .6rem; }
+    .project-link {
+      color: var(--muted);
+      font-size: .78rem; text-decoration: none;
+      display: flex; align-items: center; gap: .3rem;
+      transition: color .2s;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 6px; padding: .3rem .7rem;
+    }
+    .project-link:hover { color: var(--accent); border-color: rgba(0,217,255,.3); }
+
+    /* ── KALI SECTION ── */
+    .kali-container {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .kali-header {
+      background: linear-gradient(135deg, #1a0a2e 0%, #0d1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .kali-logo {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #557efa, #a855f7);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .kali-title { font-size: 1.2rem; font-weight: 700; }
+    .kali-sub { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
+    .kali-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+    }
+    .kali-tool {
+      background: var(--bg2);
+      padding: 1.3rem 1.5rem;
+      transition: background .2s;
+    }
+    .kali-tool:hover { background: var(--bg3); }
+    .kali-tool-name {
+      font-weight: 600; font-size: .95rem;
+      color: var(--accent); margin-bottom: .3rem;
+      font-family: 'Courier New', monospace;
+    }
+    .kali-tool-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+    .kali-footer {
+      padding: 1rem 2rem;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+    }
+    .kali-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .2rem .6rem;
+      font-size: .7rem; color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+    .kali-badge.active { border-color: rgba(57,211,83,.4); color: var(--green); }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: -2.45rem; top: .3rem;
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 10px rgba(0,217,255,.5);
+    }
+    .timeline-date {
+      font-family: 'Courier New', monospace;
+      font-size: .73rem; color: var(--accent);
+      letter-spacing: 1px; margin-bottom: .2rem;
+    }
+    .timeline-title { font-weight: 600; font-size: 1rem; margin-bottom: .3rem; }
+    .timeline-desc { font-size: .85rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem; color: var(--accent);
+      font-weight: 700; margin-bottom: .5rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { margin-top: 1.5rem; font-size: .75rem; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+
+    /* ── SCROLL FADE IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      animation: fadeUp .6s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+    .delay-5 { animation-delay: .5s; }
+
+    /* ── EXPERIENCE ── */
+    .exp-grid { display: flex; flex-direction: column; gap: 1.4rem; }
+    .exp-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.6rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .exp-card:hover { border-color: rgba(0,217,255,.3); }
+    .exp-left { flex: 1; }
+    .exp-right { min-width: 130px; text-align: right; flex-shrink: 0; }
+    .exp-role { font-weight: 700; font-size: 1rem; margin-bottom: .15rem; }
+    .exp-company { color: var(--accent); font-size: .9rem; font-weight: 600; }
+    .exp-date { font-family: 'Courier New', monospace; font-size: .73rem; color: var(--muted); }
+    .exp-location { font-size: .73rem; color: var(--muted); margin-top: .15rem; }
+    .exp-desc { color: var(--muted); font-size: .83rem; line-height: 1.65; margin-top: .55rem; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .75rem; }
+    /* ── CERTS / LANGUAGES ── */
+    .cert-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+      display: flex; align-items: center; gap: .9rem;
+    }
+    .cert-icon { font-size: 1.5rem; }
+    .cert-title { font-weight: 600; font-size: .9rem; }
+    .cert-sub { font-size: .73rem; color: var(--muted); margin-top: .1rem; }
+    .lang-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: .4rem 1.1rem;
+      font-size: .82rem;
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .lang-level { font-size: .7rem; color: var(--muted); }
+    @media (max-width: 700px) {
+      .exp-card { flex-direction: column; }
+      .exp-right { text-align: left; }
+      .certs-langs-inner { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">mechaniel<span>-coder</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#ai">AI / LLM</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="status-badge fade-in">
+    <span class="status-dot"></span>
+    Available for Work &nbsp;·&nbsp; Los Angeles, CA
+  </div>
+
+  <p class="hero-name fade-in delay-1">Daniel Pall</p>
+  <p class="hero-tag fade-in delay-1">// full-stack engineer &amp; ai architect &nbsp;·&nbsp; <span style="opacity:.55;">@mechaniel-coder</span></p>
+
+  <h1 class="fade-in delay-2">
+    Building Systems<br>That <span class="glow">Actually Ship</span>
+  </h1>
+
+  <p class="hero-sub fade-in delay-3">
+    I design and build end-to-end software — from distributed AI platforms and OSINT toolkits
+    running in Docker on Kali Linux, to production Discord bots serving real communities and
+    3D browser applications driven by hand-tracking. Every project here is real and deployed.
+  </p>
+
+  <div class="hero-badges fade-in delay-4">
+    <span>Go</span><span>Python</span><span>Node.js</span><span>TypeScript</span>
+    <span>React</span><span>Docker</span><span>Kali Linux</span><span>FastAPI</span>
+    <span>Three.js</span><span>PyTorch</span><span>RabbitMQ</span><span>AWS EC2</span>
+    <span>PostgreSQL</span><span>MLflow</span><span>OSINT</span>
+  </div>
+
+  <div class="hero-ctas fade-in delay-5">
+    <a href="https://github.com/mechaniel-coder" target="_blank" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub Profile
+    </a>
+    <a href="#projects" class="btn btn-secondary">
+      View Projects ↓
+    </a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">9+</span><span class="stat-label">Shipped Projects</span></div>
+  <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Languages for AI/ML</span></div>
+  <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">OSINT Tools Deployed</span></div>
+  <div class="stat-item"><span class="stat-num">140+</span><span class="stat-label">Diagnostic Rules</span></div>
+  <div class="stat-item"><span class="stat-num">33+</span><span class="stat-label">Discord Commands</span></div>
+  <div class="stat-item"><span class="stat-num">15yr</span><span class="stat-label">Industry Experience</span></div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section>
+  <div class="section-header">
+    <p class="section-tag">// expertise</p>
+    <h2 class="section-title">Technical <span>Stack</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(0,217,255,.1);color:var(--accent);">⚙️</div>
+        <span class="skill-card-title">Backend Engineering</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Go / Gin</span>
+        <span class="skill-tag">Python / FastAPI</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">JWT Auth</span>
+        <span class="skill-tag">WebSockets</span>
+        <span class="skill-tag">SQLAlchemy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(124,92,252,.1);color:#a78bfa;">🎨</div>
+        <span class="skill-card-title">Frontend / 3D</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">React 19</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">Three.js</span>
+        <span class="skill-tag">React Three Fiber</span>
+        <span class="skill-tag">Vite</span>
+        <span class="skill-tag">Zustand</span>
+        <span class="skill-tag">Next.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(251,191,36,.1);color:#fbbf24;">🤖</div>
+        <span class="skill-card-title">AI / LLM Engineering</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">OpenAI API</span>
+        <span class="skill-tag">Anthropic</span>
+        <span class="skill-tag">MLflow</span>
+        <span class="skill-tag">Weights & Biases</span>
+        <span class="skill-tag">Multimodal</span>
+        <span class="skill-tag">RL Agents</span>
+        <span class="skill-tag">DDP Training</span>
+        <span class="skill-tag">TensorFlow.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(57,211,83,.1);color:var(--green);">🐳</div>
+        <span class="skill-card-title">Infrastructure & DevOps</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Docker Compose</span>
+        <span class="skill-tag">Kali Linux</span>
+        <span class="skill-tag">AWS EC2</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">RabbitMQ</span>
+        <span class="skill-tag">SSH Tunnels</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(255,107,53,.1);color:#ff6b35;">🔐</div>
+        <span class="skill-card-title">Security / OSINT</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Kali Linux 2026.1</span>
+        <span class="skill-tag">OSINT Frameworks</span>
+        <span class="skill-tag">Phone Intelligence</span>
+        <span class="skill-tag">Username Enum</span>
+        <span class="skill-tag">Google Dorking</span>
+        <span class="skill-tag">AES Encryption</span>
+        <span class="skill-tag">OWASP</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(0,217,255,.1);color:var(--accent);">🎮</div>
+        <span class="skill-card-title">Platforms & Ecosystems</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Discord.js v14</span>
+        <span class="skill-tag">Sapphire Framework</span>
+        <span class="skill-tag">MediaPipe</span>
+        <span class="skill-tag">Intel NPU</span>
+        <span class="skill-tag">Voice AI (Whisper)</span>
+        <span class="skill-tag">Python automation</span>
+        <span class="skill-tag">pyttsx3 / edge-tts</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(124,92,252,.1);color:#a78bfa;">📊</div>
+        <span class="skill-card-title">Data & Databases</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">SQLAlchemy ORM</span>
+        <span class="skill-tag">DB Migrations</span>
+        <span class="skill-tag">Pydantic v2</span>
+        <span class="skill-tag">Zod</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon" style="background:rgba(251,191,36,.1);color:#fbbf24;">🌐</div>
+        <span class="skill-card-title">Multi-Language AI</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">R + Torch</span>
+        <span class="skill-tag">Julia / Flux.jl</span>
+        <span class="skill-tag">Java / DL4J</span>
+        <span class="skill-tag">C++ / Libtorch</span>
+        <span class="skill-tag">JavaScript / TF.js</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <p class="section-tag">// portfolio</p>
+    <h2 class="section-title">Featured <span>Projects</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <!-- MOD SYSTEM -->
+    <div class="project-card featured">
+      <div class="project-top">
+        <div class="project-icon">🎮</div>
+        <div class="project-badges">
+          <span class="badge badge-new">2026</span>
+          <span class="badge badge-live">Live</span>
+        </div>
+      </div>
+      <div class="project-name">Haptic Mod System</div>
+      <div class="project-tagline">// game-server mod management platform</div>
+      <p class="project-desc">
+        Production-ready, one-click mod installation and testing platform with AI-powered stability analysis.
+        Features a full test orchestrator that sandboxes mods with deterministic scoring, a live deployment engine
+        with snapshot rollbacks, a catalog manager, and a host agent deployed on game instances. AI gating via
+        Anthropic API makes deployment decisions before any mod goes live.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">Go 1.22</span>
+        <span class="tech-tag highlight">React / Next.js</span>
+        <span class="tech-tag highlight">Docker Compose</span>
+        <span class="tech-tag">Gin Framework</span>
+        <span class="tech-tag">PostgreSQL ×2</span>
+        <span class="tech-tag">Redis</span>
+        <span class="tech-tag">JWT Auth</span>
+        <span class="tech-tag">Anthropic AI</span>
+        <span class="tech-tag">REST API</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Go · React · Docker · AI</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- JARVIS -->
+    <div class="project-card featured">
+      <div class="project-top">
+        <div class="project-icon">🧠</div>
+        <div class="project-badges">
+          <span class="badge badge-ai">AI</span>
+          <span class="badge badge-hot">Hot</span>
+        </div>
+      </div>
+      <div class="project-name">Jarvis — Distributed AI Platform</div>
+      <div class="project-tagline">// voice-activated automation with queue-per-tool architecture</div>
+      <p class="project-desc">
+        A fully distributed, queue-driven automation platform with natural language workflow orchestration,
+        voice activation ("Jarvis"), and multi-engine execution. The orchestrator plans tasks into DAGs,
+        dispatches them over RabbitMQ, and coordinates Python, Node.js, and remote SSH workers. Supports
+        NPU acceleration on Intel Ultra 7 155H. Full keyboard/mouse control, app integrations (Discord,
+        Chrome, GitHub, Spotify), and cloud operations.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">Python 3.14</span>
+        <span class="tech-tag highlight">RabbitMQ</span>
+        <span class="tech-tag highlight">OpenAI Whisper</span>
+        <span class="tech-tag">Node.js Workers</span>
+        <span class="tech-tag">Anthropic / OpenAI</span>
+        <span class="tech-tag">Intel NPU</span>
+        <span class="tech-tag">Redis</span>
+        <span class="tech-tag">SQLAlchemy</span>
+        <span class="tech-tag">pyttsx3 / edge-tts</span>
+        <span class="tech-tag">Paramiko (SSH)</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Python · Node.js · RabbitMQ · Voice</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIAGNOSTIC PLATFORM -->
+    <div class="project-card featured">
+      <div class="project-top">
+        <div class="project-icon">🔍</div>
+        <div class="project-badges">
+          <span class="badge badge-new">v1.0.0</span>
+          <span class="badge badge-live">Feb 2026</span>
+        </div>
+      </div>
+      <div class="project-name">Diagnostic Platform</div>
+      <div class="project-tagline">// enterprise computer diagnostic engine for IT professionals</div>
+      <p class="project-desc">
+        An enterprise-grade computer diagnostic system targeting repair shops, MSPs, and IT professionals.
+        Powered by 140+ diagnostic rules across 20+ categories — performance, hardware health, malware,
+        boot failures, BIOS/UEFI, network, storage, and more. Delivers 5-minute diagnostics at 95% accuracy
+        versus traditional 2–4 hour processes. Ships with a FastAPI backend, multi-tier client architecture,
+        and a .NET solution.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">Python / FastAPI</span>
+        <span class="tech-tag highlight">SQLAlchemy</span>
+        <span class="tech-tag highlight">140+ Diagnostic Rules</span>
+        <span class="tech-tag">.NET Solution</span>
+        <span class="tech-tag">Pydantic v2</span>
+        <span class="tech-tag">JWT / bcrypt</span>
+        <span class="tech-tag">Uvicorn</span>
+        <span class="tech-tag">Multi-tier Arch</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Python · FastAPI · Enterprise</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAD APP -->
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">📐</div>
+        <div class="project-badges">
+          <span class="badge badge-hot">3D</span>
+          <span class="badge badge-new">2026</span>
+        </div>
+      </div>
+      <div class="project-name">Custom CAD-Like 3D App</div>
+      <div class="project-tagline">// browser-based 3D design with real-time hand tracking</div>
+      <p class="project-desc">
+        A browser-based 3D design application combining Three.js with MediaPipe hand tracking for 
+        gesture-driven interaction. Built with React 19, React Three Fiber, and Zustand for state management.
+        Enables users to manipulate 3D objects directly with their hands via webcam — no external hardware
+        needed. TypeScript throughout, Vite for ultra-fast dev cycles.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">React 19</span>
+        <span class="tech-tag highlight">Three.js</span>
+        <span class="tech-tag highlight">MediaPipe Hands</span>
+        <span class="tech-tag">React Three Fiber</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Zustand</span>
+        <span class="tech-tag">Vite</span>
+        <span class="tech-tag">@react-three/drei</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">React · Three.js · MediaPipe</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 420 BOT -->
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">🎲</div>
+        <div class="project-badges">
+          <span class="badge badge-live">Deployed</span>
+          <span class="badge badge-hot">AWS</span>
+        </div>
+      </div>
+      <div class="project-name">420 &amp; Games Discord Bot</div>
+      <div class="project-tagline">// production Discord bot · 33+ commands · AWS EC2</div>
+      <p class="project-desc">
+        Full-featured community Discord bot built on the Sapphire Framework. Ships with 33+ slash commands
+        spanning games (trivia, Would You Rather, puzzle hunts), utilities (wallet, inventory, profile),
+        and moderation (automod, logging, timeouts). Includes a monetization system, license manager,
+        enterprise-level backup encryption, and is deployed live on AWS EC2 with CloudWatch monitoring.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">Node.js</span>
+        <span class="tech-tag highlight">Sapphire Framework</span>
+        <span class="tech-tag highlight">AWS EC2</span>
+        <span class="tech-tag">discord.js v14</span>
+        <span class="tech-tag">SQLite / better-sqlite3</span>
+        <span class="tech-tag">AWS SDK v3</span>
+        <span class="tech-tag">CloudWatch</span>
+        <span class="tech-tag">AES Encryption</span>
+        <span class="tech-tag">33+ Commands</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Node.js · AWS · Discord</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder/Discord-God-Bot-" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIVEAWAY BOT -->
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">🎁</div>
+        <div class="project-badges">
+          <span class="badge badge-live">Live</span>
+        </div>
+      </div>
+      <div class="project-name">Activity Giveaway Bot</div>
+      <div class="project-tagline">// voice-aware giveaway system with ticket ledger</div>
+      <p class="project-desc">
+        A local Discord bot that rewards members for genuine activity — messages with cooldown/daily caps
+        and real voice-speaking events via @discordjs/voice. Tickets are accumulated in an append-only
+        SQLite ledger with idempotent event keys. Admins control the full giveaway lifecycle via slash
+        commands. Restart-safe with expiry sweep on boot.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">discord.js v14</span>
+        <span class="tech-tag highlight">@discordjs/voice</span>
+        <span class="tech-tag">Node.js 20+</span>
+        <span class="tech-tag">better-sqlite3</span>
+        <span class="tech-tag">Zod</span>
+        <span class="tech-tag">dotenv</span>
+        <span class="tech-tag">ES Modules</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Node.js · Discord.js · SQLite</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HYTALE MODS -->
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">⚔️</div>
+        <div class="project-badges">
+          <span class="badge badge-hot">Phase 8</span>
+        </div>
+      </div>
+      <div class="project-name">Hytale Mods 2.0</div>
+      <div class="project-tagline">// 958B+ character combinations · WoW-inspired mount system</div>
+      <p class="project-desc">
+        A comprehensive character and mount creation engine for Hytale. Supports 958+ billion character
+        combinations across 139 customizable features, 30 unique mounts (flying, ground, aquatic) with
+        saddle and magical effects customization, and an age-gate content system providing family-friendly
+        and adult tiers. Inspired by WoW, D&amp;D/Baldur's Gate, and Genshin Impact.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag highlight">Python</span>
+        <span class="tech-tag">139 Features</span>
+        <span class="tech-tag">30 Mounts</span>
+        <span class="tech-tag">Age-Gate System</span>
+        <span class="tech-tag">Profile Manager</span>
+        <span class="tech-tag">Asset Pipeline</span>
+        <span class="tech-tag">Texture Generation</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Python · Game Modding · Phase 8</span>
+        <div class="project-links">
+          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECURITY / OSINT (KALI) -->
+<div id="security" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section style="max-width:1200px;">
+  <div class="section-header">
+    <p class="section-tag">// kali linux · docker · running now</p>
+    <h2 class="section-title">OSINT <span>Toolkit</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="kali-container">
+    <div class="kali-header">
+      <div class="kali-logo">🐉</div>
+      <div>
+        <div class="kali-title">Kali Linux OSINT Environment</div>
+        <div class="kali-sub">Docker container · <code style="color:var(--accent);font-size:.78rem;">osint-tools:latest</code> · Kali 2026.1 Rolling · SSH :2222 · VS Code Remote Tunnel</div>
+      </div>
+    </div>
+    <div class="kali-tools-grid">
+      <div class="kali-tool">
+        <div class="kali-tool-name">PhoneIntel</div>
+        <div class="kali-tool-desc">Advanced phone number intelligence — carrier lookup, geolocation, Google dork generation, OpenStreetMap mapping, Tellows &amp; SpamCalls integration, batch processing.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">DIGI-NETRA</div>
+        <div class="kali-tool-desc">Modular OSINT assistant toolkit for phone number recon, username enumeration, and IP geolocation. CLI menu-driven with Google &amp; social media integration.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Moriarty Project v4.1.2</div>
+        <div class="kali-tool-desc">Web-based phone number investigation with 6 specialized features — owner lookup, spam risk, related links, comment aggregation, and social media footprint discovery.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Tookie-OSINT v4</div>
+        <div class="kali-tool-desc">Username enumeration across hundreds of platforms (~80% accuracy). Rebuilt from scratch in v4. Comparable to Sherlock — finds accounts across social networks worldwide.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Mr.Homes (Hanan Asif)</div>
+        <div class="kali-tool-desc">Comprehensive OSINT framework with 22 modules — username search, proxy support, multi-language, QR codes, site lists, and an active community of contributors.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">MetaGhost</div>
+        <div class="kali-tool-desc">Metadata extraction and analysis tool for OSINT professionals. Extracts hidden metadata from files and digital artifacts to build intelligence profiles.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Telespot v5.0.0</div>
+        <div class="kali-tool-desc">Phone number OSINT via multi-engine search (Google, Bing, DuckDuckGo). Generates format variations, correlates results, surfaces names, locations, and usernames with confidence scoring.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Dark-Hydro</div>
+        <div class="kali-tool-desc">Python OSINT for phone number investigation via Google Dorking. Multi-API integration (Numverify, OpenCage, AbstractAPI, VeriPhone) for carrier, location, and social discovery.</div>
+      </div>
+      <div class="kali-tool">
+        <div class="kali-tool-name">Wiwok</div>
+        <div class="kali-tool-desc">Additional OSINT utility for intelligence gathering and target profiling, integrated into the unified Kali toolkit environment.</div>
+      </div>
+    </div>
+    <div class="kali-footer">
+      <span class="kali-badge active">● Container Running</span>
+      <span class="kali-badge">Kali 2026.1 Rolling</span>
+      <span class="kali-badge">SSH :2222</span>
+      <span class="kali-badge">VS Code Remote</span>
+      <span class="kali-badge">9 OSINT Tools</span>
+      <span class="kali-badge">Python 3.x</span>
+      <span class="kali-badge">OffSec Official Image</span>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- AI / LLM -->
+<section id="ai">
+  <div class="section-header">
+    <p class="section-tag">// d:\AI & LLM · multi-language workspace</p>
+    <h2 class="section-title">AI / LLM <span>Research Workspace</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+
+    <div class="project-card" style="grid-column:1/-1;background:var(--bg3);">
+      <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
+        <div style="flex:1;min-width:220px;">
+          <div class="project-name" style="margin-bottom:.5rem;">Multi-Language LLM Training Workspace</div>
+          <p class="project-desc">
+            A production-grade AI and LLM training workspace supporting identical pipelines across 6 programming languages.
+            Features multimodal training (audio + vision + text), reinforcement learning with Gymnasium integration,
+            distributed training via PyTorch DDP / Flux.jl / DL4J / Libtorch, experiment tracking with MLflow and
+            Weights &amp; Biases, and a modular CLI harness with YAML config merging.
+            Also houses the AI brain modules for Jarvis: <code style="color:var(--accent);font-size:.78rem;">brain.py, ears.py, memory.py, voice.py, wake.py</code>.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;min-width:160px;">
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.8rem;">
+            <div style="font-size:.7rem;color:var(--muted);margin-bottom:.4rem;font-family:'Courier New',monospace;">LANGUAGES</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+              <span class="tech-tag highlight">Python</span>
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">Julia</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.8rem;">
+            <div style="font-size:.7rem;color:var(--muted);margin-bottom:.4rem;font-family:'Courier New',monospace;">FRAMEWORKS</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
+              <span class="tech-tag">PyTorch DDP</span>
+              <span class="tech-tag">Flux.jl</span>
+              <span class="tech-tag">DL4J</span>
+              <span class="tech-tag">Libtorch</span>
+              <span class="tech-tag">TF.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.2rem;border-top:1px solid var(--border);padding-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem;">
+        <span class="tech-tag highlight">MLflow</span>
+        <span class="tech-tag highlight">Weights &amp; Biases</span>
+        <span class="tech-tag">Multimodal (Audio+Vision+Text)</span>
+        <span class="tech-tag">RL / Policy Gradient</span>
+        <span class="tech-tag">Distributed Training</span>
+        <span class="tech-tag">Gymnasium</span>
+        <span class="tech-tag">OpenAI API</span>
+        <span class="tech-tag">Anthropic API</span>
+        <span class="tech-tag">Whisper</span>
+        <span class="tech-tag">YAML Config Merging</span>
+        <span class="tech-tag">Experiment Tracking</span>
+        <span class="tech-tag">CLI Harness</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div style="background:var(--bg2);border-top:1px solid var(--border);">
+<section id="timeline" style="max-width:900px;">
+  <div class="section-header">
+    <p class="section-tag">// build history</p>
+    <h2 class="section-title">Project <span>Timeline</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">MAY 2026</div>
+      <div class="timeline-title">Kali Linux OSINT Toolkit — Docker Environment</div>
+      <div class="timeline-desc">Built and deployed a custom Kali Linux 2026.1 Docker container integrating 9 OSINT tools (PhoneIntel, DIGI-NETRA, Moriarty, Tookie-OSINT, Mr.Homes, MetaGhost, Telespot, Dark-Hydro, Wiwok). Accessible via VS Code Remote Tunnel over SSH.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">APRIL 2026</div>
+      <div class="timeline-title">Haptic Mod System — Full Platform Release</div>
+      <div class="timeline-desc">Shipped complete mod management platform in Go + React/Next.js with AI-powered deployment gating, Docker Compose infrastructure, and dual PostgreSQL databases for catalog and runtime operations.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">FEBRUARY 2026</div>
+      <div class="timeline-title">Diagnostic Platform v1.0.0 — Enterprise Release</div>
+      <div class="timeline-desc">Launched enterprise computer diagnostics platform. 140+ rules, FastAPI backend, 5-minute diagnostic cycle at 95% accuracy. Targets IT repair shops and MSPs.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2026</div>
+      <div class="timeline-title">Custom CAD-Like 3D App — Browser + Hand Tracking</div>
+      <div class="timeline-desc">Built a WebGL 3D design tool using React Three Fiber and MediaPipe Hands — real-time hand gesture control of 3D objects entirely in the browser, no plugins required.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025–2026</div>
+      <div class="timeline-title">Jarvis — Distributed AI Automation Platform</div>
+      <div class="timeline-desc">Designed and built a full distributed AI agent with RabbitMQ queue-per-tool routing, voice activation, Python/Node/remote worker mesh, NPU acceleration, and natural language workflow planning.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025–2026</div>
+      <div class="timeline-title">AI / LLM Multi-Language Training Workspace</div>
+      <div class="timeline-desc">Established a production-grade LLM research workspace spanning Python, R, Julia, Java, C++, and JavaScript — unified pipelines for supervised, multimodal, and RL training with MLflow + W&B tracking.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2024–2025</div>
+      <div class="timeline-title">420 &amp; Games Bot + Activity Giveaway Bot</div>
+      <div class="timeline-desc">Deployed two production Discord bots — a full-feature community bot (33+ commands, AWS EC2, enterprise encryption) and a voice-activity giveaway bot with append-only ticket ledger.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 10px rgba(124,92,252,.5);"></div>
+      <div class="timeline-date">2024</div>
+      <div class="timeline-title">Hytale Mods 2.0 — Character &amp; Mount System</div>
+      <div class="timeline-desc">Built a game-mod creation engine with 958B+ character combinations, a WoW-inspired mount system with 30 mounts, age-gate content layers, and a profile sharing community — Phase 8 complete.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROFESSIONAL EXPERIENCE -->
+<div id="experience" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section style="max-width:1000px;">
+  <div class="section-header">
+    <p class="section-tag">// 2011 – 2021 · Los Angeles area</p>
+    <h2 class="section-title">Professional <span>Experience</span></h2>
+    <div class="section-line"></div>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:.8rem;max-width:620px;">
+      15 years of hands-on IT before software development. The 140+ diagnostic rules in the Diagnostic Platform
+      didn't come from documentation — they came from this.
+    </p>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <div class="exp-role">Location Manager</div>
+        <div class="exp-company">MonsterFix</div>
+        <div class="exp-desc">
+          Managed a full face-to-face computer repair store end-to-end: opening procedures, customer intake, ticketing system,
+          inventory, hands-on repairs, and staff training. Serviced high-end desktops, workstations, laptops, cellphones,
+          tablets, all-in-ones, and performed component-level board repairs.
+        </div>
+        <div class="exp-tags">
+          <span class="skill-tag">Component-Level Repair</span>
+          <span class="skill-tag">Store Management</span>
+          <span class="skill-tag">Staff Training</span>
+          <span class="skill-tag">Customer Intake</span>
+          <span class="skill-tag">Ticketing Systems</span>
+          <span class="skill-tag">Inventory</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">Feb 2020 – May 2021</div>
+        <div class="exp-location">Long Beach, CA</div>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <div class="exp-role">Technician</div>
+        <div class="exp-company">Home Tech Shop</div>
+        <div class="exp-desc">
+          Laptop, computer, and cellphone repair. Extended role into graphic design and early work
+          on hosting server setup and configuration.
+        </div>
+        <div class="exp-tags">
+          <span class="skill-tag">Laptop Repair</span>
+          <span class="skill-tag">Cellphone Repair</span>
+          <span class="skill-tag">Graphic Design</span>
+          <span class="skill-tag">Server Hosting</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">Jan 2016 – Mar 2020</div>
+        <div class="exp-location">San Pedro, CA</div>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <div class="exp-role">Technician</div>
+        <div class="exp-company">Just Tech Solution</div>
+        <div class="exp-desc">
+          Broad technical scope: computer diagnostics, phone &amp; tablet repairs, custom desktop builds,
+          custom application development, and bespoke data solutions for clients.
+          The real-world diagnostic patterns from this role directly informed the Diagnostic Platform's 140+ rule engine.
+        </div>
+        <div class="exp-tags">
+          <span class="skill-tag">Computer Diagnostics</span>
+          <span class="skill-tag">Custom Desktop Builds</span>
+          <span class="skill-tag">Custom Applications</span>
+          <span class="skill-tag">Data Solutions</span>
+          <span class="skill-tag">Phone &amp; Tablet Repair</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">Sep 2014 – Jan 2016</div>
+        <div class="exp-location">San Pedro, CA</div>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <div class="exp-role">Technician</div>
+        <div class="exp-company">ABC Computers</div>
+        <div class="exp-desc">
+          Started as a volunteer technician — the origin of a 15-year hands-on career in computer repair and custom hardware.
+        </div>
+        <div class="exp-tags">
+          <span class="skill-tag">Computer Repair</span>
+          <span class="skill-tag">Hardware</span>
+        </div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-date">Jan 2011 – Sep 2014</div>
+        <div class="exp-location">San Pedro, CA</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- CERTS + LANGUAGES -->
+<section id="certs" style="max-width:1000px;">
+  <div class="certs-langs-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+    <div>
+      <div class="section-header" style="margin-bottom:1.5rem;">
+        <p class="section-tag">// verified</p>
+        <h2 class="section-title" style="font-size:1.4rem;">Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.8rem;">
+        <div class="cert-card">
+          <span class="cert-icon">🦺</span>
+          <div>
+            <div class="cert-title">OSHA 10</div>
+            <div class="cert-sub">Occupational Safety &amp; Health Administration</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">🏗️</span>
+          <div>
+            <div class="cert-title">Forklift Certification</div>
+            <div class="cert-sub">February 2023</div>
+          </div>
+        </div>
+        <div class="cert-card" style="border-color:rgba(0,217,255,.2);">
+          <span class="cert-icon">✅</span>
+          <div>
+            <div class="cert-title">Authorized to Work in the US</div>
+            <div class="cert-sub">For any employer · No sponsorship required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-header" style="margin-bottom:1.5rem;">
+        <p class="section-tag">// spoken</p>
+        <h2 class="section-title" style="font-size:1.4rem;">Languages</h2>
+        <div class="section-line"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.7rem;">
+        <div class="lang-pill">
+          <span style="font-size:1.1rem;">🇺🇸</span>
+          <span style="font-weight:600;">English</span>
+          <span class="lang-level">— Fluent / Bilingual</span>
+        </div>
+        <div class="lang-pill">
+          <span style="font-size:1.1rem;">🇭🇺</span>
+          <span style="font-weight:600;">Hungarian</span>
+          <span class="lang-level">— Intermediate</span>
+        </div>
+        <div class="lang-pill">
+          <span style="font-size:1.1rem;">🇪🇸</span>
+          <span style="font-weight:600;">Spanish</span>
+          <span class="lang-level">— Beginner</span>
+        </div>
+        <div class="lang-pill">
+          <span style="font-size:1.1rem;">🇸🇪</span>
+          <span style="font-weight:600;">Swedish</span>
+          <span class="lang-level">— Beginner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Daniel Pall <span style="color:var(--muted);font-weight:300;font-size:.85rem;letter-spacing:2px;">· mechaniel-coder</span></div>
+  <p style="color:var(--muted);font-size:.85rem;max-width:500px;margin:.5rem auto;">
+    Full-Stack Engineer · AI Architect · Security Researcher · Los Angeles, CA
+  </p>
+  <div class="footer-links" style="flex-wrap:wrap;justify-content:center;">
+    <a href="mailto:mechaniel@gmail.com">mechaniel@gmail.com</a>
+    <a href="tel:+12132196068">+1 213 219 6068</a>
+    <a href="https://github.com/mechaniel-coder" target="_blank">GitHub</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#security">OSINT</a>
+    <a href="#ai">AI / LLM</a>
+  </div>
+  <div class="footer-copy">© 2026 Daniel Pall · Building real systems, not demos.</div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations on project cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-card, .skill-card, .kali-tool, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
