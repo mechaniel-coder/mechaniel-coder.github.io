@@ -5,33 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daniel Pall — Full CV / Resume</title>
   <style>
-    /* ── SCREEN BASE ── */
+    /* ── DARK THEME BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 10.5pt; }
     body {
       font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      color: #1a1a1a;
-      background: #f0f2f5;
+      color: #cdd6f4;
+      background: #000;
       line-height: 1.55;
     }
     .page {
-      background: #fff;
+      background: #0d1117;
       width: 8.5in;
       margin: .5in auto;
       padding: .75in .8in;
-      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+      box-shadow: 0 4px 40px rgba(0,217,255,.07), 0 0 0 1px #1e2a38;
     }
 
     /* ── HEADER ── */
-    .cv-header { border-bottom: 2.5px solid #1a3a5c; padding-bottom: .55rem; margin-bottom: .7rem; }
-    .cv-name { font-size: 22pt; font-weight: 800; color: #1a3a5c; letter-spacing: -.3px; line-height: 1.1; }
-    .cv-title { font-size: 11pt; color: #2e6da4; font-weight: 600; margin-top: .15rem; letter-spacing: .3px; }
+    .cv-header { border-bottom: 2px solid #00d9ff; padding-bottom: .55rem; margin-bottom: .7rem; }
+    .cv-name { font-size: 22pt; font-weight: 800; color: #e6edf3; letter-spacing: -.3px; line-height: 1.1; }
+    .cv-title { font-size: 11pt; color: #00d9ff; font-weight: 600; margin-top: .15rem; letter-spacing: .3px; }
     .cv-contact {
       display: flex; flex-wrap: wrap; gap: .3rem .9rem;
-      margin-top: .45rem; font-size: 8.5pt; color: #444;
+      margin-top: .45rem; font-size: 8.5pt; color: #7a8a9a;
     }
-    .cv-contact a { color: #2e6da4; text-decoration: none; }
-    .cv-contact span::before { content: '·'; margin-right: .45rem; color: #aaa; }
+    .cv-contact a { color: #4fc3f7; text-decoration: none; }
+    .cv-contact span::before { content: '·'; margin-right: .45rem; color: #3a4a5a; }
     .cv-contact span:first-child::before { content: ''; margin: 0; }
 
     /* ── SECTION TITLES ── */
@@ -41,109 +41,108 @@
     }
     .sec-title {
       font-size: 9.5pt; font-weight: 800; letter-spacing: 2.5px;
-      text-transform: uppercase; color: #1a3a5c;
-      border-bottom: 1px solid #c8d8e8; padding-bottom: .2rem;
+      text-transform: uppercase; color: #00d9ff;
+      border-bottom: 1px solid #1e2a38; padding-bottom: .2rem;
       margin-bottom: .45rem;
     }
-    .sec-title span { color: #2e6da4; }
+    .sec-title span { color: #4fc3f7; }
 
     /* ── SUMMARY ── */
-    .summary { font-size: 9.5pt; color: #333; line-height: 1.65; }
+    .summary { font-size: 9.5pt; color: #8899aa; line-height: 1.65; }
 
     /* ── CORE STACK PILLS ── */
     .pills { display: flex; flex-wrap: wrap; gap: .25rem .35rem; }
     .pill {
-      background: #eaf2fb; color: #1a3a5c; border: 1px solid #b8d0e8;
+      background: #111827; color: #7ab3cc; border: 1px solid #1e3050;
       border-radius: 4px; padding: .1rem .4rem; font-size: 8pt; font-weight: 600;
     }
-    .pill.hi { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .pill.hi { background: #00334d; color: #00d9ff; border-color: #005a85; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
     /* ── EXPERIENCE ── */
     .exp { margin-bottom: .65rem; page-break-inside: avoid; }
     .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .2rem; }
-    .exp-role { font-size: 10pt; font-weight: 700; color: #1a1a1a; }
-    .exp-company { font-size: 9pt; font-weight: 700; color: #2e6da4; }
-    .exp-meta { font-size: 8pt; color: #666; text-align: right; }
-    .exp-desc { font-size: 9pt; color: #333; margin-top: .2rem; line-height: 1.55; }
+    .exp-role { font-size: 10pt; font-weight: 700; color: #e6edf3; }
+    .exp-company { font-size: 9pt; font-weight: 700; color: #00d9ff; }
+    .exp-meta { font-size: 8pt; color: #556677; text-align: right; }
+    .exp-desc { font-size: 9pt; color: #8899aa; margin-top: .2rem; line-height: 1.55; }
     .exp-bullets { margin-top: .2rem; padding-left: 1rem; }
-    .exp-bullets li { font-size: 8.8pt; color: #333; margin-bottom: .1rem; line-height: 1.5; }
+    .exp-bullets li { font-size: 8.8pt; color: #8899aa; margin-bottom: .1rem; line-height: 1.5; }
 
     /* ── PROJECTS ── */
-    .project { margin-bottom: .7rem; page-break-inside: avoid; border-left: 3px solid #2e6da4; padding-left: .6rem; }
+    .project { margin-bottom: .7rem; page-break-inside: avoid; border-left: 3px solid #00d9ff; padding-left: .6rem; }
     .proj-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .2rem; }
-    .proj-name { font-size: 10pt; font-weight: 700; color: #1a1a1a; }
-    .proj-year { font-size: 8pt; color: #888; font-weight: 600; }
-    .proj-tagline { font-size: 8.2pt; color: #2e6da4; font-style: italic; margin-bottom: .15rem; }
-    .proj-desc { font-size: 8.8pt; color: #333; line-height: 1.55; }
+    .proj-name { font-size: 10pt; font-weight: 700; color: #e6edf3; }
+    .proj-year { font-size: 8pt; color: #556677; font-weight: 600; }
+    .proj-tagline { font-size: 8.2pt; color: #4fc3f7; font-style: italic; margin-bottom: .15rem; }
+    .proj-desc { font-size: 8.8pt; color: #8899aa; line-height: 1.55; }
     .proj-tech { display: flex; flex-wrap: wrap; gap: .2rem .3rem; margin-top: .25rem; }
-    .pt { font-size: 7.5pt; background: #eaf2fb; color: #1a3a5c; border-radius: 3px; padding: .05rem .3rem; border: 1px solid #c8d8e8; }
-    .pt.hi { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+    .pt { font-size: 7.5pt; background: #111827; color: #7ab3cc; border-radius: 3px; padding: .05rem .3rem; border: 1px solid #1e3050; }
+    .pt.hi { background: #00334d; color: #00d9ff; border-color: #005a85; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
     /* ── OSINT / TOOL GRID ── */
     .tool-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .4rem; }
-    .tool { background: #f6f9fc; border: 1px solid #d0dde8; border-radius: 5px; padding: .4rem .55rem; page-break-inside: avoid; }
-    .tool-name { font-size: 8.5pt; font-weight: 700; color: #1a3a5c; }
-    .tool-desc { font-size: 7.8pt; color: #555; line-height: 1.5; margin-top: .1rem; }
+    .tool { background: #111827; border: 1px solid #1e2a38; border-radius: 5px; padding: .4rem .55rem; page-break-inside: avoid; }
+    .tool-name { font-size: 8.5pt; font-weight: 700; color: #00d9ff; }
+    .tool-desc { font-size: 7.8pt; color: #667788; line-height: 1.5; margin-top: .1rem; }
 
     /* ── ENGINEERING DEPTH ── */
     .depth-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .45rem; }
-    .depth { background: #f6f9fc; border: 1px solid #d0dde8; border-radius: 5px; padding: .45rem .6rem; page-break-inside: avoid; }
+    .depth { background: #111827; border: 1px solid #1e2a38; border-radius: 5px; padding: .45rem .6rem; page-break-inside: avoid; }
     .depth-header { display: flex; align-items: baseline; gap: .35rem; margin-bottom: .15rem; }
     .depth-icon { font-size: 1rem; }
-    .depth-title { font-size: 8.5pt; font-weight: 700; color: #1a3a5c; }
-    .depth-source { font-size: 7pt; color: #2e6da4; font-family: 'Courier New', monospace; }
-    .depth-desc { font-size: 7.8pt; color: #444; line-height: 1.5; margin-bottom: .2rem; }
+    .depth-title { font-size: 8.5pt; font-weight: 700; color: #e6edf3; }
+    .depth-source { font-size: 7pt; color: #4fc3f7; font-family: 'Courier New', monospace; }
+    .depth-desc { font-size: 7.8pt; color: #667788; line-height: 1.5; margin-bottom: .2rem; }
 
     /* ── SKILLS INVENTORY ── */
     .skill-cat { margin-bottom: .45rem; page-break-inside: avoid; }
-    .skill-cat-label { font-size: 8pt; font-weight: 700; color: #1a3a5c; letter-spacing: 1px; text-transform: uppercase; margin-bottom: .2rem; }
+    .skill-cat-label { font-size: 8pt; font-weight: 700; color: #00d9ff; letter-spacing: 1px; text-transform: uppercase; margin-bottom: .2rem; }
     .skill-cat-pills { display: flex; flex-wrap: wrap; gap: .2rem .3rem; }
-    .sk { font-size: 7.8pt; background: #f0f4f8; color: #333; border: 1px solid #d0dde8; border-radius: 3px; padding: .05rem .28rem; }
+    .sk { font-size: 7.8pt; background: #111827; color: #7a8a9a; border: 1px solid #1e2a38; border-radius: 3px; padding: .05rem .28rem; }
 
     /* ── CERTIFICATIONS ── */
     .cert-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .3rem; }
-    .cert { background: #f6f9fc; border: 1px solid #d0dde8; border-radius: 4px; padding: .3rem .45rem; page-break-inside: avoid; }
-    .cert-name { font-size: 8.2pt; font-weight: 700; color: #1a1a1a; }
-    .cert-sub { font-size: 7.3pt; color: #666; }
-    .cert-active { background: #e8f5e9; border-color: #a5d6a7; }
-    .cert-active .cert-name { color: #1b5e20; }
-    .cert-cat-label { grid-column: 1 / -1; font-size: 7.5pt; font-weight: 700; color: #2e6da4; letter-spacing: 1.5px; text-transform: uppercase; margin-top: .35rem; margin-bottom: .05rem; border-bottom: 1px solid #c8d8e8; padding-bottom: .1rem; }
+    .cert { background: #111827; border: 1px solid #1e2a38; border-radius: 4px; padding: .3rem .45rem; page-break-inside: avoid; }
+    .cert-name { font-size: 8.2pt; font-weight: 700; color: #cdd6f4; }
+    .cert-sub { font-size: 7.3pt; color: #556677; }
+    .cert-active { background: #0a1f14; border-color: #1a4d2e; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cert-active .cert-name { color: #4caf50; }
+    .cert-cat-label { grid-column: 1 / -1; font-size: 7.5pt; font-weight: 700; color: #4fc3f7; letter-spacing: 1.5px; text-transform: uppercase; margin-top: .35rem; margin-bottom: .05rem; border-bottom: 1px solid #1e2a38; padding-bottom: .1rem; }
 
     /* ── TIMELINE ── */
     .tl { margin-bottom: .45rem; page-break-inside: avoid; display: flex; gap: .6rem; }
-    .tl-date { font-size: 7.5pt; font-weight: 700; color: #2e6da4; min-width: 72px; text-align: right; padding-top: .1rem; }
+    .tl-date { font-size: 7.5pt; font-weight: 700; color: #00d9ff; min-width: 72px; text-align: right; padding-top: .1rem; }
     .tl-line { display: flex; flex-direction: column; align-items: center; }
-    .tl-dot { width: 7px; height: 7px; background: #2e6da4; border-radius: 50%; flex-shrink: 0; margin-top: .25rem; }
-    .tl-bar { width: 1.5px; background: #c8d8e8; flex: 1; margin-top: .2rem; }
+    .tl-dot { width: 7px; height: 7px; background: #00d9ff; border-radius: 50%; flex-shrink: 0; margin-top: .25rem; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tl-bar { width: 1.5px; background: #1e2a38; flex: 1; margin-top: .2rem; }
     .tl-content { flex: 1; }
-    .tl-title { font-size: 8.5pt; font-weight: 700; color: #1a1a1a; }
-    .tl-desc { font-size: 8pt; color: #555; line-height: 1.5; }
+    .tl-title { font-size: 8.5pt; font-weight: 700; color: #e6edf3; }
+    .tl-desc { font-size: 8pt; color: #667788; line-height: 1.5; }
 
     /* ── LANGUAGES ── */
     .lang-row { display: flex; align-items: center; gap: .5rem; font-size: 9pt; margin-bottom: .25rem; }
     .lang-flag { font-size: 1rem; }
-    .lang-name { font-weight: 700; color: #1a1a1a; }
-    .lang-level { color: #666; font-size: 8.5pt; }
+    .lang-name { font-weight: 700; color: #e6edf3; }
+    .lang-level { color: #556677; font-size: 8.5pt; }
 
     /* ── TWO-COL LAYOUT ── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
     .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .9rem; }
 
     /* ── DIVIDER ── */
-    hr { border: none; border-top: 1px solid #dde4ec; margin: .6rem 0; }
+    hr { border: none; border-top: 1px solid #1e2a38; margin: .6rem 0; }
 
     /* ── PRINT ── */
     @media print {
       html { font-size: 9.5pt; }
-      body { background: #fff; }
+      body { background: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .page {
         width: 100%; margin: 0; padding: .65in .75in;
-        box-shadow: none;
+        box-shadow: none; background: #0d1117;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
       }
       a { color: inherit !important; text-decoration: none; }
-      .pill.hi { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .pt.hi    { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .cert-active { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .pill.hi, .pt.hi, .cert-active, .tl-dot, .tool, .depth, .cert, .sk, .pill, .pt { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .project { page-break-inside: avoid; }
       .exp      { page-break-inside: avoid; }
       .tool     { page-break-inside: avoid; }
@@ -742,7 +741,7 @@
   <div class="sec pb">
     <div class="sec-title">Certifications</div>
 
-    <div style="font-size:8pt;font-weight:700;color:#1b5e20;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem;">Active</div>
+    <div style="font-size:8pt;font-weight:700;color:#4caf50;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem;">Active</div>
     <div class="cert-grid" style="margin-bottom:.6rem;">
       <div class="cert cert-active">
         <div class="cert-name">🦺 OSHA 10</div>
@@ -758,7 +757,7 @@
       </div>
     </div>
 
-    <div style="font-size:8pt;font-weight:700;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem;">Lapsed · Pre-2022 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(expired during recovery — knowledge retained)</span></div>
+    <div style="font-size:8pt;font-weight:700;color:#667788;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem;">Lapsed · Pre-2022 <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#556677;">(expired during recovery — knowledge retained)</span></div>
     <div class="cert-grid">
 
       <!-- Core IT -->
@@ -833,14 +832,14 @@
     <div>
       <div class="sec-title">Stats at a Glance</div>
       <table style="font-size:8.5pt;border-collapse:collapse;width:100%;">
-        <tr><td style="padding:.2rem .4rem;color:#555;">Shipped Projects</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">9+</td></tr>
-        <tr style="background:#f6f9fc;"><td style="padding:.2rem .4rem;color:#555;">Diagnostic Rules</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">140+</td></tr>
-        <tr><td style="padding:.2rem .4rem;color:#555;">Discord Commands</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">33+</td></tr>
-        <tr style="background:#f6f9fc;"><td style="padding:.2rem .4rem;color:#555;">OSINT Tools Deployed</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">9</td></tr>
-        <tr><td style="padding:.2rem .4rem;color:#555;">AI/ML Languages</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">6</td></tr>
-        <tr style="background:#f6f9fc;"><td style="padding:.2rem .4rem;color:#555;">Industry Experience</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">15 years</td></tr>
-        <tr><td style="padding:.2rem .4rem;color:#555;">Lapsed Certifications</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">28</td></tr>
-        <tr style="background:#f6f9fc;"><td style="padding:.2rem .4rem;color:#555;">Work Authorization</td><td style="padding:.2rem .4rem;font-weight:700;color:#1a3a5c;">Any employer · No sponsorship</td></tr>
+        <tr><td style="padding:.2rem .4rem;color:#667788;">Shipped Projects</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">9+</td></tr>
+        <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">Diagnostic Rules</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">140+</td></tr>
+        <tr><td style="padding:.2rem .4rem;color:#667788;">Discord Commands</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">33+</td></tr>
+        <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">OSINT Tools Deployed</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">9</td></tr>
+        <tr><td style="padding:.2rem .4rem;color:#667788;">AI/ML Languages</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">6</td></tr>
+        <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">Industry Experience</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">15 years</td></tr>
+        <tr><td style="padding:.2rem .4rem;color:#667788;">Lapsed Certifications</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">28</td></tr>
+        <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">Work Authorization</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">Any employer · No sponsorship</td></tr>
       </table>
     </div>
   </div>
@@ -928,7 +927,7 @@
        FOOTER
   ══════════════════════════════════════════════════════ -->
   <hr style="margin-top:1rem;" />
-  <div style="display:flex;justify-content:space-between;align-items:center;font-size:7.5pt;color:#999;margin-top:.4rem;">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-size:7.5pt;color:#3a4a5a;margin-top:.4rem;">
     <span>Daniel Pall · mechaniel-coder · Los Angeles, CA · May 2026</span>
     <span>mechaniel-coder.github.io &nbsp;·&nbsp; github.com/mechaniel-coder &nbsp;·&nbsp; linkedin.com/in/mechaniel-coder</span>
   </div>
