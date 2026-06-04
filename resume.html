@@ -261,6 +261,7 @@
         <li>Built <strong>NetWatch</strong> — real-time infrastructure monitoring platform: lightweight Go agent (~6 MB) per host ships CPU/memory/disk/network metrics; React dashboard with live WebSocket charts, threshold alerting, PostgreSQL time-series, Redis session state.</li>
         <li>Built <strong>PipelineForge</strong> — self-hosted CI/CD platform: YAML pipeline definitions, GitHub webhook receiver, paramiko SSH executor, live WebSocket log streaming, run history, JWT + RBAC (admin/developer).</li>
         <li>Built <strong>TicketFlow</strong> — full-stack ITSM platform for repair shops and MSPs: ticket lifecycle (Open → Closed), SLA breach alerting, hardware/software asset inventory, asset-to-ticket linking, RBAC (Admin/Technician/User), append-only audit trail.</li>
+        <li>Deployed <strong>XCEED Tech Production Infrastructure</strong> (May 2026) — served as CTO/Lead Engineer for X-CEED Tech Solutions. Architected and shipped a complete production hosting platform in under 72 hours: Skyhigh Hosting Discord bot (discord.js v14, web dashboard, Stripe/PayPal/Square payments, Pterodactyl panel integration, health monitors, 50+ commits); ip-manager IMAP-authenticated dynamic IP whitelist system with iptables cron automation; Unraid server security hardening (iptables-legacy INPUT/DOCKER-USER chains, admin-only port lockdown). 13 Docker containers verified live and healthy at delivery.</li>
         <li>Deployed <strong>Kali Linux OSINT Toolkit</strong> — Docker container (Kali 2026.1 rolling), 9 integrated OSINT tools, SSH :2222, VS Code Remote Tunnel.</li>
         <li>Established <strong>Multi-Language AI/LLM Training Workspace</strong> — identical ML pipelines in Python, R, Julia, Java, C++, JavaScript; PyTorch DDP, Flux.jl, DL4J, Libtorch, TF.js; MLflow + Weights &amp; Biases experiment tracking; multimodal (audio + vision + text); RL with Gymnasium.</li>
       </ul>
@@ -505,6 +506,47 @@
         <span class="pt hi">Python</span><span class="pt">139 Feature Axes</span><span class="pt">30 Mounts</span>
         <span class="pt">Combinatorial Engine</span><span class="pt">Age-Gate Policy Layer</span>
         <span class="pt">Texture Generation</span><span class="pt">Asset Pipeline</span>
+      </div>
+    </div>
+  </div>
+
+    <!-- ══════════════════════════════════════════════════════
+       XCEED TECH INFRASTRUCTURE PROJECT
+  ══════════════════════════════════════════════════════ -->
+  <div class="sec">
+    <div class="sec-title">XCEED Tech — Production Infrastructure &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:8pt;">May 19–22, 2026 · CTO / Lead Engineer · 72 hrs</span></div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">🖥️ Skyhigh Hosting Bot + Infrastructure</div>
+        <div class="proj-year">May 2026 · 72 hrs</div>
+      </div>
+      <div class="proj-tagline">// full production hosting stack · Discord bot · ip-manager · iptables security hardening</div>
+      <div class="proj-desc">
+        Sole engineer and CTO for X-CEED Tech Solutions. Designed and deployed a complete production hosting platform
+        from zero to live in under 72 hours (first commit May 19 — 13 containers verified healthy May 22).
+        <br><br>
+        <strong>Skyhigh Hosting Bot</strong> (discord.js v14 + Node.js): Full Discord hosting management bot with 33+ slash commands,
+        web dashboard (Discord OAuth, Express, live logs), Stripe/PayPal/Square payment processing,
+        Pterodactyl/Nextdactyl game-server panel integration, real-time server health monitors (CPU/RAM/disk),
+        RSA license validation, audit logging, and reaction roles. 50+ commits shipped across 3 days.
+        <br><br>
+        <strong>ip-manager</strong>: IMAP-authenticated (Docker Mailserver) dynamic IP registration web app. Employees enter credentials,
+        server verifies via IMAP, IP is written to whitelist JSON, host cron script rebuilds iptables UNRAID-WHITELIST
+        chain every minute — zero stored passwords, rate limited, HTTPS via Let's Encrypt (DNS-01 / Cloudflare API).
+        <br><br>
+        <strong>Security Hardening</strong>: iptables-legacy INPUT/DOCKER-USER chains blocking 8+ admin-only ports,
+        MariaDB locked to Docker subnet, dynamic employee IP whitelist. All rules persisted to /boot/config/go.
+        <br><br>
+        <strong>Health at Delivery (May 22, 2026)</strong>: 13 containers running — Docker Mailserver, Nginx Proxy Manager,
+        WordPress, Roundcube, Paymenter + DB + Redis, Skyhigh-bot + DB, Nextdactyl, ip-manager.
+        IMAP auth verified in mailserver logs. HTTPS live. iptables chains confirmed functional.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Node.js</span><span class="pt hi">discord.js v14</span><span class="pt hi">Docker Compose</span><span class="pt hi">Unraid Linux</span>
+        <span class="pt">iptables-legacy</span><span class="pt">Nginx Proxy Manager</span><span class="pt">Docker Mailserver</span>
+        <span class="pt">Let's Encrypt SSL</span><span class="pt">Stripe / PayPal / Square</span>
+        <span class="pt">Pterodactyl / Nextdactyl</span><span class="pt">Paymenter</span>
+        <span class="pt">MariaDB / MySQL / Redis</span><span class="pt">IMAP Auth (ImapFlow)</span><span class="pt">Rate Limiting</span>
       </div>
     </div>
   </div>
