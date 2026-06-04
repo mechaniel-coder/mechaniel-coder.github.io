@@ -595,7 +595,7 @@
        CERTSENTRY / NETWATCH / PIPELINEFORGE / TICKETFLOW
   ══════════════════════════════════════════════════════ -->
   <div class="sec">
-    <div class="sec-title">Showcase Projects &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:8pt;">CertSentry · NetWatch · PipelineForge · TicketFlow · 2026</span></div>
+    <div class="sec-title">Showcase Projects &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:8pt;">ShadowScan · NetWatch Infra · CertSentry · NetWatch · PipelineForge · 2026</span></div>
     <div class="project">
       <div class="proj-header">
         <div class="proj-name">&#128269; ShadowScan</div>
@@ -620,7 +620,31 @@
 
     <div class="project">
       <div class="proj-header">
-        <div class="proj-name">🔐 CertSentry</div>
+        <div class="proj-name">&#9729; NetWatch — Cloud Infrastructure</div>
+        <div class="proj-year">2026</div>
+      </div>
+      <div class="proj-tagline">// Terraform + EKS + Helm: production Kubernetes on AWS</div>
+      <div class="proj-desc">
+        Production-grade cloud infrastructure for NetWatch deployed to AWS EKS. Terraform modules provision VPC
+        (NAT gateways, private/public subnets, route tables), EKS cluster with managed node group and least-privilege
+        IAM, RDS PostgreSQL 16 (multi-AZ, encrypted at rest), and ElastiCache Redis (TLS, auto-failover).
+        Helm chart packages the app with HPA, liveness/readiness probes, and ALB Ingress. GitHub Actions CI/CD
+        uses OIDC federation — zero long-lived credentials ever stored.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Terraform</span><span class="pt hi">Kubernetes</span><span class="pt hi">Helm 3</span>
+        <span class="pt hi">AWS EKS</span><span class="pt">AWS RDS PostgreSQL 16</span><span class="pt">ElastiCache Redis</span>
+        <span class="pt">GitHub Actions</span><span class="pt">OIDC IAM</span><span class="pt">HPA</span>
+        <span class="pt">ALB Ingress</span><span class="pt">IaC</span>
+      </div>
+      <div style="margin-top:.3rem;font-size:7.5pt;">
+        <a href="https://github.com/mechaniel-coder/netwatch-infra" style="color:#8b949e;text-decoration:none;" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">&#128274; CertSentry</div>
         <div class="proj-year">2026</div>
       </div>
       <div class="proj-tagline">// self-hosted SSL certificate &amp; domain health monitor</div>
