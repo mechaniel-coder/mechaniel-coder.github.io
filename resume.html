@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -330,6 +330,42 @@
   ══════════════════════════════════════════════════════ -->
   <div class="sec pb">
     <div class="sec-title">Featured Projects</div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">&#x1F6A9; FlagForge</div>
+        <div class="proj-year">2026 &middot; github.com/mechaniel-coder/flagforge</div>
+      </div>
+      <div class="proj-tagline">// GraphQL feature-flag engine &middot; JWT auth &middot; Redis caching &middot; Prisma &middot; 14/14 tests</div>
+      <div class="proj-desc">Production-ready feature-flag service built on Apollo Server v4 and Express. Supports multi-environment flags (development / staging / production), JSON rule payloads, and per-flag evaluation. Redis caches flag lookups; Prisma + PostgreSQL persists state. Full JWT authentication with ADMIN role guards and Zod validation.</div>
+      <div class="proj-tech">
+        <span class="pt hi">TypeScript 5.7</span><span class="pt hi">Apollo Server v4</span><span class="pt hi">GraphQL</span><span class="pt hi">Prisma v5</span><span class="pt">Node.js 22</span><span class="pt">Express</span><span class="pt">PostgreSQL 16</span><span class="pt">Redis / ioredis</span><span class="pt">JWT + bcrypt</span><span class="pt">Zod</span><span class="pt">ts-jest</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">&#x1FA9D; HookPost</div>
+        <div class="proj-year">2026 &middot; github.com/mechaniel-coder/hookpost</div>
+      </div>
+      <div class="proj-tagline">// webhook relay &amp; queue &middot; BullMQ &middot; HMAC-SHA256 signing &middot; Fastify &middot; 19/19 tests</div>
+      <div class="proj-desc">High-throughput webhook relay and delivery queue. Inbound events are HMAC-SHA256 signed and fanned out to all enabled endpoints via BullMQ workers. Automatic retry logic with exponential backoff; deliveries transition through PENDING &rarr; DELIVERING &rarr; DELIVERED / FAILED / DEAD states. Prisma + PostgreSQL persists full delivery history.</div>
+      <div class="proj-tech">
+        <span class="pt hi">TypeScript 5.7</span><span class="pt hi">Fastify v5</span><span class="pt hi">BullMQ v5</span><span class="pt hi">Prisma v5</span><span class="pt">Node.js 22</span><span class="pt">PostgreSQL 16</span><span class="pt">Redis / ioredis</span><span class="pt">HMAC-SHA256</span><span class="pt">Zod</span><span class="pt">ts-jest</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">&#x1F6D2; CartQL</div>
+        <div class="proj-year">2026 &middot; github.com/mechaniel-coder/cartql</div>
+      </div>
+      <div class="proj-tagline">// GraphQL e-commerce API &middot; cart &middot; atomic checkout &middot; reviews &middot; 27/27 tests</div>
+      <div class="proj-desc">Full-lifecycle GraphQL e-commerce API on Apollo Server v4 + Express. Browse products with search, price range, and category filters; manage a server-validated cart; atomic checkout transaction creates an order, decrements stock, and clears the cart in a single Prisma transaction. JWT auth with ADMIN role guards; per-product review aggregation with average rating via Prisma aggregate queries.</div>
+      <div class="proj-tech">
+        <span class="pt hi">TypeScript 5.7</span><span class="pt hi">Apollo Server v4</span><span class="pt hi">GraphQL</span><span class="pt hi">Prisma v5</span><span class="pt">Node.js 22</span><span class="pt">Express</span><span class="pt">PostgreSQL 16</span><span class="pt">JWT + bcrypt</span><span class="pt">Zod</span><span class="pt">graphql-scalars</span><span class="pt">ts-jest</span>
+      </div>
+    </div>
+
 
     <div class="project">
       <div class="proj-header">
@@ -1052,3 +1088,4 @@
 </div>
 </body>
 </html>
+
