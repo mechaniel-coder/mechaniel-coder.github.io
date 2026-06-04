@@ -133,29 +133,51 @@
     hr { border: none; border-top: 1px solid #1e2a38; margin: .6rem 0; }
 
     /* ── PRINT ── */
+    /* ── DOWNLOAD BUTTON ── */
+    .download-btn {
+      position: fixed; top: 1rem; right: 1.5rem; z-index: 999;
+      padding: .5rem 1.1rem;
+      background: #00d9ff; color: #000;
+      font-weight: 700; font-size: 9.5pt; letter-spacing: .05em;
+      border: none; border-radius: 4px; cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,217,255,.4);
+      transition: background .15s, transform .1s;
+    }
+    .download-btn:hover { background: #00b8d9; transform: translateY(-1px); }
+    .download-btn:active { transform: translateY(0); }
+
     @media print {
       html { font-size: 9.5pt; }
       body { background: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .page {
-        width: 100%; margin: 0; padding: .65in .75in;
+        width: 100%; max-width: none !important; margin: 0; padding: .65in .75in;
         box-shadow: none; background: #0d1117;
         -webkit-print-color-adjust: exact; print-color-adjust: exact;
       }
+      .download-btn { display: none !important; }
       a { color: inherit !important; text-decoration: none; }
       .pill.hi, .pt.hi, .cert-active, .tl-dot, .tool, .depth, .cert, .sk, .pill, .pt { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .project { page-break-inside: avoid; }
-      .exp      { page-break-inside: avoid; }
-      .tool     { page-break-inside: avoid; }
-      .depth    { page-break-inside: avoid; }
-      .cert     { page-break-inside: avoid; }
-      .tl       { page-break-inside: avoid; }
-      .pb { page-break-before: always; }
+      /* prevent cards from splitting across pages */
+      .project { page-break-inside: avoid; break-inside: avoid; }
+      .exp      { page-break-inside: avoid; break-inside: avoid; }
+      .tool     { page-break-inside: avoid; break-inside: avoid; }
+      .depth    { page-break-inside: avoid; break-inside: avoid; }
+      .cert     { page-break-inside: avoid; break-inside: avoid; }
+      .tl       { page-break-inside: avoid; break-inside: avoid; }
+      .sec-title { page-break-after: avoid; break-after: avoid; }
+      .pb { page-break-before: always; break-before: page; }
     }
 
     @page { size: letter; margin: 0; }
   </style>
 </head>
 <body>
+
+<!-- Download PDF button — hidden on print via .download-btn { display:none } in @media print -->
+<button class="download-btn" onclick="window.print()" title="Opens browser print dialog — choose 'Save as PDF'">
+  &#11015; Download PDF
+</button>
+
 <div class="page">
 
   <!-- ══════════════════════════════════════════════════════
