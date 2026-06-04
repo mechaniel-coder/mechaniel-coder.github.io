@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Daniel Pall — Full-Stack Engineer &amp; AI Architect. Go, Python, Node.js, TypeScript, Docker. OSINT toolkits, distributed AI platforms, production systems." />
+  <meta property="og:title" content="Daniel Pall (mechaniel-coder) | Portfolio" />
+  <meta property="og:description" content="Building systems that actually ship. Go, Python, TypeScript, Docker, OSINT, AI/ML." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mechaniel-coder.github.io" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Daniel Pall — Full-Stack Engineer &amp; AI Architect" />
+  <meta name="twitter:description" content="Building systems that actually ship. Go, Python, TypeScript, Docker, OSINT, AI/ML." />
   <title>Daniel Pall (mechaniel-coder) | Portfolio</title>
   <style>
     :root {
@@ -495,12 +503,36 @@
       .exp-right { text-align: left; }
       .certs-langs-inner { grid-template-columns: 1fr !important; }
     }
+
+    /* ── MOBILE NAV ── */
+    .nav-toggle {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: .4rem;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all .25s;
+    }
+    @media (max-width: 700px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 56px; left: 0; right: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem; gap: .8rem;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav style="position:relative;">
   <div class="nav-brand">mechaniel<span>-coder</span></div>
   <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
@@ -511,6 +543,9 @@
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="resume.html">Resume</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -563,7 +598,7 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">13+</span><span class="stat-label">Shipped Projects</span></div>
+  <div class="stat-item"><span class="stat-num">14+</span><span class="stat-label">Shipped Projects</span></div>
   <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Languages for AI/ML</span></div>
   <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">OSINT Tools Deployed</span></div>
   <div class="stat-item"><span class="stat-num">140+</span><span class="stat-label">Diagnostic Rules</span></div>
