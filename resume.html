@@ -156,16 +156,34 @@
       }
       .download-btn { display: none !important; }
       a { color: inherit !important; text-decoration: none; }
-      .pill.hi, .pt.hi, .cert-active, .tl-dot, .tool, .depth, .cert, .sk, .pill, .pt { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      /* prevent cards from splitting across pages */
-      .project { page-break-inside: avoid; break-inside: avoid; }
-      .exp      { page-break-inside: avoid; break-inside: avoid; }
-      .tool     { page-break-inside: avoid; break-inside: avoid; }
-      .depth    { page-break-inside: avoid; break-inside: avoid; }
-      .cert     { page-break-inside: avoid; break-inside: avoid; }
-      .tl       { page-break-inside: avoid; break-inside: avoid; }
+      /* Preserve colors for all colored elements and table rows */
+      .pill.hi, .pt.hi, .cert-active, .tl-dot, .sk, .pill, .pt,
+      .tool, .depth, .cert, table tr {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      /* CRITICAL FIX: base CSS sets page-break-inside:avoid on ALL .sec divs.
+         Override it so large sections (Skills, Certs, Timeline) can flow across pages
+         instead of creating blank white pages. */
+      .sec { page-break-inside: auto !important; break-inside: auto !important; }
+      /* Keep individual items (not large containers) together on a page */
+      .project   { page-break-inside: avoid; break-inside: avoid; }
+      .exp       { page-break-inside: avoid; break-inside: avoid; }
+      .skill-cat { page-break-inside: avoid; break-inside: avoid; }
+      .tl        { page-break-inside: avoid; break-inside: avoid; }
       .sec-title { page-break-after: avoid; break-after: avoid; }
       .pb { page-break-before: always; break-before: page; }
+      /* Collapse multi-column CSS grids to single-column for clean PDF flow.
+         Grids in print contexts cause overflow, blank pages, and broken layouts. */
+      .tool-grid, .depth-grid, .cert-grid, .two-col, .three-col {
+        display: block !important;
+      }
+      .tool, .depth, .cert {
+        display: block !important;
+        margin-bottom: .3rem !important;
+        page-break-inside: avoid; break-inside: avoid;
+      }
+      /* Hide decorative timeline bar — causes flex height issues in PDF */
+      .tl-bar { display: none; }
     }
 
     @page { size: letter; margin: 0; }
