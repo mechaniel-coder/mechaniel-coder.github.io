@@ -257,6 +257,10 @@
         <li>Built <strong>420 &amp; Games Discord Bot</strong> — 33+ slash commands, Sapphire Framework, AWS EC2 deployment, CloudWatch monitoring, AES-256-CBC enterprise backup encryption, license manager, monetization system.</li>
         <li>Built <strong>Activity Giveaway Bot</strong> — voice-activity giveaway system, append-only SQLite ticket ledger with idempotent event keys, @discordjs/voice speaking detection, restart-safe with expiry sweep on boot.</li>
         <li>Built <strong>Hytale Mods 2.0</strong> — 958B+ character combinations across 139 feature axes, 30 mounts, age-gate policy layer, texture/asset pipeline, profile sharing community (Phase 8).</li>
+        <li>Built <strong>CertSentry</strong> — self-hosted SSL certificate &amp; domain health monitor in Go 1.22 + React 19. Cron-based TLS/port/WHOIS scanning, color-coded expiry dashboard, webhook &amp; email alerting, full scan history in PostgreSQL 16.</li>
+        <li>Built <strong>NetWatch</strong> — real-time infrastructure monitoring platform: lightweight Go agent (~6 MB) per host ships CPU/memory/disk/network metrics; React dashboard with live WebSocket charts, threshold alerting, PostgreSQL time-series, Redis session state.</li>
+        <li>Built <strong>PipelineForge</strong> — self-hosted CI/CD platform: YAML pipeline definitions, GitHub webhook receiver, paramiko SSH executor, live WebSocket log streaming, run history, JWT + RBAC (admin/developer).</li>
+        <li>Built <strong>TicketFlow</strong> — full-stack ITSM platform for repair shops and MSPs: ticket lifecycle (Open → Closed), SLA breach alerting, hardware/software asset inventory, asset-to-ticket linking, RBAC (Admin/Technician/User), append-only audit trail.</li>
         <li>Deployed <strong>Kali Linux OSINT Toolkit</strong> — Docker container (Kali 2026.1 rolling), 9 integrated OSINT tools, SSH :2222, VS Code Remote Tunnel.</li>
         <li>Established <strong>Multi-Language AI/LLM Training Workspace</strong> — identical ML pipelines in Python, R, Julia, Java, C++, JavaScript; PyTorch DDP, Flux.jl, DL4J, Libtorch, TF.js; MLflow + Weights &amp; Biases experiment tracking; multimodal (audio + vision + text); RL with Gymnasium.</li>
       </ul>
@@ -458,6 +462,81 @@
         <span class="pt hi">Python</span><span class="pt">139 Feature Axes</span><span class="pt">30 Mounts</span>
         <span class="pt">Combinatorial Engine</span><span class="pt">Age-Gate Policy Layer</span>
         <span class="pt">Texture Generation</span><span class="pt">Asset Pipeline</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       CERTSENTRY / NETWATCH / PIPELINEFORGE / TICKETFLOW
+  ══════════════════════════════════════════════════════ -->
+  <div class="sec">
+    <div class="sec-title">Showcase Projects &nbsp;<span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:8pt;">CertSentry · NetWatch · PipelineForge · TicketFlow · 2026</span></div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">🔐 CertSentry</div>
+        <div class="proj-year">2026</div>
+      </div>
+      <div class="proj-tagline">// self-hosted SSL certificate &amp; domain health monitor</div>
+      <div class="proj-desc">
+        Self-hosted domain health scanner tracking SSL certificate expiry, open port inventory, and WHOIS registration data.
+        Cron-based TLS dial scans run automatically with color-coded expiry countdowns. Dispatches webhook or email alerts
+        before expiry is ever a problem. Dashboard shows domain status grid, expiry timeline, and per-domain scan history.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Go 1.22</span><span class="pt hi">React 19</span><span class="pt hi">PostgreSQL 16</span><span class="pt hi">Docker Compose</span>
+        <span class="pt">Gin Framework</span><span class="pt">TypeScript</span><span class="pt">Zustand</span><span class="pt">Tailwind CSS</span>
+        <span class="pt">TLS Scanning</span><span class="pt">WHOIS Parser</span><span class="pt">Cron Scheduler</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">📡 NetWatch</div>
+        <div class="proj-year">2026</div>
+      </div>
+      <div class="proj-tagline">// real-time infrastructure monitoring with lightweight Go agents</div>
+      <div class="proj-desc">
+        Real-time infrastructure monitoring for servers, VMs, and bare-metal machines. A single-binary Go agent (~6 MB) runs
+        on each target host and ships CPU, memory, disk, and network metrics to a central API. React dashboard visualizes
+        everything live over WebSockets with configurable threshold alerts, historical data, and multi-host support.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Go 1.22</span><span class="pt hi">React 19</span><span class="pt hi">WebSockets</span><span class="pt hi">Docker Compose</span>
+        <span class="pt">PostgreSQL 16</span><span class="pt">Redis</span><span class="pt">JWT Auth</span>
+        <span class="pt">TypeScript</span><span class="pt">Zustand</span><span class="pt">Tailwind CSS</span><span class="pt">Threshold Alerting</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">⚙️ PipelineForge</div>
+        <div class="proj-year">2026</div>
+      </div>
+      <div class="proj-tagline">// self-hosted CI/CD · YAML pipelines · SSH executor · live log streaming</div>
+      <div class="proj-desc">
+        A self-hosted CI/CD platform — define pipelines in YAML, trigger builds via GitHub webhooks or the dashboard,
+        execute steps over SSH on any remote target, and watch live stdout/stderr in the browser over WebSockets.
+        Full run history with per-step status and duration breakdown.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Python 3.12</span><span class="pt hi">FastAPI</span><span class="pt hi">React 19</span><span class="pt hi">PostgreSQL 16</span>
+        <span class="pt">Docker Compose</span><span class="pt">paramiko SSH</span><span class="pt">PyYAML</span>
+        <span class="pt">Zustand</span><span class="pt">TypeScript</span><span class="pt">Tailwind CSS</span><span class="pt">JWT Auth</span><span class="pt">WebSockets</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="proj-header">
+        <div class="proj-name">🎫 TicketFlow</div>
+        <div class="proj-year">2026</div>
+      </div>
+      <div class="proj-tagline">// IT help desk &amp; asset management · ITSM · SLA tracking · RBAC</div>
+      <div class="proj-desc">
+        A full-stack ITSM platform built from 15 years of real IT operations experience. Combines a complete ticket lifecycle
+        system (Open → Resolved → Closed) with hardware/software asset inventory, SLA breach alerting, RBAC
+        (Admin/Technician/End-User), and an append-only audit log. Auto-generated OpenAPI docs via FastAPI.
+      </div>
+      <div class="proj-tech">
+        <span class="pt hi">Python 3.12</span><span class="pt hi">FastAPI</span><span class="pt hi">React 19</span><span class="pt hi">PostgreSQL 16</span><span class="pt hi">Docker Compose</span>
+        <span class="pt">JWT Auth</span><span class="pt">bcrypt</span><span class="pt">RBAC</span>
+        <span class="pt">Zustand</span><span class="pt">TypeScript</span><span class="pt">Tailwind CSS</span><span class="pt">SLA Engine</span><span class="pt">Audit Logger</span>
       </div>
     </div>
   </div>
@@ -832,7 +911,7 @@
     <div>
       <div class="sec-title">Stats at a Glance</div>
       <table style="font-size:8.5pt;border-collapse:collapse;width:100%;">
-        <tr><td style="padding:.2rem .4rem;color:#667788;">Shipped Projects</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">9+</td></tr>
+        <tr><td style="padding:.2rem .4rem;color:#667788;">Shipped Projects</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">13+</td></tr>
         <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">Diagnostic Rules</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">140+</td></tr>
         <tr><td style="padding:.2rem .4rem;color:#667788;">Discord Commands</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">33+</td></tr>
         <tr style="background:#111827;"><td style="padding:.2rem .4rem;color:#667788;">OSINT Tools Deployed</td><td style="padding:.2rem .4rem;font-weight:700;color:#00d9ff;">9</td></tr>
@@ -849,6 +928,42 @@
   ══════════════════════════════════════════════════════ -->
   <div class="sec">
     <div class="sec-title">Project Timeline</div>
+
+    <div class="tl">
+      <div class="tl-date">JUN 2026</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">CertSentry — SSL &amp; Domain Health Monitor</div>
+        <div class="tl-desc">Self-hosted Go + React platform tracking SSL expiry, port state, and WHOIS data. Cron scheduling, webhook/email alerting, color-coded dashboard, PostgreSQL scan history.</div>
+      </div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-date">JUN 2026</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">NetWatch — Real-Time Infrastructure Monitor</div>
+        <div class="tl-desc">Lightweight Go agent + React WebSocket dashboard for real-time CPU, memory, disk, and network metrics. PostgreSQL time-series, Redis alert state, multi-host support.</div>
+      </div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-date">JUN 2026</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">PipelineForge — Self-Hosted CI/CD</div>
+        <div class="tl-desc">Python/FastAPI CI/CD platform — YAML pipeline definitions, GitHub webhooks, paramiko SSH executor, live WebSocket log streaming, role-based access.</div>
+      </div>
+    </div>
+
+    <div class="tl">
+      <div class="tl-date">JUN 2026</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">TicketFlow — IT Help Desk &amp; Asset Management</div>
+        <div class="tl-desc">Full ITSM platform: ticket lifecycle, SLA timers, hardware/software asset inventory, RBAC (Admin/Technician/User), append-only audit trail, warranty tracking.</div>
+      </div>
+    </div>
 
     <div class="tl">
       <div class="tl-date">MAY 2026</div>
