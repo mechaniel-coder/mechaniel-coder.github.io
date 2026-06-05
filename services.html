@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Remote Tech Fixes â€“ Daniel</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #141720;
+      --surface2: #1b1f2e;
+      --border: #252a3a;
+      --accent: #4f8ef7;
+      --accent-dim: #2a4a8a;
+      --text: #e4e8f0;
+      --muted: #8892a4;
+      --green: #22c55e;
+      --radius: 10px;
+      --max: 960px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* â”€â”€ HERO â”€â”€ */
+    .hero {
+      padding: 72px 20px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 720px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p.sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 32px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.88; text-decoration: none; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .trust-line {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* â”€â”€ SECTIONS â”€â”€ */
+    section {
+      padding: 60px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    /* â”€â”€ PROBLEM CARDS â”€â”€ */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .problem-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .problem-card::before {
+      content: "â†’";
+      color: var(--accent);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* â”€â”€ PRICING TABLE â”€â”€ */
+    .pricing-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 340px;
+    }
+
+    thead tr {
+      background: var(--surface2);
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:nth-child(even) { background: var(--surface); }
+
+    td.price {
+      color: var(--green);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pricing-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* â”€â”€ PROOF CARDS â”€â”€ */
+    .proof-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 560px) {
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .proof-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+
+    .proof-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .proof-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* â”€â”€ HOW IT WORKS â”€â”€ */
+    .steps {
+      display: grid;
+      gap: 14px;
+      counter-reset: steps;
+    }
+
+    @media (min-width: 640px) {
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step p { font-size: 0.9rem; color: var(--text); }
+
+    /* â”€â”€ PAYMENT TERMS â”€â”€ */
+    .terms-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      max-width: 640px;
+    }
+
+    .terms-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .terms-card li {
+      font-size: 0.9rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--text);
+    }
+
+    .terms-card li::before {
+      content: "âœ“";
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* â”€â”€ CONTACT CTA â”€â”€ */
+    .contact-section {
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .contact-section h2 { margin-bottom: 12px; }
+
+    .contact-section .sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 24px;
+      font-size: 0.95rem;
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 28px;
+      font-size: 0.88rem;
+    }
+
+    .contact-meta a { color: var(--accent); }
+
+    footer {
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- â”€â”€ HERO â”€â”€ -->
+  <header class="hero">
+    <p class="section-label">Emergency Remote Tech Fixes</p>
+    <h1>Fix <span>Websites, Servers, Discord Bots,</span> Hosting, Payments, and Automation</h1>
+    <p class="sub">I help small businesses, Discord communities, game server owners, and creators fix broken tech problems remotely with clear fixed-price quotes.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary"
+         href="mailto:mechaniel@gmail.com?subject=Fixed-Price%20Tech%20Fix%20Quote&body=What%20problem%20do%20you%20need%20fixed%3F%0A%0AWhat%20platform%20or%20tech%20stack%20is%20it%20using%3F%0A%0AIs%20anything%20currently%20broken%20or%20offline%3F%0A%0AWhat%20deadline%20are%20you%20trying%20to%20hit%3F">
+        Request a Fixed-Price Quote
+      </a>
+      <a class="btn btn-secondary" href="https://mechaniel-coder.github.io" target="_blank" rel="noopener">
+        View Full Portfolio
+      </a>
+    </div>
+    <p class="trust-line">Full-stack engineering Â· DevOps Â· Discord bots Â· AI automation Â· Docker Â· VPS Â· AWS Â· payments Â· production troubleshooting</p>
+  </header>
+
+  <!-- â”€â”€ PROBLEM CARDS â”€â”€ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Common Problems</p>
+      <h2>What I Fix</h2>
+      <div class="problem-grid">
+        <div class="problem-card">Discord bot not responding</div>
+        <div class="problem-card">Slash commands not registering</div>
+        <div class="problem-card">Website errors or broken pages</div>
+        <div class="problem-card">Contact forms not working</div>
+        <div class="problem-card">Stripe, PayPal, or Square issues</div>
+        <div class="problem-card">Domain, DNS, SSL, or email problems</div>
+        <div class="problem-card">Docker / VPS / Linux server issues</div>
+        <div class="problem-card">Nginx / reverse proxy problems</div>
+        <div class="problem-card">Pterodactyl / Paymenter / game hosting</div>
+        <div class="problem-card">Small business tech cleanup</div>
+        <div class="problem-card">AI chatbot or automation setup</div>
+        <div class="problem-card">Monitoring, uptime, and alerting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ PRICING TABLE â”€â”€ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Fixed-Price Services</p>
+      <h2>What It Costs</h2>
+      <div class="pricing-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Starting Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Small diagnostic / quick fix</td><td class="price">$150+</td></tr>
+            <tr><td>Discord bot repair</td><td class="price">$250+</td></tr>
+            <tr><td>Website, contact form, or payment fix</td><td class="price">$250+</td></tr>
+            <tr><td>Docker / VPS / SSL / DNS fix</td><td class="price">$300+</td></tr>
+            <tr><td>Pterodactyl / Paymenter audit</td><td class="price">$400+</td></tr>
+            <tr><td>Discord server automation setup</td><td class="price">$500+</td></tr>
+            <tr><td>AI chatbot / automation setup</td><td class="price">$750+</td></tr>
+            <tr><td>Full hosting, payment, or server workflow</td><td class="price">$1,500+</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pricing-note">Final price depends on scope, urgency, access, and complexity. I quote the price before starting.</p>
+    </div>
+  </section>
+
+  <!-- â”€â”€ PROOF OF WORK â”€â”€ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Proof of Work</p>
+      <h2>Projects</h2>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <h3>420 &amp; Games Discord Bot</h3>
+          <p>Custom Discord automation with slash commands, moderation tools, wallet/profile systems, economy features, backups, and AWS hosting.</p>
+        </div>
+        <div class="proof-card">
+          <h3>X-CEED Infrastructure</h3>
+          <p>Production hosting stack involving Docker, payment processing, Discord integration, Pterodactyl-style infrastructure, dashboards, SSL, reverse proxy, and deployment support.</p>
+        </div>
+        <div class="proof-card">
+          <h3>Diagnostic Platform</h3>
+          <p>System diagnostics, health checks, automation, dashboard-style reporting, and technical troubleshooting workflows.</p>
+        </div>
+        <div class="proof-card">
+          <h3>NetWatch / CertSentry</h3>
+          <p>Monitoring tools for server health, uptime visibility, SSL/domain checks, scheduled scans, and alerting workflows.</p>
+        </div>
+        <div class="proof-card">
+          <h3>Jarvis AI Platform</h3>
+          <p>AI automation system using task routing, voice features, OpenAI/Anthropic integrations, Python/Node workers, and backend orchestration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ HOW IT WORKS â”€â”€ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Process</p>
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><p>You send me the issue.</p></div>
+        <div class="step"><div class="step-num">2</div><p>I ask a few technical questions.</p></div>
+        <div class="step"><div class="step-num">3</div><p>I confirm the scope.</p></div>
+        <div class="step"><div class="step-num">4</div><p>I give you a fixed price.</p></div>
+        <div class="step"><div class="step-num">5</div><p>You pay the required deposit.</p></div>
+        <div class="step"><div class="step-num">6</div><p>I fix the issue remotely.</p></div>
+        <div class="step"><div class="step-num">7</div><p>You receive a short summary of what changed.</p></div>
+        <div class="step"><div class="step-num">8</div><p>Final payment is due before final handoff.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ PAYMENT TERMS â”€â”€ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Payment Terms</p>
+      <h2>How Payment Works</h2>
+      <div class="terms-card">
+        <ul>
+          <li>Jobs under $300 are paid upfront.</li>
+          <li>Jobs from $300 to $1,500 require 50% upfront and 50% before final handoff.</li>
+          <li>Larger projects require an upfront deposit and milestone payments.</li>
+          <li>Rush or same-day work requires payment before work starts.</li>
+          <li>No unpaid trial work.</li>
+          <li>No final files, credentials, deployments, or handoff before final payment.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ CONTACT CTA â”€â”€ -->
+  <section class="contact-section">
+    <div class="container">
+      <p class="section-label">Get a Quote</p>
+      <h2>Need something fixed?</h2>
+      <p class="sub">Send me the problem, the platform or tech stack, any error messages, and your deadline. I'll review it and give you a fixed-price quote.</p>
+      <div class="contact-meta">
+        <span>âœ‰ <a href="mailto:mechaniel@gmail.com">mechaniel@gmail.com</a></span>
+        <span>ðŸ”— <a href="https://mechaniel-coder.github.io" target="_blank" rel="noopener">mechaniel-coder.github.io</a></span>
+      </div>
+      <a class="btn btn-primary"
+         href="mailto:mechaniel@gmail.com?subject=Fixed-Price%20Tech%20Fix%20Quote&body=What%20problem%20do%20you%20need%20fixed%3F%0A%0AWhat%20platform%20or%20tech%20stack%20is%20it%20using%3F%0A%0AIs%20anything%20currently%20broken%20or%20offline%3F%0A%0AWhat%20deadline%20are%20you%20trying%20to%20hit%3F">
+        Request a Fixed-Price Quote
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Daniel Â· Emergency Remote Tech Fixes
+  </footer>
+
+</body>
+</html>
