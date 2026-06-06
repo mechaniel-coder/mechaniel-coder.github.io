@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Engineering Leadership: technical strategy, architecture planning, infrastructure decisions, delivery execution, and handoff practices." />
+  <link rel="canonical" href="https://mechaniel-coder.github.io/engineering-leadership.html" />
+  <meta property="og:title" content="Engineering Leadership | Daniel Pall" />
+  <meta property="og:description" content="How I lead technical execution: strategy, architecture, risk reduction, operations, and delivery communication." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mechaniel-coder.github.io/engineering-leadership.html" />
+  <meta property="og:site_name" content="Daniel Pall Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Engineering Leadership | Daniel Pall" />
+  <meta name="twitter:description" content="Technical strategy, architecture planning, delivery execution, and operational leadership practices." />
+  <title>Engineering Leadership | Daniel Pall</title>
+  <style>
+    :root {
+      --bg: #0c111a;
+      --bg2: #111b2b;
+      --card: #152337;
+      --line: #26415f;
+      --text: #e8eef8;
+      --muted: #9eb2cb;
+      --brand: #25d3ff;
+      --good: #49d48b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #193055 0%, var(--bg) 42%);
+      color: var(--text);
+      line-height: 1.62;
+      padding: 0 1rem 2.2rem;
+    }
+
+    .wrap { max-width: 1080px; margin: 0 auto; }
+
+    .nav {
+      margin-top: 0.85rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.52rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(17, 27, 43, 0.9);
+      color: var(--muted);
+      padding: 0.27rem 0.72rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav a:hover { color: var(--brand); border-color: rgba(37, 211, 255, 0.45); }
+
+    section {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(17, 27, 43, 0.9);
+      padding: 1rem;
+      margin-top: 0.72rem;
+    }
+
+    .kicker {
+      color: var(--good);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 0.7rem;
+    }
+
+    h1 span { color: var(--brand); }
+
+    h2 {
+      color: var(--brand);
+      font-size: clamp(1.05rem, 3vw, 1.32rem);
+      margin-bottom: 0.68rem;
+    }
+
+    h3 {
+      font-size: 0.93rem;
+      margin-bottom: 0.35rem;
+    }
+
+    p { color: var(--muted); font-size: 0.95rem; }
+
+    .grid {
+      display: grid;
+      gap: 0.62rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      padding: 0.78rem;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 0.44rem;
+    }
+
+    .list li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg2);
+      padding: 0.53rem 0.7rem;
+      color: #d2e4fb;
+      font-size: 0.9rem;
+    }
+
+    .btn-row {
+      margin-top: 0.86rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 0.53rem 0.86rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .btn-primary { background: var(--brand); border-color: #0f9fbd; color: #04212b; }
+    .btn-secondary { color: var(--text); background: transparent; }
+
+    @media (min-width: 760px) {
+      body { padding: 0 1.25rem 2.4rem; }
+      section { padding: 1.12rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="upcloud-stack.html">Case Studies</a>
+      <a href="engineering-leadership.html">Leadership</a>
+      <a href="personal-projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="quote-intake.html">Contact</a>
+    </div>
+
+    <section>
+      <p class="kicker">Engineering Leadership</p>
+      <h1>How I drive <span>technical execution</span> from business requirements to operational systems.</h1>
+      <p>
+        This page documents my leadership approach across architecture decisions, infrastructure planning,
+        delivery execution, risk reduction, and handoff. The goal is not to list tools; the goal is to show
+        ownership of outcomes and system reliability.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technical Strategy</h2>
+      <ul class="list">
+        <li>Translate ambiguous business goals into concrete technical outcomes and delivery phases.</li>
+        <li>Prioritize execution paths by impact, operational risk, and maintainability.</li>
+        <li>Avoid premature complexity and choose architecture appropriate to actual scale.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Architecture Planning</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Service Boundaries</h3>
+          <p>Define responsibilities and interfaces across edge, application, automation, and data layers.</p>
+        </article>
+        <article class="card">
+          <h3>Data and Flow Design</h3>
+          <p>Map state transitions and integration paths for billing, automation, customer actions, and operations.</p>
+        </article>
+        <article class="card">
+          <h3>Security Scope</h3>
+          <p>Set access boundaries, privileged paths, and exposure controls before deployment details are finalized.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Rapid MVP to Production Delivery</h2>
+      <ul class="list">
+        <li>Establish MVP architecture that can evolve without requiring full re-platforming.</li>
+        <li>Instrument health checks and operational visibility early, not post-launch.</li>
+        <li>Use repeatable deployment workflows to reduce break/fix cycles.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Infrastructure and Deployment Ownership</h2>
+      <ul class="list">
+        <li>Containerized service design and environment separation.</li>
+        <li>Reverse proxy, SSL, and DNS architecture decisions.</li>
+        <li>Monitoring, uptime, and operational alerting posture.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Security and Risk Reduction</h2>
+      <ul class="list">
+        <li>Reduce broad administrative exposure through scoped access patterns.</li>
+        <li>Promote internal service isolation for sensitive components.</li>
+        <li>Use practical hardening measures aligned with deployment context.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Communication, Vendor Decisions, and Handoff</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Client and Team Communication</h3>
+          <p>Keep technical decision-making visible with clear constraints, options, and tradeoffs.</p>
+        </article>
+        <article class="card">
+          <h3>Tool and Vendor Selection</h3>
+          <p>Choose platforms based on fit, maintainability, and expected operational load.</p>
+        </article>
+        <article class="card">
+          <h3>Documentation and Handoff</h3>
+          <p>Create practical notes and operational context to support continuity after launch.</p>
+        </article>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="quote-intake.html">Discuss a technical leadership engagement</a>
+        <a class="btn btn-secondary" href="upcloud-stack.html">View flagship case study</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

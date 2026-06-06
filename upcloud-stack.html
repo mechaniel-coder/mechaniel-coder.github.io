@@ -3,358 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="UpCloud production stack overview: Docker services, reverse proxy, billing, game hosting integrations, Discord automation, and monitoring."
-  />
+  <meta name="description" content="CTO Case Study: Hosting Infrastructure, Billing Automation, and Cloud Deployment for XCEED Tech." />
   <link rel="canonical" href="https://mechaniel-coder.github.io/upcloud-stack.html" />
-  <meta property="og:title" content="UpCloud Running Stack | Daniel Pall" />
-  <meta
-    property="og:description"
-    content="UpCloud production stack overview: Docker services, reverse proxy, billing, game hosting integrations, Discord automation, and monitoring."
-  />
+  <meta property="og:title" content="CTO Case Study | XCEED Hosting Infrastructure" />
+  <meta property="og:description" content="Business problem, architecture decisions, deployment execution, security posture, and operational readiness for a production-oriented hosting stack." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mechaniel-coder.github.io/upcloud-stack.html" />
   <meta property="og:site_name" content="Daniel Pall Portfolio" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="UpCloud Running Stack | Daniel Pall" />
-  <meta
-    name="twitter:description"
-    content="UpCloud production stack overview: Docker services, reverse proxy, billing, game hosting integrations, Discord automation, and monitoring."
-  />
-  <title>UpCloud Running Stack | Daniel Pall</title>
+  <meta name="twitter:title" content="CTO Case Study | XCEED Hosting Infrastructure" />
+  <meta name="twitter:description" content="Senior engineering case study covering architecture, deployment, automation, and operations." />
+  <title>CTO Case Study: Hosting Infrastructure, Billing Automation, and Cloud Deployment</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --bg-alt: #111827;
-      --panel: #161f2e;
-      --line: #23324a;
-      --text: #e5edf8;
-      --muted: #9fb0c7;
-      --brand: #2cd4ff;
-      --brand-dark: #0e8db0;
-      --ok: #43d17c;
+      --bg: #0c1119;
+      --bg2: #101a28;
+      --card: #152234;
+      --line: #27405f;
+      --text: #e7eff9;
+      --muted: #9db1cb;
+      --brand: #26d4ff;
+      --ok: #49d58d;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Segoe UI", "Inter", system-ui, sans-serif;
-      background: radial-gradient(circle at top right, #16243a 0%, var(--bg) 45%);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #1a3154 0%, var(--bg) 45%);
       color: var(--text);
-      line-height: 1.55;
-      padding: 0 1rem 3rem;
+      line-height: 1.6;
+      padding: 0 1rem 2.4rem;
     }
 
-    .wrap {
-      max-width: 1080px;
-      margin: 0 auto;
+    .wrap { max-width: 1060px; margin: 0 auto; }
+
+    .top-nav {
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
     }
+
+    .top-nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.26rem 0.7rem;
+      font-size: 0.74rem;
+      color: var(--muted);
+      background: rgba(16, 26, 40, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .top-nav a:hover { color: var(--brand); border-color: rgba(38, 212, 255, 0.45); }
 
     section {
-      margin-top: 1rem;
-      padding: 1.1rem;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(15, 24, 37, 0.88);
-      backdrop-filter: blur(2px);
+      border-radius: 12px;
+      background: rgba(16, 26, 40, 0.9);
+      padding: 1rem;
+      margin-top: 0.78rem;
+    }
+
+    .kicker {
+      color: var(--ok);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.73rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
     }
 
     h1 {
-      font-size: clamp(1.65rem, 7vw, 2.8rem);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      margin-top: 0.45rem;
+      font-size: clamp(1.55rem, 5vw, 2.55rem);
+      line-height: 1.16;
+      margin-bottom: 0.7rem;
     }
 
     h2 {
-      font-size: clamp(1.05rem, 4vw, 1.4rem);
-      margin-bottom: 0.8rem;
       color: var(--brand);
+      font-size: clamp(1.04rem, 3vw, 1.34rem);
+      margin-bottom: 0.72rem;
     }
 
-    p {
-      color: var(--muted);
-      font-size: 0.98rem;
+    h3 {
+      font-size: 0.92rem;
+      margin-bottom: 0.34rem;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      border: 1px solid rgba(67, 209, 124, 0.5);
-      color: var(--ok);
-      border-radius: 999px;
-      padding: 0.25rem 0.7rem;
-      font-size: 0.78rem;
-      margin-bottom: 0.4rem;
-    }
+    p { color: var(--muted); font-size: 0.95rem; }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(67, 209, 124, 0.15);
-      flex: 0 0 auto;
-    }
-
-    .hero-actions {
-      margin-top: 1rem;
+    .btn-row {
+      margin-top: 0.9rem;
       display: flex;
+      gap: 0.55rem;
       flex-wrap: wrap;
-      gap: 0.7rem;
     }
 
     .btn {
-      display: inline-block;
       text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 0.54rem 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
-      font-size: 0.9rem;
-      border-radius: 9px;
-      padding: 0.62rem 0.9rem;
-      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .btn-primary {
-      background: var(--brand);
-      color: #062232;
-      border-color: var(--brand-dark);
-    }
+    .btn-primary { background: var(--brand); border-color: #0f9ebf; color: #06222c; }
+    .btn-secondary { background: transparent; color: var(--text); }
 
-    .btn-secondary {
-      color: var(--text);
-      background: transparent;
-    }
-
-    .stat-grid,
-    .card-grid,
-    .proof-grid {
+    .stats {
       display: grid;
-      gap: 0.7rem;
-      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     }
 
-    .stat,
-    .card,
-    .proof {
+    .stat {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--bg-alt);
-      padding: 0.85rem;
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.72rem;
     }
 
     .stat strong {
-      display: block;
-      font-size: 1.4rem;
       color: var(--brand);
+      display: block;
+      font-size: 1.16rem;
       line-height: 1;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
-    .card h3,
-    .proof h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-      color: #d8e8ff;
+    .cards {
+      display: grid;
+      gap: 0.62rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 
-    .table-wrap {
-      overflow-x: auto;
+    .card {
       border: 1px solid var(--line);
-      border-radius: 12px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 680px;
-      background: var(--bg-alt);
-    }
-
-    th,
-    td {
-      text-align: left;
-      padding: 0.7rem;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-      font-size: 0.9rem;
-    }
-
-    th {
-      color: #c7ddff;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: #182336;
+      border-radius: 10px;
+      background: var(--card);
+      padding: 0.78rem;
     }
 
     .arch {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.9rem;
-      background: var(--bg-alt);
-      font-size: 0.9rem;
-      color: #d1e4ff;
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.76rem;
       overflow-x: auto;
       white-space: nowrap;
+      color: #d2e5ff;
+      font-size: 0.89rem;
     }
 
-    .arch span {
-      color: var(--muted);
-      margin: 0 0.45rem;
-    }
+    .arch span { color: var(--muted); margin: 0 0.34rem; }
 
-    ul {
+    .list {
       list-style: none;
       display: grid;
-      gap: 0.48rem;
+      gap: 0.46rem;
     }
 
-    li {
+    .list li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg2);
+      padding: 0.54rem 0.7rem;
+      color: #d1e4ff;
+      font-size: 0.9rem;
+    }
+
+    .matrix {
+      overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: 10px;
-      background: var(--bg-alt);
-      padding: 0.65rem 0.75rem;
-      color: #d4e5ff;
-      font-size: 0.92rem;
     }
 
-    .final-cta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
+    table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+      background: var(--bg2);
     }
 
-    @media (min-width: 720px) {
-      body {
-        padding: 0 1.4rem 3rem;
-      }
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.62rem;
+      text-align: left;
+      font-size: 0.88rem;
+      vertical-align: top;
+    }
 
-      section {
-        margin-top: 1.2rem;
-        padding: 1.3rem;
-      }
+    th {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: #cbe0ff;
+      background: #15273e;
+    }
 
-      .stat-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+    .proof-grid {
+      display: grid;
+      gap: 0.62rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .proof {
+      border: 1px dashed rgba(38, 212, 255, 0.35);
+      border-radius: 10px;
+      background: rgba(16, 26, 40, 0.7);
+      padding: 0.72rem;
+    }
 
-      .proof-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .final-cta {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
+    @media (min-width: 760px) {
+      body { padding: 0 1.3rem 2.6rem; }
+      section { padding: 1.15rem; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <div class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="upcloud-stack.html">Case Studies</a>
+      <a href="engineering-leadership.html">Leadership</a>
+      <a href="personal-projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="quote-intake.html">Contact</a>
+    </div>
+
     <section>
-      <div class="pill"><span class="dot"></span>UpCloud Production Environment</div>
-      <h1>Running Stack on UpCloud</h1>
+      <p class="kicker">CTO Case Study</p>
+      <h1>Hosting Infrastructure, Billing Automation, and Cloud Deployment</h1>
       <p>
-        This page shows the live infrastructure stack I run on UpCloud, including web routing,
-        billing flow, game-hosting automation, Discord systems, and ongoing operations work.
+        I designed and deployed a production-oriented hosting stack for XCEED Tech, connecting cloud infrastructure,
+        reverse-proxy routing, SSL management, billing workflows, database/cache services, Discord automation,
+        and game-server panel integrations into one working operational environment.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:mechaniel@gmail.com?subject=UpCloud%20Stack%20Project%20Inquiry">Request Similar Build</a>
-        <a class="btn btn-secondary" href="https://mechaniel-coder.github.io" target="_blank" rel="noopener">View Portfolio</a>
+      <p style="margin-top:0.7rem;">
+        The objective was not just to deploy services. The objective was to create a usable business system:
+        customer flow through billing, automation between Discord and hosting operations, isolated internal services,
+        and controlled administrative access boundaries.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="quote-intake.html">Discuss a Similar Build</a>
+        <a class="btn btn-secondary" href="index.html">Back to Executive Profile</a>
       </div>
     </section>
 
     <section>
-      <h2>Stack At A Glance</h2>
-      <div class="stat-grid">
-        <div class="stat">
-          <strong>13</strong>
-          <p>Docker services in production</p>
-        </div>
-        <div class="stat">
-          <strong>NPM</strong>
-          <p>Reverse proxy + SSL termination</p>
-        </div>
-        <div class="stat">
-          <strong>24/7</strong>
-          <p>Bot + payment + panel workflows</p>
-        </div>
-        <div class="stat">
-          <strong>Cloudflare</strong>
-          <p>DNS, certificate challenge, and domain routing</p>
-        </div>
+      <h2>1. Business Problem</h2>
+      <p>
+        XCEED needed an integrated hosting operations environment that could support customer billing,
+        service provisioning workflows, Discord operations, and day-to-day administrative reliability.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Technical Constraints</h2>
+      <ul class="list">
+        <li>Deliver quickly without sacrificing maintainability and service separation.</li>
+        <li>Keep sensitive internal services off broad public exposure.</li>
+        <li>Support billing + automation + panel integrations in one operating model.</li>
+        <li>Use a deployment model that could be documented and handed off.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Architecture Decisions</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Containerized Deployment</h3>
+          <p>Used Dockerized services for repeatable deployment, dependency isolation, and easier migration/recovery paths.</p>
+        </article>
+        <article class="card">
+          <h3>Reverse Proxy Layer</h3>
+          <p>Used Nginx Proxy Manager for public routing and SSL termination, reducing direct service exposure.</p>
+        </article>
+        <article class="card">
+          <h3>DNS and Edge Routing</h3>
+          <p>Used Cloudflare DNS and edge controls for cleaner domain routing and certificate flow management.</p>
+        </article>
+        <article class="card">
+          <h3>Database and Cache Separation</h3>
+          <p>Treated MariaDB and Redis as internal core services to support billing workflows and fast state access.</p>
+        </article>
       </div>
     </section>
 
     <section>
-      <h2>Core Services Running</h2>
-      <div class="card-grid">
-        <article class="card">
-          <h3>Nginx Proxy Manager</h3>
-          <p>Central entrypoint for public traffic, SSL cert handling, and host-based routing to internal services.</p>
-        </article>
-        <article class="card">
-          <h3>Paymenter + DB + Redis</h3>
-          <p>Billing portal stack with data and cache layers for account actions, invoices, and service events.</p>
-        </article>
-        <article class="card">
-          <h3>Nextdactyl / Pterodactyl Integrations</h3>
-          <p>Game-hosting panel integration tied into account linking, provisioning flows, and Discord-connected actions.</p>
-        </article>
-        <article class="card">
-          <h3>Skyhigh Hosting Bot</h3>
-          <p>Discord automation for moderation, tickets, economy logic, monitoring hooks, and dashboard-linked operations.</p>
-        </article>
+      <h2>4. Infrastructure Design</h2>
+      <div class="stats">
+        <div class="stat"><strong>13</strong>Docker services organized by role</div>
+        <div class="stat"><strong>Nginx Proxy Manager</strong>Ingress and SSL control plane</div>
+        <div class="stat"><strong>Cloudflare</strong>DNS and routing edge layer</div>
+        <div class="stat"><strong>MariaDB + Redis</strong>Internal data/cache foundations</div>
+      </div>
+      <div class="arch" style="margin-top:0.7rem;">
+        Internet <span>-></span> Cloudflare DNS <span>-></span> Nginx Proxy Manager <span>-></span>
+        Paymenter / Nextdactyl / Bot Services <span>-></span> MariaDB + Redis
       </div>
     </section>
 
     <section>
-      <h2>Service Matrix</h2>
-      <div class="table-wrap">
+      <h2>5. Security and Access Control</h2>
+      <ul class="list">
+        <li>Scoped administrative exposure and reduced direct panel/service reachability where possible.</li>
+        <li>Service isolation patterns for core data and cache components.</li>
+        <li>Firewall-oriented hardening and controlled operational access practices.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Deployment Execution</h2>
+      <p>
+        Executed as a production-focused deployment sprint: service composition, route planning, SSL flows,
+        panel/billing integration paths, and operational handoff structure.
+      </p>
+      <div class="matrix" style="margin-top:0.7rem;">
         <table>
           <thead>
             <tr>
               <th>Layer</th>
-              <th>Primary Components</th>
-              <th>Function</th>
-              <th>Notes</th>
+              <th>Components</th>
+              <th>Responsibility</th>
+              <th>Delivery Focus</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Edge + Routing</td>
-              <td>Nginx Proxy Manager, Cloudflare DNS</td>
-              <td>Public ingress, SSL, domain mapping</td>
-              <td>DNS-01 based certificate flow</td>
+              <td>Edge and Routing</td>
+              <td>Cloudflare, Nginx Proxy Manager</td>
+              <td>Ingress, SSL, host routing</td>
+              <td>Clear service entry boundaries</td>
             </tr>
             <tr>
               <td>Application</td>
-              <td>Paymenter, Nextdactyl tooling, IP manager endpoints</td>
-              <td>Customer actions, billing, service lifecycle support</td>
-              <td>Containerized workloads</td>
+              <td>Paymenter, panel integrations, bot services</td>
+              <td>Billing and operations workflows</td>
+              <td>Cross-service workflow continuity</td>
             </tr>
             <tr>
-              <td>Automation</td>
-              <td>Skyhigh Hosting Bot, Discord command handlers</td>
-              <td>Community ops, ticketing, account sync workflows</td>
-              <td>Cross-service integration</td>
-            </tr>
-            <tr>
-              <td>Data + Cache</td>
+              <td>Data and Cache</td>
               <td>MariaDB, Redis</td>
-              <td>Persistence and fast state access</td>
-              <td>Isolated service networks</td>
+              <td>State and persistence</td>
+              <td>Internal-service reliability</td>
             </tr>
           </tbody>
         </table>
@@ -362,49 +364,56 @@
     </section>
 
     <section>
-      <h2>Request Flow</h2>
-      <div class="arch">
-        Client Request <span>-></span> Cloudflare DNS <span>-></span> Nginx Proxy Manager <span>-></span>
-        Paymenter / Nextdactyl / Bot-Linked Services <span>-></span> MariaDB + Redis
-      </div>
-    </section>
-
-    <section>
-      <h2>Operational Focus</h2>
-      <ul>
-        <li>Container lifecycle management and deployment support across app, data, and integration services.</li>
-        <li>Domain, DNS, and SSL configuration using Cloudflare and reverse proxy rules.</li>
-        <li>Discord + billing + game-hosting integration paths for account linking and automation.</li>
-        <li>Monitoring posture for uptime visibility, health checks, and incident-response readiness.</li>
+      <h2>7. Automation Workflows</h2>
+      <ul class="list">
+        <li>Linked Discord operational actions to panel and account workflows.</li>
+        <li>Connected billing events to broader service lifecycle behavior.</li>
+        <li>Reduced repetitive manual admin work through workflow integration.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Proof Of Work Highlights</h2>
-      <div class="proof-grid">
-        <article class="proof">
-          <h3>Production Container Stack</h3>
-          <p>Multi-service Docker deployment supporting billing, routing, app services, and integrations.</p>
-        </article>
-        <article class="proof">
-          <h3>Billing + Automation Bridge</h3>
-          <p>Payment workflows connected to Discord and hosting panel logic through service integrations.</p>
-        </article>
-        <article class="proof">
-          <h3>Security + Access Controls</h3>
-          <p>Reverse-proxy, SSL, firewall-oriented hardening, and controlled DNS token scopes for operations.</p>
-        </article>
+      <h2>8. Operational Readiness</h2>
+      <ul class="list">
+        <li>Defined health-check and monitoring posture for runtime visibility.</li>
+        <li>Structured environment for maintainability and support continuity.</li>
+        <li>Prepared for documentation and handoff-oriented operations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Result and Impact</h2>
+      <p>
+        Delivered a unified, production-oriented hosting environment where billing, routing, integrations,
+        and automation operate as one system instead of disconnected tools.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. What This Demonstrates</h2>
+      <div class="cards">
+        <article class="card"><h3>CTO-level planning</h3><p>Business constraints translated into technical architecture and execution.</p></article>
+        <article class="card"><h3>Production infrastructure design</h3><p>Service orchestration with routing, data, and automation boundaries.</p></article>
+        <article class="card"><h3>Operational systems thinking</h3><p>Deployment, hardening, maintainability, and support posture in one design.</p></article>
+        <article class="card"><h3>Rapid execution under pressure</h3><p>Delivered integrated infrastructure with clear implementation priorities.</p></article>
       </div>
     </section>
 
     <section>
-      <h2>Need This Type Of Stack?</h2>
-      <div class="final-cta">
-        <p>
-          If you want a similar UpCloud setup for web apps, bots, payments, or hosting workflows,
-          send me your current architecture and I will map out the build plan.
-        </p>
-        <a class="btn btn-primary" href="mailto:mechaniel@gmail.com?subject=UpCloud%20Infrastructure%20Build%20Request">Contact Daniel</a>
+      <h2>Proof Visuals (Sanitized)</h2>
+      <div class="proof-grid">
+        <article class="proof">
+          <h3>Sanitized Docker Compose Screenshot</h3>
+          <p>Add redacted service-state screenshot showing container health and stack structure.</p>
+        </article>
+        <article class="proof">
+          <h3>Sanitized Nginx Proxy Manager Screenshot</h3>
+          <p>Add redacted host/proxy view with domains and SSL state (without exposing sensitive values).</p>
+        </article>
+        <article class="proof">
+          <h3>Health and Uptime Evidence</h3>
+          <p>Add uptime monitor or health dashboard screenshot with sensitive identifiers removed.</p>
+        </article>
       </div>
     </section>
   </div>

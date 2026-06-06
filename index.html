@@ -3,2301 +3,511 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Daniel Pall — Full-Stack Engineer &amp; AI Architect. Go, Python, Node.js, TypeScript, Docker. OSINT toolkits, distributed AI platforms, production systems." />
+  <meta name="description" content="Principal Engineer and Fractional CTO profile for Daniel Pall. Production software architecture, infrastructure design, automation systems, and cloud deployment execution." />
   <link rel="canonical" href="https://mechaniel-coder.github.io/" />
-  <meta property="og:title" content="Daniel Pall (mechaniel-coder) | Portfolio" />
-  <meta property="og:description" content="Building systems that actually ship. Go, Python, TypeScript, Docker, OSINT, AI/ML." />
+  <meta property="og:title" content="Daniel Pall | Principal Engineer / Fractional CTO" />
+  <meta property="og:description" content="CTO-level technical execution: architecture decisions, production infrastructure, automation workflows, and system ownership from plan to deployment." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mechaniel-coder.github.io/" />
   <meta property="og:site_name" content="Daniel Pall Portfolio" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Daniel Pall — Full-Stack Engineer &amp; AI Architect" />
-  <meta name="twitter:description" content="Building systems that actually ship. Go, Python, TypeScript, Docker, OSINT, AI/ML." />
-  <title>Daniel Pall (mechaniel-coder) | Portfolio</title>
+  <meta name="twitter:title" content="Daniel Pall | Principal Engineer / Fractional CTO" />
+  <meta name="twitter:description" content="CTO-level technical execution: architecture decisions, production infrastructure, automation workflows, and system ownership from plan to deployment." />
+  <title>Daniel Pall | Principal Engineer / Fractional CTO</title>
   <style>
     :root {
-      --bg:       #080b12;
-      --bg2:      #0d1117;
-      --bg3:      #161b27;
-      --border:   #1e2d40;
-      --accent:   #00d9ff;
-      --accent2:  #7c5cfc;
-      --accent3:  #ff6b35;
-      --green:    #39d353;
-      --text:     #e6edf3;
-      --muted:    #8b949e;
-      --card:     #0d1117;
+      --bg: #0b1018;
+      --bg2: #111a27;
+      --card: #162234;
+      --line: #24374f;
+      --text: #e7eef8;
+      --muted: #9fb1c7;
+      --brand: #24d3ff;
+      --good: #46d48a;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #193052 0%, var(--bg) 45%);
       color: var(--text);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(8,11,18,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 16, 24, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    .nav-brand {
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
-    .nav-brand span { color: var(--text); }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: .85rem;
-      letter-spacing: .5px; text-transform: uppercase;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 7rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,217,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,217,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
+
+    .brand {
+      text-decoration: none;
+      color: var(--brand);
+      font-family: "Courier New", monospace;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      font-size: 0.94rem;
     }
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -60%);
-      pointer-events: none;
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.95rem;
     }
-    .status-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(57,211,83,0.1);
-      border: 1px solid rgba(57,211,83,0.3);
-      border-radius: 20px;
-      padding: .3rem .9rem;
-      font-size: .75rem; color: var(--green);
-      margin-bottom: 1.5rem;
-      letter-spacing: .5px;
-    }
-    .status-dot {
-      width: 7px; height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: .5; transform: scale(1.4); }
-    }
-    .hero-name {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      font-weight: 300;
-      color: var(--text);
-      letter-spacing: 5px;
+
+    .nav-links a {
+      text-decoration: none;
       text-transform: uppercase;
-      margin-bottom: .5rem;
-      opacity: .85;
-    }
-    .hero-tag {
-      font-family: 'Courier New', monospace;
-      font-size: .85rem; color: var(--accent);
-      margin-bottom: .6rem; letter-spacing: 2px;
-    }
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 1rem;
-    }
-    h1 .glow { color: var(--accent); text-shadow: 0 0 30px rgba(0,217,255,.4); }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      letter-spacing: 0.08em;
       color: var(--muted);
-      max-width: 620px;
-      margin-bottom: 2rem;
+      font-size: 0.76rem;
+      font-weight: 700;
     }
-    .hero-badges {
-      display: flex; flex-wrap: wrap; gap: .6rem;
-      justify-content: center; margin-bottom: 2.5rem;
+
+    .nav-links a:hover { color: var(--brand); }
+
+    header {
+      padding: 4rem 0 2.4rem;
+      border-bottom: 1px solid var(--line);
     }
-    .hero-badges span {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: .3rem .8rem;
-      font-size: .75rem; color: var(--muted);
-      font-family: 'Courier New', monospace;
+
+    .kicker {
+      color: var(--good);
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
     }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      line-height: 1.15;
+      max-width: 980px;
+      margin-bottom: 1.1rem;
+    }
+
+    h1 span { color: var(--brand); }
+
+    .hero-sub {
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 1.2rem;
+      font-size: 1.03rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
     .btn {
-      padding: .65rem 1.5rem;
-      border-radius: 8px;
-      font-size: .9rem; font-weight: 600;
-      text-decoration: none; cursor: pointer;
-      border: none; transition: all .2s;
-      display: inline-flex; align-items: center; gap: .5rem;
+      text-decoration: none;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      padding: 0.64rem 1rem;
+      font-size: 0.87rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
+
     .btn-primary {
-      background: var(--accent);
-      color: #000;
+      background: var(--brand);
+      border-color: #0c9ebb;
+      color: #06222d;
     }
-    .btn-primary:hover { background: #00c4e8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,217,255,.25); }
+
     .btn-secondary {
       background: transparent;
       color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-    /* ── STATS BAR ── */
-    .stats-bar {
-      display: flex; flex-wrap: wrap; gap: 0;
-      justify-content: center;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg2);
-      padding: .1rem 0;
-      margin: 0;
-    }
-    .stat-item {
-      flex: 1; min-width: 120px;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 1.2rem 1.5rem;
-      border-right: 1px solid var(--border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-size: 1.9rem; font-weight: 800; color: var(--accent);
-      font-family: 'Courier New', monospace;
-    }
-    .stat-label { font-size: .72rem; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; }
-
-    /* ── SECTIONS ── */
-    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .section-header { margin-bottom: 3rem; }
-    .section-tag {
-      font-family: 'Courier New', monospace;
-      font-size: .75rem; color: var(--accent);
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: .4rem;
-    }
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700; letter-spacing: -.5px;
-    }
-    .section-title span { color: var(--accent); }
-    .section-line {
-      width: 40px; height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 2px; margin-top: .6rem;
     }
 
-    /* ── SKILLS ── */
-    #skills { border-top: 1px solid var(--border); background: var(--bg2); max-width: 100%; }
-    #skills > * { max-width: 1200px; margin: 0 auto; }
-    #skills section { border: none; padding: 5rem 2rem; }
-    .skills-grid {
+    .proof-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .skill-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem;
-      transition: border-color .2s, transform .2s;
-    }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .skill-card-header {
-      display: flex; align-items: center; gap: .7rem;
-      margin-bottom: 1rem;
-    }
-    .skill-icon {
-      width: 34px; height: 34px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-    .skill-card-title { font-weight: 600; font-size: .95rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .skill-tag {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: .15rem .5rem;
-      font-size: .7rem; color: var(--muted);
-      font-family: 'Courier New', monospace;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.25rem;
     }
 
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.6rem;
-      display: flex; flex-direction: column;
-      transition: border-color .25s, transform .25s, box-shadow .25s;
-      position: relative; overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity .25s;
-    }
-    .project-card:hover { border-color: rgba(0,217,255,.35); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,217,255,.08); }
-    .project-card:hover::before { opacity: 1; }
-    .project-card.featured { border-color: rgba(0,217,255,.25); }
-    .project-card.featured::before { opacity: 1; }
-    .project-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    .project-icon {
-      width: 44px; height: 44px;
+    .proof {
+      border: 1px solid var(--line);
       border-radius: 10px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
+      background: var(--bg2);
+      padding: 0.72rem 0.85rem;
     }
-    .project-badges { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
-    .badge {
-      padding: .2rem .55rem;
-      border-radius: 4px;
-      font-size: .67rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .4px;
+
+    .proof strong {
+      display: block;
+      color: var(--brand);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: 0.18rem;
     }
-    .badge-new  { background: rgba(57,211,83,.15);  color: #39d353; border: 1px solid rgba(57,211,83,.3); }
-    .badge-hot  { background: rgba(255,107,53,.15); color: #ff6b35; border: 1px solid rgba(255,107,53,.3); }
-    .badge-live { background: rgba(0,217,255,.12);  color: var(--accent); border: 1px solid rgba(0,217,255,.3); }
-    .badge-sec  { background: rgba(124,92,252,.15); color: #a78bfa; border: 1px solid rgba(124,92,252,.3); }
-    .badge-ai   { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
-    .project-name {
-      font-size: 1.1rem; font-weight: 700;
-      margin-bottom: .35rem;
+
+    section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
     }
-    .project-tagline {
-      font-size: .8rem; color: var(--accent);
-      font-family: 'Courier New', monospace;
-      margin-bottom: .6rem;
+
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 1rem;
     }
-    .project-desc {
-      color: var(--muted); font-size: .85rem;
-      line-height: 1.65; flex: 1;
-      margin-bottom: 1.2rem;
+
+    .section-kicker {
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
     }
-    .project-tech { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
-    .tech-tag {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: .2rem .55rem;
-      font-size: .7rem; color: var(--muted);
-      font-family: 'Courier New', monospace;
-    }
-    .tech-tag.highlight { border-color: rgba(0,217,255,.3); color: var(--accent); }
-    .project-footer {
-      border-top: 1px solid var(--border);
-      padding-top: .9rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .project-meta { font-size: .72rem; color: var(--muted); }
-    .project-links { display: flex; gap: .6rem; }
-    .project-link {
+
+    .section-sub {
       color: var(--muted);
-      font-size: .78rem; text-decoration: none;
-      display: flex; align-items: center; gap: .3rem;
-      transition: color .2s;
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 6px; padding: .3rem .7rem;
+      max-width: 900px;
+      margin-bottom: 1.1rem;
+      font-size: 0.95rem;
     }
-    .project-link:hover { color: var(--accent); border-color: rgba(0,217,255,.3); }
 
-    /* ── KALI SECTION ── */
-    .kali-container {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .kali-header {
-      background: linear-gradient(135deg, #1a0a2e 0%, #0d1117 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .kali-logo {
-      width: 48px; height: 48px;
-      background: linear-gradient(135deg, #557efa, #a855f7);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .kali-title { font-size: 1.2rem; font-weight: 700; }
-    .kali-sub { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
-    .kali-tools-grid {
+    .list-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--border);
-    }
-    .kali-tool {
-      background: var(--bg2);
-      padding: 1.3rem 1.5rem;
-      transition: background .2s;
-    }
-    .kali-tool:hover { background: var(--bg3); }
-    .kali-tool-name {
-      font-weight: 600; font-size: .95rem;
-      color: var(--accent); margin-bottom: .3rem;
-      font-family: 'Courier New', monospace;
-    }
-    .kali-tool-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
-    .kali-footer {
-      padding: 1rem 2rem;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
-    }
-    .kali-badge {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: .2rem .6rem;
-      font-size: .7rem; color: var(--muted);
-      font-family: 'Courier New', monospace;
-    }
-    .kali-badge.active { border-color: rgba(57,211,83,.4); color: var(--green); }
-
-    /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
-    }
-    .timeline-item { position: relative; margin-bottom: 2.5rem; }
-    .timeline-dot {
-      position: absolute; left: -2.45rem; top: .3rem;
-      width: 10px; height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 10px rgba(0,217,255,.5);
-    }
-    .timeline-date {
-      font-family: 'Courier New', monospace;
-      font-size: .73rem; color: var(--accent);
-      letter-spacing: 1px; margin-bottom: .2rem;
-    }
-    .timeline-title { font-weight: 600; font-size: 1rem; margin-bottom: .3rem; }
-    .timeline-desc { font-size: .85rem; color: var(--muted); }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg2);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-    .footer-brand {
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem; color: var(--accent);
-      font-weight: 700; margin-bottom: .5rem;
-    }
-    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { margin-top: 1.5rem; font-size: .75rem; color: var(--muted); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .stats-bar { flex-direction: column; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
     }
 
-    /* ── SCROLL FADE IN ── */
-    .fade-in {
-      opacity: 0; transform: translateY(24px);
-      animation: fadeUp .6s ease forwards;
-    }
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .delay-1 { animation-delay: .1s; }
-    .delay-2 { animation-delay: .2s; }
-    .delay-3 { animation-delay: .3s; }
-    .delay-4 { animation-delay: .4s; }
-    .delay-5 { animation-delay: .5s; }
-
-    /* ── EXPERIENCE ── */
-    .exp-grid { display: flex; flex-direction: column; gap: 1.4rem; }
-    .exp-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 1.6rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      transition: border-color .2s;
-    }
-    .exp-card:hover { border-color: rgba(0,217,255,.3); }
-    .exp-left { flex: 1; }
-    .exp-right { min-width: 130px; text-align: right; flex-shrink: 0; }
-    .exp-role { font-weight: 700; font-size: 1rem; margin-bottom: .15rem; }
-    .exp-company { color: var(--accent); font-size: .9rem; font-weight: 600; }
-    .exp-date { font-family: 'Courier New', monospace; font-size: .73rem; color: var(--muted); }
-    .exp-location { font-size: .73rem; color: var(--muted); margin-top: .15rem; }
-    .exp-desc { color: var(--muted); font-size: .83rem; line-height: 1.65; margin-top: .55rem; }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .75rem; }
-    /* ── CERTS / LANGUAGES ── */
-    .cert-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
+    .list-card {
+      border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 1rem 1.3rem;
-      display: flex; align-items: center; gap: .9rem;
-    }
-    .cert-icon { font-size: 1.5rem; }
-    .cert-title { font-weight: 600; font-size: .9rem; }
-    .cert-sub { font-size: .73rem; color: var(--muted); margin-top: .1rem; }
-    .lang-pill {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: .4rem 1.1rem;
-      font-size: .82rem;
-      display: flex; align-items: center; gap: .55rem;
-    }
-    .lang-level { font-size: .7rem; color: var(--muted); }
-    @media (max-width: 700px) {
-      .exp-card { flex-direction: column; }
-      .exp-right { text-align: left; }
-      .certs-langs-inner { grid-template-columns: 1fr !important; }
+      background: var(--bg2);
+      padding: 0.85rem;
     }
 
-    /* ── MOBILE NAV ── */
-    .nav-toggle {
-      display: none;
-      background: none; border: none; cursor: pointer;
-      flex-direction: column; gap: 5px; padding: .4rem;
+    .list-card h3 {
+      color: var(--brand);
+      font-size: 0.92rem;
+      margin-bottom: 0.6rem;
     }
-    .nav-toggle span {
-      display: block; width: 22px; height: 2px;
-      background: var(--text); border-radius: 2px;
-      transition: all .25s;
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.16rem 0.55rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: #0f1724;
     }
-    @media (max-width: 700px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; flex-direction: column;
-        position: absolute; top: 56px; left: 0; right: 0;
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        padding: 1rem 1.5rem; gap: .8rem;
-        z-index: 99;
-      }
-      .nav-links.open { display: flex; }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .case {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .case-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.55rem;
+      align-items: flex-start;
+    }
+
+    .case h3 { font-size: 1.04rem; }
+
+    .case p { color: var(--muted); font-size: 0.88rem; }
+
+    .status {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.2rem 0.52rem;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .status.prod {
+      border-color: rgba(70, 212, 138, 0.48);
+      color: var(--good);
+      background: rgba(70, 212, 138, 0.11);
+    }
+
+    .status.demo {
+      border-color: rgba(36, 211, 255, 0.45);
+      color: var(--brand);
+      background: rgba(36, 211, 255, 0.11);
+    }
+
+    .status.proto {
+      border-color: rgba(245, 158, 11, 0.45);
+      color: #f7b955;
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 0.45rem;
+      list-style: none;
+      max-width: 920px;
+    }
+
+    .bullet-list li {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.58rem 0.75rem;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .link-row {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .link-row a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.3rem 0.62rem;
+      font-size: 0.76rem;
+      background: #0e1725;
+      color: var(--muted);
+    }
+
+    .link-row a:hover { color: var(--brand); border-color: rgba(36, 211, 255, 0.45); }
+
+    footer {
+      padding: 1.5rem 0 2.4rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      header { padding-top: 3rem; }
     }
   </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav style="position:relative;">
-  <div class="nav-brand">mechaniel<span>-coder</span></div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="quote-intake.html">Get Quote</a></li>
-    <li><a href="upcloud-stack.html">UpCloud Stack</a></li>
-    <li><a href="#security">Security</a></li>
-    <li><a href="#ai">AI / LLM</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#timeline">Timeline</a></li>
-    <li><a href="resume.html">Resume</a></li>
-  </ul>
-  <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-
-  <div class="status-badge fade-in">
-    <span class="status-dot"></span>
-    Available for Work &nbsp;·&nbsp; Los Angeles, CA
-  </div>
-
-  <p class="hero-name fade-in delay-1">Daniel Pall</p>
-  <p class="hero-tag fade-in delay-1">// full-stack engineer &amp; ai architect &nbsp;·&nbsp; <span style="opacity:.55;">@mechaniel-coder</span></p>
-
-  <h1 class="fade-in delay-2">
-    Building Systems<br>That <span class="glow">Actually Ship</span>
-  </h1>
-
-  <p class="hero-sub fade-in delay-3">
-    I design and build end-to-end software — from distributed AI platforms and OSINT toolkits
-    running in Docker on Kali Linux, to production Discord bots serving real communities and
-    3D browser applications driven by hand-tracking. Every project here is real and deployed.
-  </p>
-
-  <div class="hero-badges fade-in delay-4">
-    <span>Go</span><span>Python</span><span>Node.js</span><span>TypeScript</span>
-    <span>React</span><span>Docker</span><span>Kali Linux</span><span>FastAPI</span>
-    <span>Three.js</span><span>PyTorch</span><span>RabbitMQ</span><span>AWS EC2</span>
-    <span>PostgreSQL</span><span>MLflow</span><span>OSINT</span>
-  </div>
-
-  <div class="hero-ctas fade-in delay-5">
-    <a href="https://github.com/mechaniel-coder" target="_blank" class="btn btn-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub Profile
-    </a>
-    <a href="https://linkedin.com/in/mechaniel-coder" target="_blank" class="btn btn-secondary" style="display:inline-flex;align-items:center;gap:.5rem;border-color:#0A66C2;color:#0A66C2;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-    <a href="resume.html" class="btn btn-secondary">
-      View Resume
-    </a>
-    <a href="upcloud-stack.html" class="btn btn-secondary">
-      UpCloud Stack
-    </a>
-    <a href="quote-intake.html" class="btn btn-secondary">
-      Request Quote
-    </a>
-    <a href="#projects" class="btn btn-secondary">
-      View Projects ↓
-    </a>
-  </div>
-</section>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">18+</span><span class="stat-label">Shipped Projects</span></div>
-  <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Languages for AI/ML</span></div>
-  <div class="stat-item"><span class="stat-num">9</span><span class="stat-label">OSINT Tools Deployed</span></div>
-  <div class="stat-item"><span class="stat-num">140+</span><span class="stat-label">Diagnostic Rules</span></div>
-  <div class="stat-item"><span class="stat-num">33+</span><span class="stat-label">Discord Commands</span></div>
-  <div class="stat-item"><span class="stat-num">15yr</span><span class="stat-label">Industry Experience</span></div>
-</div>
-
-<!-- SKILLS -->
-<div id="skills" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-<section>
-  <div class="section-header">
-    <p class="section-tag">// expertise</p>
-    <h2 class="section-title">Technical <span>Stack</span></h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(0,217,255,.1);color:var(--accent);">⚙️</div>
-        <span class="skill-card-title">Backend Engineering</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Go / Gin</span>
-        <span class="skill-tag">Python / FastAPI</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">JWT Auth</span>
-        <span class="skill-tag">WebSockets</span>
-        <span class="skill-tag">SQLAlchemy</span>
-      </div>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">mechaniel-coder</a>
+      <ul class="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#flagship-case">Case Studies</a></li>
+        <li><a href="#leadership-skills">Leadership</a></li>
+        <li><a href="#projects-lab">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(124,92,252,.1);color:#a78bfa;">🎨</div>
-        <span class="skill-card-title">Frontend / 3D</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">React 19</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">Three.js</span>
-        <span class="skill-tag">React Three Fiber</span>
-        <span class="skill-tag">Vite</span>
-        <span class="skill-tag">Zustand</span>
-        <span class="skill-tag">Next.js</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(251,191,36,.1);color:#fbbf24;">🤖</div>
-        <span class="skill-card-title">AI / LLM Engineering</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">OpenAI API</span>
-        <span class="skill-tag">Anthropic</span>
-        <span class="skill-tag">MLflow</span>
-        <span class="skill-tag">Weights & Biases</span>
-        <span class="skill-tag">Multimodal</span>
-        <span class="skill-tag">RL Agents</span>
-        <span class="skill-tag">DDP Training</span>
-        <span class="skill-tag">TensorFlow.js</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(57,211,83,.1);color:var(--green);">🐳</div>
-        <span class="skill-card-title">Infrastructure & DevOps</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Docker Compose</span>
-        <span class="skill-tag">Kali Linux</span>
-        <span class="skill-tag">AWS EC2</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">RabbitMQ</span>
-        <span class="skill-tag">SSH Tunnels</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(255,107,53,.1);color:#ff6b35;">🔐</div>
-        <span class="skill-card-title">Security / OSINT</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Kali Linux 2026.1</span>
-        <span class="skill-tag">OSINT Frameworks</span>
-        <span class="skill-tag">Phone Intelligence</span>
-        <span class="skill-tag">Username Enum</span>
-        <span class="skill-tag">Google Dorking</span>
-        <span class="skill-tag">AES Encryption</span>
-        <span class="skill-tag">OWASP</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(0,217,255,.1);color:var(--accent);">🎮</div>
-        <span class="skill-card-title">Platforms & Ecosystems</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Discord.js v14</span>
-        <span class="skill-tag">Sapphire Framework</span>
-        <span class="skill-tag">MediaPipe</span>
-        <span class="skill-tag">Intel NPU</span>
-        <span class="skill-tag">Voice AI (Whisper)</span>
-        <span class="skill-tag">Python automation</span>
-        <span class="skill-tag">pyttsx3 / edge-tts</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(124,92,252,.1);color:#a78bfa;">📊</div>
-        <span class="skill-card-title">Data & Databases</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">SQLite</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">SQLAlchemy ORM</span>
-        <span class="skill-tag">DB Migrations</span>
-        <span class="skill-tag">Pydantic v2</span>
-        <span class="skill-tag">Zod</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-header">
-        <div class="skill-icon" style="background:rgba(251,191,36,.1);color:#fbbf24;">🌐</div>
-        <span class="skill-card-title">Multi-Language AI</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">R + Torch</span>
-        <span class="skill-tag">Julia / Flux.jl</span>
-        <span class="skill-tag">Java / DL4J</span>
-        <span class="skill-tag">C++ / Libtorch</span>
-        <span class="skill-tag">JavaScript / TF.js</span>
-      </div>
-    </div>
-  </div>
+  </nav>
 
-  <!-- FULL SKILLS FROM RESUME -->
-  <div style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
-    <p class="section-tag" style="margin-bottom:1.5rem;">// complete skills inventory · from resume + portfolio projects</p>
-
-    <div style="display:flex;flex-direction:column;gap:1.4rem;">
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">🔧 Hardware &amp; Repair</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">Desktop Repair (8 yrs)</span><span class="skill-tag">Laptop Repair (8 yrs)</span><span class="skill-tag">Smartphone Repair (8 yrs)</span><span class="skill-tag">Component-Level Repair</span><span class="skill-tag">Soldering</span><span class="skill-tag">PCB</span><span class="skill-tag">Electrical Wiring</span><span class="skill-tag">Electrical Systems</span><span class="skill-tag">Schematics</span><span class="skill-tag">Assembly</span><span class="skill-tag">Custom Desktop Builds</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">🌐 Networking &amp; Infrastructure</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">TCP/IP</span><span class="skill-tag">DNS</span><span class="skill-tag">DHCP</span><span class="skill-tag">VPN</span><span class="skill-tag">LAN</span><span class="skill-tag">VoIP</span><span class="skill-tag">5G</span><span class="skill-tag">Network Protocols</span><span class="skill-tag">Network Infrastructure</span><span class="skill-tag">Network Troubleshooting</span><span class="skill-tag">Network Administration</span><span class="skill-tag">Network Support</span><span class="skill-tag">Firewall</span><span class="skill-tag">Active Directory</span><span class="skill-tag">Windows Server</span><span class="skill-tag">Cloud Native Design</span><span class="skill-tag">Distributed Computing</span><span class="skill-tag">Distributed Systems</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">💻 Software &amp; Development</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Go (Golang)</span><span class="skill-tag">Node.js</span><span class="skill-tag">Java</span><span class="skill-tag">C</span><span class="skill-tag">C#</span><span class="skill-tag">C++</span><span class="skill-tag">SQL</span><span class="skill-tag">T-SQL</span><span class="skill-tag">React / React 19</span><span class="skill-tag">Next.js</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Gin Framework</span><span class="skill-tag">SQLAlchemy / ORM</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">Redis</span><span class="skill-tag">Three.js / WebGL</span><span class="skill-tag">Pydantic v2</span><span class="skill-tag">discord.js v14</span><span class="skill-tag">Sapphire Framework</span><span class="skill-tag">Software Design</span><span class="skill-tag">System Architecture</span><span class="skill-tag">Solution Architecture</span><span class="skill-tag">REST API Design</span><span class="skill-tag">Microservices</span><span class="skill-tag">Multi-tier Architecture</span><span class="skill-tag">Event-Driven Architecture</span><span class="skill-tag">Message Queues</span><span class="skill-tag">DAG Orchestration</span><span class="skill-tag">Rule Engine Design</span><span class="skill-tag">Bot Development</span><span class="skill-tag">JWT Authentication</span><span class="skill-tag">AES Encryption</span><span class="skill-tag">bcrypt</span><span class="skill-tag">Schema Validation (Zod)</span><span class="skill-tag">ES Modules</span><span class="skill-tag">Asset Pipelines</span><span class="skill-tag">Game Modding</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Web Applications</span><span class="skill-tag">Implementing APIs</span><span class="skill-tag">Backend Development</span><span class="skill-tag">Database Design</span><span class="skill-tag">Data Model Design</span><span class="skill-tag">OS Kernels</span><span class="skill-tag">Software QA</span><span class="skill-tag">Test Automation</span><span class="skill-tag">SQL Server Profiler</span><span class="skill-tag">SSRS</span><span class="skill-tag">Debugging</span><span class="skill-tag">Automation</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">☁️ Cloud, Systems &amp; Enterprise</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">AWS</span><span class="skill-tag">AWS EC2</span><span class="skill-tag">AWS SDK v3</span><span class="skill-tag">CloudWatch</span><span class="skill-tag">VMware</span><span class="skill-tag">Docker</span><span class="skill-tag">Docker Compose</span><span class="skill-tag">Containerization</span><span class="skill-tag">RabbitMQ</span><span class="skill-tag">Message Brokers</span><span class="skill-tag">Distributed Workers</span><span class="skill-tag">SSH / Paramiko</span><span class="skill-tag">Uvicorn</span><span class="skill-tag">Intune</span><span class="skill-tag">ServiceNow</span><span class="skill-tag">Microsoft Exchange</span><span class="skill-tag">Server Management</span><span class="skill-tag">System Administration</span><span class="skill-tag">System Hardening</span><span class="skill-tag">IT System Monitoring</span><span class="skill-tag">Cloud Monitoring</span><span class="skill-tag">Disaster Recovery</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Information Security</span><span class="skill-tag">Scalable Systems</span><span class="skill-tag">ERP Systems</span><span class="skill-tag">Scalability</span><span class="skill-tag">Performance Optimization</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">🤖 AI &amp; Data</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">AI / Machine Learning</span><span class="skill-tag">LLM Integration</span><span class="skill-tag">LLM Orchestration</span><span class="skill-tag">OpenAI API</span><span class="skill-tag">Anthropic API</span><span class="skill-tag">AI-Gated Deployments</span><span class="skill-tag">AI Workflow Automation</span><span class="skill-tag">AI Chatbots</span><span class="skill-tag">Speech-to-Text (Whisper)</span><span class="skill-tag">Text-to-Speech (TTS)</span><span class="skill-tag">Voice Activation</span><span class="skill-tag">NLP (Natural Language Processing)</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">Hand Tracking / Gesture Recognition</span><span class="skill-tag">MediaPipe</span><span class="skill-tag">Intel NPU Acceleration</span><span class="skill-tag">Procedural Generation</span><span class="skill-tag">Combinatorial Systems</span><span class="skill-tag">OSINT / Open Source Intelligence</span><span class="skill-tag">ML-based Analysis</span><span class="skill-tag">Analytics</span><span class="skill-tag">Data Transformation</span><span class="skill-tag">Data Analysis</span><span class="skill-tag">Data Collection</span><span class="skill-tag">Data Modeling</span><span class="skill-tag">Data Architecture</span><span class="skill-tag">Data Integration</span><span class="skill-tag">Data Visualization</span><span class="skill-tag">Data-Driven Decisions</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">🛠️ Tools &amp; Platforms</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">Git / GitHub</span><span class="skill-tag">Vite</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">Linux CLI</span><span class="skill-tag">Postman / API Testing</span><span class="skill-tag">VS Code</span><span class="skill-tag">npm / Yarn</span><span class="skill-tag">dotenv</span><span class="skill-tag">Microsoft Office</span><span class="skill-tag">Microsoft Excel</span><span class="skill-tag">Microsoft Word</span><span class="skill-tag">Microsoft Outlook</span><span class="skill-tag">Google Suite</span><span class="skill-tag">Google Docs</span><span class="skill-tag">QuickBooks</span><span class="skill-tag">DocuSign</span><span class="skill-tag">Salesforce</span><span class="skill-tag">Zendesk</span><span class="skill-tag">Help Desk</span><span class="skill-tag">Windows</span><span class="skill-tag">Mac OS</span><span class="skill-tag">Android</span><span class="skill-tag">iOS</span><span class="skill-tag">Discord</span><span class="skill-tag">CAD</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">🤝 Business &amp; Soft Skills</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">Leadership</span><span class="skill-tag">Project Management</span><span class="skill-tag">Stakeholder Management</span><span class="skill-tag">Cross-functional Collaboration</span><span class="skill-tag">Communication</span><span class="skill-tag">Requirements Gathering</span><span class="skill-tag">Business Analysis</span><span class="skill-tag">Customer Service</span><span class="skill-tag">Customer Relationship Management</span><span class="skill-tag">Account Management</span><span class="skill-tag">B2B</span><span class="skill-tag">Task Prioritization</span><span class="skill-tag">Time Management</span><span class="skill-tag">Budgeting</span><span class="skill-tag">Financial Reporting</span><span class="skill-tag">Writing Skills</span><span class="skill-tag">Report Writing</span><span class="skill-tag">Attention to Detail</span><span class="skill-tag">Organizational Skills</span>
-        </div>
-      </div>
-
-      <div>
-        <div style="font-size:.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem;font-family:'Courier New',monospace;">📈 Sales &amp; Marketing</div>
-        <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
-          <span class="skill-tag">Sales</span><span class="skill-tag">Upselling</span><span class="skill-tag">Product Demos</span><span class="skill-tag">Inside Sales</span><span class="skill-tag">Outbound Sales</span><span class="skill-tag">Wireless Sales</span><span class="skill-tag">Technology Sales</span><span class="skill-tag">Achieving Sales Targets</span><span class="skill-tag">Marketing</span><span class="skill-tag">Merchandising</span><span class="skill-tag">E-commerce</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- ENGINEERING DEPTH -->
-<div style="background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-<section style="max-width:1200px;">
-  <div class="section-header">
-    <p class="section-tag">// demonstrated in production code · not claimed</p>
-    <h2 class="section-title">Engineering <span>Depth</span></h2>
-    <div class="section-line"></div>
-    <p style="color:var(--muted);font-size:.85rem;margin-top:.8rem;max-width:680px;">
-      Each discipline maps directly to verified patterns in real project code — not textbook exercises.
-    </p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.2rem;">
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">⚡</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Distributed Systems</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Jarvis · Mod System</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        DAG-based task dependency resolution with per-step queue routing over AMQP. RabbitMQ virtual hosts, heartbeats, and per-workflow ephemeral result queues. Multi-worker dispatch (Python + Node.js) coordinated through a shared state store.
+  <main class="wrap" id="top">
+    <header>
+      <p class="kicker">Principal Engineer / Fractional CTO</p>
+      <h1>I design, build, deploy, and operate <span>production software systems</span> for founder-led businesses and technical teams.</h1>
+      <p class="hero-sub">
+        My work combines software architecture, infrastructure design, DevOps execution, automation workflows,
+        payment integrations, Discord and hosting systems, and technical leadership. I specialize in turning
+        unclear business requirements into working systems with defined architecture, deployment paths,
+        security boundaries, and operational workflows.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">DAG Orchestration</span><span class="skill-tag">RabbitMQ / AMQP</span><span class="skill-tag">Multi-worker Dispatch</span><span class="skill-tag">State Stores</span>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#flagship-case">View CTO Case Study</a>
+        <a class="btn btn-secondary" href="#leadership-skills">Engineering Leadership</a>
+        <a class="btn btn-secondary" href="#projects-lab">Personal Projects and Lab</a>
+        <a class="btn btn-secondary" href="#contact">Contact</a>
       </div>
-    </div>
+      <div class="proof-grid">
+        <div class="proof"><strong>13</strong>Docker services in XCEED delivery</div>
+        <div class="proof"><strong>19</strong>Public GitHub repositories</div>
+        <div class="proof"><strong>15 years</strong>IT and repair operations background</div>
+        <div class="proof"><strong>4+ years</strong>Software systems delivery</div>
+      </div>
+    </header>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🗄️</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Database Engineering</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Mod System · Discord Bot</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        Dual PostgreSQL pool (catalog + runtime) with <code style="color:var(--accent);font-size:.78rem;">set_config('app.tenant_id')</code> session-variable RLS for multi-tenant isolation. JSONB columns, UUID PKs, versioned migrations, pool tuning (<code style="color:var(--accent);font-size:.78rem;">MaxOpenConns / ConnMaxLifetime</code>).
+    <section id="value-proposition">
+      <p class="section-kicker">CTO Value Proposition</p>
+      <h2>Senior technical ownership from architecture to operations</h2>
+      <ul class="bullet-list">
+        <li>Translate business requirements into technical architecture and phased delivery plans.</li>
+        <li>Select infrastructure and deployment models based on scale, maintainability, and operational risk.</li>
+        <li>Define service boundaries, data flow, access control, and integration patterns.</li>
+        <li>Build full-stack systems with billing, automation, monitoring, and operational tooling.</li>
+        <li>Drive hardening, documentation, and handoff paths for ongoing support.</li>
+      </ul>
+    </section>
+
+    <section id="what-i-own">
+      <p class="section-kicker">What I Own</p>
+      <h2>Execution scope I take responsibility for</h2>
+      <ul class="bullet-list">
+        <li>Turning business requirements into technical architecture and delivery plans.</li>
+        <li>Selecting infrastructure and deployment models with clear tradeoff decisions.</li>
+        <li>Designing service boundaries, data flow, and access control patterns.</li>
+        <li>Building full-stack systems from backend APIs to operational dashboards.</li>
+        <li>Integrating billing, customer workflows, Discord operations, and hosting panels.</li>
+        <li>Hardening Linux and Docker environments for safer production use.</li>
+        <li>Creating documentation and handoff paths for maintainability after launch.</li>
+        <li>Reducing manual support load through automation and operational tooling.</li>
+      </ul>
+    </section>
+
+    <section id="flagship-case">
+      <p class="section-kicker">Flagship Case Study</p>
+      <h2>XCEED infrastructure build on UpCloud</h2>
+      <p class="section-sub">
+        CTO-level case study covering business problem framing, architecture decisions, deployment execution,
+        service orchestration, security boundaries, and operational readiness.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">PostgreSQL RLS</span><span class="skill-tag">Multi-tenant SaaS</span><span class="skill-tag">Connection Pooling</span><span class="skill-tag">Schema Migrations</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🔐</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Security Engineering</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · Diagnostic Platform</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        AES-256-CBC with <code style="color:var(--accent);font-size:.78rem;">crypto.randomBytes(16)</code> IV per call, SHA-256 key derivation, bcrypt hashing. OWASP Top 10 input sanitization at every boundary. Audit logging, rate limiting, boot-time env validation with hard process exit on failure.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">AES-256-CBC</span><span class="skill-tag">OWASP Top 10</span><span class="skill-tag">Audit Logging</span><span class="skill-tag">Rate Limiting</span><span class="skill-tag">bcrypt</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🏗️</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Systems Architecture</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Mod System · Diagnostic Platform</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        Go <code style="color:var(--accent);font-size:.78rem;">internal/</code> package isolation. Service layer + repository pattern. Multi-tier FastAPI + SQLAlchemy + Pydantic v2 architecture. 140+ diagnostic rules across 20+ categories with deterministic scoring. AI policy gating with per-tenant budget enforcement.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">Service Layer</span><span class="skill-tag">Repository Pattern</span><span class="skill-tag">Rule Engines</span><span class="skill-tag">Multi-tier Architecture</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🤖</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">AI / LLM Engineering</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Jarvis · Mod System</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        LLM intent parsing with graceful degradation to pattern-based fallback. Full voice pipeline: hotword → Whisper STT → LLM NLU → TTS. Intel NPU acceleration. Anthropic API AI-gated deployment decisions with token budget controls. OpenAI + Anthropic provider abstraction.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">LLM Orchestration</span><span class="skill-tag">Whisper STT</span><span class="skill-tag">Voice Pipeline</span><span class="skill-tag">AI-Gated Deploys</span><span class="skill-tag">NPU Acceleration</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">👁️</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Computer Vision &amp; 3D Graphics</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">CAD App</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        Real-time MediaPipe hand landmark detection (21 keypoints) piped into Three.js scene transforms — webcam-only gesture control of 3D objects, no hardware required. WebGL via React Three Fiber, Zustand scene state, Vite HMR build pipeline.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">MediaPipe</span><span class="skill-tag">Three.js / WebGL</span><span class="skill-tag">Real-time CV</span><span class="skill-tag">React Three Fiber</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🟢</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Production Reliability</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · All Projects</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        Boot readiness gating blocks all commands until subsystems initialize. <code style="color:var(--accent);font-size:.78rem;">process.on('uncaughtException')</code> with security-aware logging. DB health check with timeout + retry before accepting traffic. Restart-safe idempotent event keys. CloudWatch on AWS EC2.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">Boot Readiness Gating</span><span class="skill-tag">Health Checks</span><span class="skill-tag">Idempotent Design</span><span class="skill-tag">CloudWatch</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🔑</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Applied Cryptography</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Discord Bot · Mod System</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        AES-256-CBC via Node.js native <code style="color:var(--accent);font-size:.78rem;">crypto</code> — random IV per operation (never reused), correct IV-prepend format, SHA-256 key derivation before cipher use. Mod signature verification with public key validation. Encrypted backup pipeline with isolated key management.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">AES-256-CBC</span><span class="skill-tag">IV Management</span><span class="skill-tag">Key Derivation</span><span class="skill-tag">Signature Verification</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;">
-        <span style="font-size:1.3rem;">🔢</span>
-        <div>
-          <div style="font-weight:700;font-size:.95rem;">Combinatorics &amp; Constraint Systems</div>
-          <div style="font-size:.72rem;color:var(--accent);font-family:'Courier New',monospace;letter-spacing:1px;">Hytale Mods</div>
-        </div>
-      </div>
-      <p style="font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;">
-        958+ billion valid character combinations from 139 feature axes — too large to enumerate, requiring constraint-based generation. Age-gate content tiering as a policy layer over the combination engine. Asset pipeline resolves each configuration to textures + models.
-      </p>
-      <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-        <span class="skill-tag">Combinatorial Systems</span><span class="skill-tag">Constraint-based Generation</span><span class="skill-tag">Policy Layers</span><span class="skill-tag">Asset Pipelines</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-</div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <p class="section-tag">// portfolio</p>
-    <h2 class="section-title">Featured <span>Projects</span></h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="projects-grid">
-
-    <!-- MOD SYSTEM -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🎮</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-          <span class="badge badge-live">Live</span>
-        </div>
-      </div>
-      <div class="project-name">Haptic Mod System</div>
-      <div class="project-tagline">// game-server mod management platform</div>
-      <p class="project-desc">
-        Production-ready, one-click mod installation and testing platform with AI-powered stability analysis.
-        Features a full test orchestrator that sandboxes mods with deterministic scoring, a live deployment engine
-        with snapshot rollbacks, a catalog manager, and a host agent deployed on game instances. AI gating via
-        Anthropic API makes deployment decisions before any mod goes live.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Go 1.22</span>
-        <span class="tech-tag highlight">React / Next.js</span>
-        <span class="tech-tag highlight">Docker Compose</span>
-        <span class="tech-tag">Gin Framework</span>
-        <span class="tech-tag">PostgreSQL ×2</span>
-        <span class="tech-tag">Redis</span>
-        <span class="tech-tag">JWT Auth</span>
-        <span class="tech-tag">Anthropic AI</span>
-        <span class="tech-tag">REST API</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Go · React · Docker · AI</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/haptic-mod-system" target="_blank" class="project-link">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- JARVIS -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🧠</div>
-        <div class="project-badges">
-          <span class="badge badge-ai">AI</span>
-          <span class="badge badge-hot">Hot</span>
-        </div>
-      </div>
-      <div class="project-name">Jarvis — Distributed AI Platform</div>
-      <div class="project-tagline">// voice-activated automation with queue-per-tool architecture</div>
-      <p class="project-desc">
-        A fully distributed, queue-driven automation platform with natural language workflow orchestration,
-        voice activation ("Jarvis"), and multi-engine execution. The orchestrator plans tasks into DAGs,
-        dispatches them over RabbitMQ, and coordinates Python, Node.js, and remote SSH workers. Supports
-        NPU acceleration on Intel Ultra 7 155H. Full keyboard/mouse control, app integrations (Discord,
-        Chrome, GitHub, Spotify), and cloud operations.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Python 3.14</span>
-        <span class="tech-tag highlight">RabbitMQ</span>
-        <span class="tech-tag highlight">OpenAI Whisper</span>
-        <span class="tech-tag">Node.js Workers</span>
-        <span class="tech-tag">Anthropic / OpenAI</span>
-        <span class="tech-tag">Intel NPU</span>
-        <span class="tech-tag">Redis</span>
-        <span class="tech-tag">SQLAlchemy</span>
-        <span class="tech-tag">pyttsx3 / edge-tts</span>
-        <span class="tech-tag">Paramiko (SSH)</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Python · Node.js · RabbitMQ · Voice</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/jarvis" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- DIAGNOSTIC PLATFORM -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🔍</div>
-        <div class="project-badges">
-          <span class="badge badge-new">v1.0.0</span>
-          <span class="badge badge-live">Feb 2026</span>
-        </div>
-      </div>
-      <div class="project-name">Diagnostic Platform</div>
-      <div class="project-tagline">// enterprise computer diagnostic engine for IT professionals</div>
-      <p class="project-desc">
-        An enterprise-grade computer diagnostic system targeting repair shops, MSPs, and IT professionals.
-        Powered by 140+ diagnostic rules across 20+ categories — performance, hardware health, malware,
-        boot failures, BIOS/UEFI, network, storage, and more. Delivers 5-minute diagnostics at 95% accuracy
-        versus traditional 2–4 hour processes. Ships with a FastAPI backend, multi-tier client architecture,
-        and a .NET solution.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Python / FastAPI</span>
-        <span class="tech-tag highlight">SQLAlchemy</span>
-        <span class="tech-tag highlight">140+ Diagnostic Rules</span>
-        <span class="tech-tag">.NET Solution</span>
-        <span class="tech-tag">Pydantic v2</span>
-        <span class="tech-tag">JWT / bcrypt</span>
-        <span class="tech-tag">Uvicorn</span>
-        <span class="tech-tag">Multi-tier Arch</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Python · FastAPI · Enterprise</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/diagnostic-platform" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAD APP -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">&#128269;</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-          <span class="badge" style="background:rgba(239,68,68,.15);color:#ef4444;border-color:rgba(239,68,68,.3)">Security</span>
-          <span class="badge" style="background:rgba(249,115,22,.12);color:#f97316;border-color:rgba(249,115,22,.3)">Rust</span>
-        </div>
-      </div>
-      <div class="project-name">ShadowScan</div>
-      <div class="project-desc">Async Rust network recon — TCP port scanner, service banner grabbing, CVE lookup via NIST NVD API 2.0. Color CLI + HTML/JSON reports. Tokio async runtime.</div>
-      <div class="project-tech">
-        <span class="tech-tag">Rust</span>
-        <span class="tech-tag">Tokio</span>
-        <span class="tech-tag">async/await</span>
-        <span class="tech-tag">NVD API</span>
-        <span class="tech-tag">TCP/Banner</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/mechaniel-coder/shadowscan" target="_blank">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">&#9729;</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-          <span class="badge" style="background:rgba(99,102,241,.15);color:#818cf8;border-color:rgba(99,102,241,.3)">Cloud Native</span>
-          <span class="badge" style="background:rgba(16,185,129,.12);color:#10b981;border-color:rgba(16,185,129,.3)">IaC</span>
-        </div>
-      </div>
-      <div class="project-name">NetWatch — Cloud Infrastructure</div>
-      <div class="project-tagline">// Terraform + EKS + Helm: production K8s on AWS</div>
-      <div class="project-desc">Production-grade AWS EKS deployment for NetWatch. Terraform modules for VPC, EKS, RDS PostgreSQL 16 &amp; ElastiCache Redis. Helm chart with HPA and liveness probes. GitHub Actions CI/CD using OIDC — no long-lived credentials. Encryption at rest and in transit throughout.</div>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Terraform</span>
-        <span class="tech-tag highlight">Kubernetes</span>
-        <span class="tech-tag highlight">Helm</span>
-        <span class="tech-tag">AWS EKS</span>
-        <span class="tech-tag">AWS RDS</span>
-        <span class="tech-tag">ElastiCache</span>
-        <span class="tech-tag">GitHub Actions</span>
-        <span class="tech-tag">OIDC IAM</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/mechaniel-coder/netwatch-infra" target="_blank">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">&#128100;</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-          <span class="badge" style="background:rgba(139,92,246,.15);color:#a78bfa;border-color:rgba(139,92,246,.3)">C# / .NET</span>
-          <span class="badge" style="background:rgba(239,68,68,.12);color:#ef4444;border-color:rgba(239,68,68,.3)">Security</span>
-        </div>
-      </div>
-      <div class="project-name">ADRecon</div>
-      <div class="project-tagline">// Active Directory auditor — enumerate, risk-score, report</div>
-      <div class="project-desc">C# .NET 8 tool that enumerates Active Directory — users, groups, GPOs, and password policy — then risk-scores every finding (Critical/High/Medium/Low) with NIST-aligned remediation recommendations. Exports self-contained dark HTML report + JSON. Targets stale accounts, adminCount=1 accounts, weak password policies, unlinked GPOs, and reversible encryption.</div>
-      <div class="project-tech">
-        <span class="tech-tag highlight">C# .NET 8</span>
-        <span class="tech-tag highlight">Active Directory</span>
-        <span class="tech-tag highlight">LDAP</span>
-        <span class="tech-tag">System.DirectoryServices</span>
-        <span class="tech-tag">Spectre.Console</span>
-        <span class="tech-tag">Risk Scoring</span>
-        <span class="tech-tag">GitHub Actions CI</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/mechaniel-coder/adrecon" target="_blank">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">&#128241;</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-          <span class="badge" style="background:rgba(0,217,255,.12);color:#00d9ff;border-color:rgba(0,217,255,.3)">Mobile</span>
-          <span class="badge" style="background:rgba(59,130,246,.12);color:#60a5fa;border-color:rgba(59,130,246,.3)">TypeScript</span>
-        </div>
-      </div>
-      <div class="project-name">NetWatch Mobile</div>
-      <div class="project-tagline">// React Native iOS + Android infrastructure monitoring</div>
-      <div class="project-desc">Mobile companion for NetWatch — real-time host status, alert management, and server configuration. Dashboard with stat cards and critical alert banners, filterable alerts with haptic-feedback ACK, host detail with uptime/latency/port/tag views, and a settings screen for server URL, API key, polling interval, and push notifications. TypeScript strict mode, Zustand state, React Navigation v6.</div>
-      <div class="project-tech">
-        <span class="tech-tag highlight">React Native 0.74</span>
-        <span class="tech-tag highlight">TypeScript</span>
-        <span class="tech-tag highlight">Expo 51</span>
-        <span class="tech-tag">React Navigation v6</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">expo-haptics</span>
-        <span class="tech-tag">expo-notifications</span>
-        <span class="tech-tag">Jest</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/mechaniel-coder/netwatch-mobile" target="_blank">GitHub →</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">📐</div>
-        <div class="project-badges">
-          <span class="badge badge-hot">3D</span>
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">Custom CAD-Like 3D App</div>
-      <div class="project-tagline">// browser-based 3D design with real-time hand tracking</div>
-      <p class="project-desc">
-        A browser-based 3D design application combining Three.js with MediaPipe hand tracking for 
-        gesture-driven interaction. Built with React 19, React Three Fiber, and Zustand for state management.
-        Enables users to manipulate 3D objects directly with their hands via webcam — no external hardware
-        needed. TypeScript throughout, Vite for ultra-fast dev cycles.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">React 19</span>
-        <span class="tech-tag highlight">Three.js</span>
-        <span class="tech-tag highlight">MediaPipe Hands</span>
-        <span class="tech-tag">React Three Fiber</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">Vite</span>
-        <span class="tech-tag">@react-three/drei</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">React · Three.js · MediaPipe</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 420 BOT -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🎲</div>
-        <div class="project-badges">
-          <span class="badge badge-live">Deployed</span>
-          <span class="badge badge-hot">AWS</span>
-        </div>
-      </div>
-      <div class="project-name">420 &amp; Games Discord Bot</div>
-      <div class="project-tagline">// production Discord bot · 33+ commands · AWS EC2</div>
-      <p class="project-desc">
-        Full-featured community Discord bot built on the Sapphire Framework. Ships with 33+ slash commands
-        spanning games (trivia, Would You Rather, puzzle hunts), utilities (wallet, inventory, profile),
-        and moderation (automod, logging, timeouts). Includes a monetization system, license manager,
-        enterprise-level backup encryption, and is deployed live on AWS EC2 with CloudWatch monitoring.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Node.js</span>
-        <span class="tech-tag highlight">Sapphire Framework</span>
-        <span class="tech-tag highlight">AWS EC2</span>
-        <span class="tech-tag">discord.js v14</span>
-        <span class="tech-tag">SQLite / better-sqlite3</span>
-        <span class="tech-tag">AWS SDK v3</span>
-        <span class="tech-tag">CloudWatch</span>
-        <span class="tech-tag">AES Encryption</span>
-        <span class="tech-tag">33+ Commands</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Node.js · AWS · Discord</span>
-        <div class="project-links">
-          <span class="project-meta" style="font-size:0.75rem;opacity:0.6;">Private Repo</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- GIVEAWAY BOT -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🎁</div>
-        <div class="project-badges">
-          <span class="badge badge-live">Live</span>
-        </div>
-      </div>
-      <div class="project-name">Activity Giveaway Bot</div>
-      <div class="project-tagline">// voice-aware giveaway system with ticket ledger</div>
-      <p class="project-desc">
-        A local Discord bot that rewards members for genuine activity — messages with cooldown/daily caps
-        and real voice-speaking events via @discordjs/voice. Tickets are accumulated in an append-only
-        SQLite ledger with idempotent event keys. Admins control the full giveaway lifecycle via slash
-        commands. Restart-safe with expiry sweep on boot.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">discord.js v14</span>
-        <span class="tech-tag highlight">@discordjs/voice</span>
-        <span class="tech-tag">Node.js 20+</span>
-        <span class="tech-tag">better-sqlite3</span>
-        <span class="tech-tag">Zod</span>
-        <span class="tech-tag">dotenv</span>
-        <span class="tech-tag">ES Modules</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Node.js · Discord.js · SQLite</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/420andgames-giveaway-bot" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- HYTALE MODS -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">⚔️</div>
-        <div class="project-badges">
-          <span class="badge badge-hot">Phase 8</span>
-        </div>
-      </div>
-      <div class="project-name">Hytale Mods 2.0</div>
-      <div class="project-tagline">// 958B+ character combinations · WoW-inspired mount system</div>
-      <p class="project-desc">
-        A comprehensive character and mount creation engine for Hytale. Supports 958+ billion character
-        combinations across 139 customizable features, 30 unique mounts (flying, ground, aquatic) with
-        saddle and magical effects customization, and an age-gate content system providing family-friendly
-        and adult tiers. Inspired by WoW, D&amp;D/Baldur's Gate, and Genshin Impact.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Python</span>
-        <span class="tech-tag">139 Features</span>
-        <span class="tech-tag">30 Mounts</span>
-        <span class="tech-tag">Age-Gate System</span>
-        <span class="tech-tag">Profile Manager</span>
-        <span class="tech-tag">Asset Pipeline</span>
-        <span class="tech-tag">Texture Generation</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Python · Game Modding · Phase 8</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CERTSENTRY -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🔐</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">CertSentry</div>
-      <div class="project-tagline">// self-hosted SSL certificate &amp; domain health monitor</div>
-      <p class="project-desc">Self-hosted domain health scanner tracking SSL certificate expiry, open port inventory, and WHOIS registration data. Cron-based scheduled TLS scans run automatically with color-coded expiry countdowns (green/amber/red/grey). Dispatches webhook or email alerts before expiry is ever a problem. Dashboard shows domain status grid, expiry timeline, and per-domain scan history.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Go 1.22</span>
-        <span class="tech-tag highlight">React 19</span>
-        <span class="tech-tag highlight">PostgreSQL 16</span>
-        <span class="tech-tag highlight">Docker Compose</span>
-        <span class="tech-tag">Gin Framework</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">Tailwind CSS</span>
-        <span class="tech-tag">TLS Scanning</span>
-        <span class="tech-tag">WHOIS Parser</span>
-        <span class="tech-tag">Cron Scheduler</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Go · React · PostgreSQL · Docker</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/certsentry" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- NETWATCH -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">📡</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">NetWatch</div>
-      <div class="project-tagline">// real-time infrastructure monitoring with lightweight Go agents</div>
-      <p class="project-desc">Real-time infrastructure monitoring for servers, VMs, and bare-metal machines. A single-binary Go agent (~6 MB) runs on each target host and ships CPU, memory, disk, and network metrics to a central API. React dashboard visualizes everything live over WebSockets with configurable threshold alerts, historical data, and multi-host support.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Go 1.22</span>
-        <span class="tech-tag highlight">React 19</span>
-        <span class="tech-tag highlight">WebSockets</span>
-        <span class="tech-tag highlight">Docker Compose</span>
-        <span class="tech-tag">PostgreSQL 16</span>
-        <span class="tech-tag">Redis</span>
-        <span class="tech-tag">JWT Auth</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">Tailwind CSS</span>
-        <span class="tech-tag">Threshold Alerting</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Go · React · WebSockets · Docker</span>
-        <div class="project-links">
-          <a href="http://85.9.195.27:3000" target="_blank" class="project-link">Live Demo</a>
-          <a href="https://github.com/mechaniel-coder/netwatch" target="_blank" class="project-link">GitHub</a>
-        </div>
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">⚙️</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">PipelineForge</div>
-      <div class="project-tagline">// self-hosted CI/CD · YAML pipelines · SSH executor · live log streaming</div>
-      <p class="project-desc">A self-hosted CI/CD platform — define pipelines in YAML, trigger builds via GitHub webhooks or the dashboard, execute steps over SSH on any remote target, and watch live stdout/stderr in the browser over WebSockets. Full run history with per-step status and duration breakdown.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Python 3.12</span>
-        <span class="tech-tag highlight">FastAPI</span>
-        <span class="tech-tag highlight">React 19</span>
-        <span class="tech-tag highlight">PostgreSQL 16</span>
-        <span class="tech-tag">Docker Compose</span>
-        <span class="tech-tag">paramiko SSH</span>
-        <span class="tech-tag">PyYAML</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Tailwind CSS</span>
-        <span class="tech-tag">JWT Auth</span>
-        <span class="tech-tag">WebSockets</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Python · FastAPI · React · Docker</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/pipelineforge" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- TICKETFLOW -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🎫</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">TicketFlow</div>
-      <div class="project-tagline">// IT help desk &amp; asset management · ITSM · SLA tracking · RBAC</div>
-      <p class="project-desc">A full-stack ITSM platform built from 15 years of real IT operations experience. Combines a complete ticket lifecycle system (Open → Resolved → Closed) with hardware/software asset inventory, SLA breach alerting, RBAC (Admin/Technician/End-User), and an append-only audit log. Auto-generated OpenAPI docs via FastAPI.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Python 3.12</span>
-        <span class="tech-tag highlight">FastAPI</span>
-        <span class="tech-tag highlight">React 19</span>
-        <span class="tech-tag highlight">PostgreSQL 16</span>
-        <span class="tech-tag highlight">Docker Compose</span>
-        <span class="tech-tag">JWT Auth</span>
-        <span class="tech-tag">bcrypt</span>
-        <span class="tech-tag">RBAC</span>
-        <span class="tech-tag">Zustand</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Tailwind CSS</span>
-        <span class="tech-tag">SLA Engine</span>
-        <span class="tech-tag">Audit Logger</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">Python · FastAPI · React · PostgreSQL</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/ticketflow" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- XCEED TECH INFRASTRUCTURE -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🖥️</div>
-        <div class="project-badges">
-          <span class="badge badge-live">Production</span>
-          <span class="badge badge-sec">DevOps</span>
-        </div>
-      </div>
-      <div class="project-name">XCEED Tech — Production Infrastructure</div>
-      <div class="project-tagline">// full hosting stack built in 72 hrs · Discord bot · ip-manager · iptables hardening</div>
-      <p class="project-desc">
-        Designed and deployed a complete production hosting infrastructure for X-CEED Tech Solutions from scratch in under 72 hours.
-        Built <strong>skyhigh-hosting-bot</strong> — a full Node.js Discord hosting bot with web dashboard, Stripe/PayPal/Square payment
-        processing, Pterodactyl panel integration, server health monitors, and 50+ commits in 3 days.
-        Built <strong>ip-manager</strong> — an IMAP-authenticated dynamic IP whitelisting system that auto-rebuilds iptables chains
-        via cron every minute. Hardened the Unraid server (iptables-legacy, DOCKER-USER chain, admin-only port lockdown).
-        All 13 containers verified healthy and live at archive. End-to-end: architecture → code → deploy → verified in production.
-      </p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">Node.js</span>
-        <span class="tech-tag highlight">Docker Compose</span>
-        <span class="tech-tag highlight">Unraid / Linux</span>
-        <span class="tech-tag">discord.js v14</span>
-        <span class="tech-tag">iptables-legacy</span>
-        <span class="tech-tag">Nginx Proxy Manager</span>
-        <span class="tech-tag">Docker Mailserver</span>
-        <span class="tech-tag">Let's Encrypt SSL</span>
-        <span class="tech-tag">Stripe / PayPal / Square</span>
-        <span class="tech-tag">MariaDB / MySQL / Redis</span>
-        <span class="tech-tag">Pterodactyl / Nextdactyl</span>
-        <span class="tech-tag">Paymenter</span>
-        <span class="tech-tag">Rate Limiting</span>
-        <span class="tech-tag">IMAP Auth</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">May 19–22, 2026 · 72 hrs · 13 containers live</span>
-        <div class="project-links">
-          <span class="project-meta" style="font-size:0.75rem;opacity:0.6;">Private / Client Infra</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- FLAGFORGE -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🚩</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">FlagForge</div>
-      <div class="project-tagline">// GraphQL feature-flag engine · JWT auth · Redis caching · Prisma</div>
-      <p class="project-desc">Production-ready feature-flag service built on Apollo Server v4 and Express. Supports multi-environment flags (development / staging / production), JSON rule payloads, and per-flag evaluation. Redis caches flag lookups; Prisma + PostgreSQL persists state. Full JWT authentication with role guards — 14/14 tests passing.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">TypeScript 5.7</span>
-        <span class="tech-tag highlight">Apollo Server v4</span>
-        <span class="tech-tag highlight">GraphQL</span>
-        <span class="tech-tag highlight">Prisma v5</span>
-        <span class="tech-tag">Node.js 22</span>
-        <span class="tech-tag">Express</span>
-        <span class="tech-tag">PostgreSQL 16</span>
-        <span class="tech-tag">Redis / ioredis</span>
-        <span class="tech-tag">JWT + bcrypt</span>
-        <span class="tech-tag">Zod</span>
-        <span class="tech-tag">ts-jest</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">TypeScript · GraphQL · Redis · PostgreSQL</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/flagforge" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- HOOKPOST -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🪝</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">HookPost</div>
-      <div class="project-tagline">// webhook relay &amp; queue · BullMQ · HMAC signing · Fastify</div>
-      <p class="project-desc">High-throughput webhook relay and delivery queue. Inbound events are HMAC-SHA256 signed and fanned out to all enabled endpoints via BullMQ workers. Automatic retry logic with exponential backoff; deliveries progress through PENDING → DELIVERING → DELIVERED / FAILED / DEAD states. Prisma + PostgreSQL persists full delivery history — 19/19 tests passing.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">TypeScript 5.7</span>
-        <span class="tech-tag highlight">Fastify v5</span>
-        <span class="tech-tag highlight">BullMQ v5</span>
-        <span class="tech-tag highlight">Prisma v5</span>
-        <span class="tech-tag">Node.js 22</span>
-        <span class="tech-tag">PostgreSQL 16</span>
-        <span class="tech-tag">Redis / ioredis</span>
-        <span class="tech-tag">HMAC-SHA256</span>
-        <span class="tech-tag">Zod</span>
-        <span class="tech-tag">ts-jest</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">TypeScript · Fastify · BullMQ · Redis</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/hookpost" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARTQL -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon">🛒</div>
-        <div class="project-badges">
-          <span class="badge badge-new">2026</span>
-        </div>
-      </div>
-      <div class="project-name">CartQL</div>
-      <div class="project-tagline">// GraphQL e-commerce API · cart · checkout · reviews · Apollo Server v4</div>
-      <p class="project-desc">Full-lifecycle GraphQL e-commerce API. Browse products by category, search, and price range; manage a server-side cart with stock validation; atomic checkout transaction creates an order, decrements stock, and clears the cart in one DB transaction. JWT auth with ADMIN role guards for catalog management; per-product review aggregation with average rating — 27/27 tests passing.</p>
-      <div class="project-tech">
-        <span class="tech-tag highlight">TypeScript 5.7</span>
-        <span class="tech-tag highlight">Apollo Server v4</span>
-        <span class="tech-tag highlight">GraphQL</span>
-        <span class="tech-tag highlight">Prisma v5</span>
-        <span class="tech-tag">Node.js 22</span>
-        <span class="tech-tag">Express</span>
-        <span class="tech-tag">PostgreSQL 16</span>
-        <span class="tech-tag">JWT + bcrypt</span>
-        <span class="tech-tag">Zod</span>
-        <span class="tech-tag">graphql-scalars</span>
-        <span class="tech-tag">ts-jest</span>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">TypeScript · GraphQL · Apollo · PostgreSQL</span>
-        <div class="project-links">
-          <a href="https://github.com/mechaniel-coder/cartql" target="_blank" class="project-link">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- SECURITY / OSINT (KALI) -->
-<div id="security" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-<section style="max-width:1200px;">
-  <div class="section-header">
-    <p class="section-tag">// kali linux · docker · running now</p>
-    <h2 class="section-title">OSINT <span>Toolkit</span></h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="kali-container">
-    <div class="kali-header">
-      <div class="kali-logo">🐉</div>
-      <div>
-        <div class="kali-title">Kali Linux OSINT Environment</div>
-        <div class="kali-sub">Docker container · <code style="color:var(--accent);font-size:.78rem;">osint-tools:latest</code> · Kali 2026.1 Rolling · SSH :2222 · VS Code Remote Tunnel</div>
-      </div>
-    </div>
-    <div class="kali-tools-grid">
-      <div class="kali-tool">
-        <div class="kali-tool-name">PhoneIntel</div>
-        <div class="kali-tool-desc">Advanced phone number intelligence — carrier lookup, geolocation, Google dork generation, OpenStreetMap mapping, Tellows &amp; SpamCalls integration, batch processing.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">DIGI-NETRA</div>
-        <div class="kali-tool-desc">Modular OSINT assistant toolkit for phone number recon, username enumeration, and IP geolocation. CLI menu-driven with Google &amp; social media integration.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Moriarty Project v4.1.2</div>
-        <div class="kali-tool-desc">Web-based phone number investigation with 6 specialized features — owner lookup, spam risk, related links, comment aggregation, and social media footprint discovery.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Tookie-OSINT v4</div>
-        <div class="kali-tool-desc">Username enumeration across hundreds of platforms (~80% accuracy). Rebuilt from scratch in v4. Comparable to Sherlock — finds accounts across social networks worldwide.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Mr.Homes (Hanan Asif)</div>
-        <div class="kali-tool-desc">Comprehensive OSINT framework with 22 modules — username search, proxy support, multi-language, QR codes, site lists, and an active community of contributors.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">MetaGhost</div>
-        <div class="kali-tool-desc">Metadata extraction and analysis tool for OSINT professionals. Extracts hidden metadata from files and digital artifacts to build intelligence profiles.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Telespot v5.0.0</div>
-        <div class="kali-tool-desc">Phone number OSINT via multi-engine search (Google, Bing, DuckDuckGo). Generates format variations, correlates results, surfaces names, locations, and usernames with confidence scoring.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Dark-Hydro</div>
-        <div class="kali-tool-desc">Python OSINT for phone number investigation via Google Dorking. Multi-API integration (Numverify, OpenCage, AbstractAPI, VeriPhone) for carrier, location, and social discovery.</div>
-      </div>
-      <div class="kali-tool">
-        <div class="kali-tool-name">Wiwok</div>
-        <div class="kali-tool-desc">Additional OSINT utility for intelligence gathering and target profiling, integrated into the unified Kali toolkit environment.</div>
-      </div>
-    </div>
-    <div class="kali-footer">
-      <span class="kali-badge active">● Container Running</span>
-      <span class="kali-badge">Kali 2026.1 Rolling</span>
-      <span class="kali-badge">SSH :2222</span>
-      <span class="kali-badge">VS Code Remote</span>
-      <span class="kali-badge">9 OSINT Tools</span>
-      <span class="kali-badge">Python 3.x</span>
-      <span class="kali-badge">OffSec Official Image</span>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- AI / LLM -->
-<section id="ai">
-  <div class="section-header">
-    <p class="section-tag">// d:\AI & LLM · multi-language workspace</p>
-    <h2 class="section-title">AI / LLM <span>Research Workspace</span></h2>
-    <div class="section-line"></div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
-
-    <div class="project-card" style="grid-column:1/-1;background:var(--bg3);">
-      <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
-        <div style="flex:1;min-width:220px;">
-          <div class="project-name" style="margin-bottom:.5rem;">Multi-Language LLM Training Workspace</div>
-          <p class="project-desc">
-            A production-grade AI and LLM training workspace supporting identical pipelines across 6 programming languages.
-            Features multimodal training (audio + vision + text), reinforcement learning with Gymnasium integration,
-            distributed training via PyTorch DDP / Flux.jl / DL4J / Libtorch, experiment tracking with MLflow and
-            Weights &amp; Biases, and a modular CLI harness with YAML config merging.
-            Also houses the AI brain modules for Jarvis: <code style="color:var(--accent);font-size:.78rem;">brain.py, ears.py, memory.py, voice.py, wake.py</code>.
+      <div class="case-grid">
+        <article class="case">
+          <div class="case-head">
+            <h3>Hosting infrastructure, billing automation, cloud deployment</h3>
+            <span class="status prod">Production client build</span>
+          </div>
+          <p>
+            Built a unified environment connecting Nginx Proxy Manager, Cloudflare routing, billing workflows,
+            game-hosting integrations, Discord automation, and internal data/cache layers.
           </p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:.6rem;min-width:160px;">
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.8rem;">
-            <div style="font-size:.7rem;color:var(--muted);margin-bottom:.4rem;font-family:'Courier New',monospace;">LANGUAGES</div>
-            <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-              <span class="tech-tag highlight">Python</span>
-              <span class="tech-tag">R</span>
-              <span class="tech-tag">Julia</span>
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">C++</span>
-              <span class="tech-tag">JavaScript</span>
-            </div>
+          <div class="tags">
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Nginx Proxy Manager</span>
+            <span class="tag">Cloudflare DNS</span>
+            <span class="tag">Paymenter</span>
+            <span class="tag">MariaDB</span>
+            <span class="tag">Redis</span>
           </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:.8rem;">
-            <div style="font-size:.7rem;color:var(--muted);margin-bottom:.4rem;font-family:'Courier New',monospace;">FRAMEWORKS</div>
-            <div style="display:flex;flex-wrap:wrap;gap:.3rem;">
-              <span class="tech-tag">PyTorch DDP</span>
-              <span class="tech-tag">Flux.jl</span>
-              <span class="tech-tag">DL4J</span>
-              <span class="tech-tag">Libtorch</span>
-              <span class="tech-tag">TF.js</span>
-            </div>
+          <div class="link-row">
+            <a href="upcloud-stack.html">Open full case study</a>
+            <a href="services.html">Service page context</a>
           </div>
-        </div>
+        </article>
       </div>
-      <div style="margin-top:1.2rem;border-top:1px solid var(--border);padding-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem;">
-        <span class="tech-tag highlight">MLflow</span>
-        <span class="tech-tag highlight">Weights &amp; Biases</span>
-        <span class="tech-tag">Multimodal (Audio+Vision+Text)</span>
-        <span class="tech-tag">RL / Policy Gradient</span>
-        <span class="tech-tag">Distributed Training</span>
-        <span class="tech-tag">Gymnasium</span>
-        <span class="tech-tag">OpenAI API</span>
-        <span class="tech-tag">Anthropic API</span>
-        <span class="tech-tag">Whisper</span>
-        <span class="tech-tag">YAML Config Merging</span>
-        <span class="tech-tag">Experiment Tracking</span>
-        <span class="tech-tag">CLI Harness</span>
+    </section>
+
+    <section id="leadership-skills">
+      <p class="section-kicker">Leadership and Architecture Skills</p>
+      <h2>What this profile is built to demonstrate</h2>
+      <div class="list-grid">
+        <article class="list-card">
+          <h3>Architecture and Planning</h3>
+          <div class="tags">
+            <span class="tag">System design</span><span class="tag">Service boundaries</span><span class="tag">Data flow</span><span class="tag">Technical roadmaps</span>
+          </div>
+        </article>
+        <article class="list-card">
+          <h3>Infrastructure and Operations</h3>
+          <div class="tags">
+            <span class="tag">Cloud deployment</span><span class="tag">Container orchestration</span><span class="tag">Reverse proxy and SSL</span><span class="tag">Monitoring</span>
+          </div>
+        </article>
+        <article class="list-card">
+          <h3>Automation and Integrations</h3>
+          <div class="tags">
+            <span class="tag">Discord workflows</span><span class="tag">Payment integrations</span><span class="tag">Webhook pipelines</span><span class="tag">Operational automation</span>
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<div style="background:var(--bg2);border-top:1px solid var(--border);">
-<section id="timeline" style="max-width:900px;">
-  <div class="section-header">
-    <p class="section-tag">// build history</p>
-    <h2 class="section-title">Project <span>Timeline</span></h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">JUNE 2026</div>
-      <div class="timeline-title">CertSentry — SSL &amp; Domain Health Monitor</div>
-      <div class="timeline-desc">Built a self-hosted Go + React domain health scanner tracking SSL certificate expiry, port state, and WHOIS data. Cron scheduling, webhook/email alerting, color-coded expiry dashboard.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">JUNE 2026</div>
-      <div class="timeline-title">NetWatch — Real-Time Infrastructure Monitor</div>
-      <div class="timeline-desc">Shipped a lightweight Go monitoring agent + React WebSocket dashboard for real-time CPU, memory, disk, and network metrics across any number of hosts.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">JUNE 2026</div>
-      <div class="timeline-title">PipelineForge — Self-Hosted CI/CD Platform</div>
-      <div class="timeline-desc">Built a Python/FastAPI CI/CD platform — YAML pipeline definitions, GitHub webhook triggers, paramiko SSH executor, live WebSocket log streaming, and role-based access.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">JUNE 2026</div>
-      <div class="timeline-title">TicketFlow — IT Help Desk &amp; Asset Management</div>
-      <div class="timeline-desc">Delivered a full ITSM platform with ticket lifecycle, SLA timers, hardware/software asset inventory, RBAC, append-only audit trail, and warranty tracking. Built from 15 years of real IT operations.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">MAY 2026</div>
-      <div class="timeline-title">Kali Linux OSINT Toolkit — Docker Environment</div>
-      <div class="timeline-desc">Built and deployed a custom Kali Linux 2026.1 Docker container integrating 9 OSINT tools (PhoneIntel, DIGI-NETRA, Moriarty, Tookie-OSINT, Mr.Homes, MetaGhost, Telespot, Dark-Hydro, Wiwok). Accessible via VS Code Remote Tunnel over SSH.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:var(--accent3);box-shadow:0 0 10px rgba(255,107,53,.5);"></div>
-      <div class="timeline-date">MAY 2026</div>
-      <div class="timeline-title">XCEED Tech — Full Production Infrastructure (72 hrs)</div>
-      <div class="timeline-desc">Built a complete production hosting stack for X-CEED Tech Solutions in under 72 hours — Skyhigh Hosting Discord bot (50+ commits, web dashboard, Stripe/PayPal/Square, Pterodactyl integration), ip-manager IMAP-authenticated IP whitelist with iptables automation, and full Unraid server security hardening. 13 Docker containers verified live and healthy at archive date.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">APRIL 2026</div>
-      <div class="timeline-title">Haptic Mod System — Full Platform Release</div>
-      <div class="timeline-desc">Shipped complete mod management platform in Go + React/Next.js with AI-powered deployment gating, Docker Compose infrastructure, and dual PostgreSQL databases for catalog and runtime operations.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">FEBRUARY 2026</div>
-      <div class="timeline-title">Diagnostic Platform v1.0.0 — Enterprise Release</div>
-      <div class="timeline-desc">Launched enterprise computer diagnostics platform. 140+ rules, FastAPI backend, 5-minute diagnostic cycle at 95% accuracy. Targets IT repair shops and MSPs.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">2026</div>
-      <div class="timeline-title">Custom CAD-Like 3D App — Browser + Hand Tracking</div>
-      <div class="timeline-desc">Built a WebGL 3D design tool using React Three Fiber and MediaPipe Hands — real-time hand gesture control of 3D objects entirely in the browser, no plugins required.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">2025–2026</div>
-      <div class="timeline-title">Jarvis — Distributed AI Automation Platform</div>
-      <div class="timeline-desc">Designed and built a full distributed AI agent with RabbitMQ queue-per-tool routing, voice activation, Python/Node/remote worker mesh, NPU acceleration, and natural language workflow planning.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">2025–2026</div>
-      <div class="timeline-title">AI / LLM Multi-Language Training Workspace</div>
-      <div class="timeline-desc">Established a production-grade LLM research workspace spanning Python, R, Julia, Java, C++, and JavaScript — unified pipelines for supervised, multimodal, and RL training with MLflow + W&B tracking.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-date">2024–2025</div>
-      <div class="timeline-title">420 &amp; Games Bot + Activity Giveaway Bot</div>
-      <div class="timeline-desc">Deployed two production Discord bots — a full-feature community bot (33+ commands, AWS EC2, enterprise encryption) and a voice-activity giveaway bot with append-only ticket ledger.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 10px rgba(124,92,252,.5);"></div>
-      <div class="timeline-date">2024</div>
-      <div class="timeline-title">Hytale Mods 2.0 — Character &amp; Mount System</div>
-      <div class="timeline-desc">Built a game-mod creation engine with 958B+ character combinations, a WoW-inspired mount system with 30 mounts, age-gate content layers, and a profile sharing community — Phase 8 complete.</div>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- PROFESSIONAL EXPERIENCE -->
-<div id="experience" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-<section style="max-width:1000px;">
-  <div class="section-header">
-    <p class="section-tag">// 2011 – 2021 · Los Angeles area</p>
-    <h2 class="section-title">Professional <span>Experience</span></h2>
-    <div class="section-line"></div>
-    <p style="color:var(--muted);font-size:.85rem;margin-top:.8rem;max-width:620px;">
-      15 years of hands-on IT before software development. The 140+ diagnostic rules in the Diagnostic Platform
-      didn't come from documentation — they came from this.
-    </p>
-  </div>
-  <div class="exp-grid">
-
-    <div class="exp-card" style="border-color:rgba(0,217,255,.25);">
-      <div class="exp-left">
-        <div class="exp-role">CTO / Lead Engineer (Contract)</div>
-        <div class="exp-company">X-CEED Tech Solutions LLC</div>
-        <div class="exp-desc">
-          Engaged as CTO and sole engineer. Architected and deployed a full production hosting platform — Discord bot,
-          web dashboard, payment integrations, Pterodactyl game-server panel, Docker Mailserver, Nginx Proxy Manager,
-          WordPress, Roundcube, and a custom IMAP-authenticated dynamic IP whitelisting system — entirely from scratch.
-          <strong>72 hours from first commit to 13 containers live in production.</strong>
-          Security hardening: iptables-legacy INPUT/DOCKER-USER chains, admin-only port lockdown, rate limiting,
-          HTTPS via Let's Encrypt DNS-01. All systems verified healthy and functional at archive.
-        </div>
-        <div class="exp-tags">
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Docker Compose</span>
-          <span class="skill-tag">Unraid / Linux</span>
-          <span class="skill-tag">discord.js v14</span>
-          <span class="skill-tag">iptables</span>
-          <span class="skill-tag">System Architecture</span>
-          <span class="skill-tag">Security Hardening</span>
-          <span class="skill-tag">Payment Integration</span>
-          <span class="skill-tag">Server Administration</span>
-        </div>
+    <section id="production-systems">
+      <p class="section-kicker">Production Systems Built</p>
+      <h2>Primary systems and delivery focus</h2>
+      <div class="case-grid">
+        <article class="case">
+          <div class="case-head">
+            <h3>XCEED / UpCloud stack</h3>
+            <span class="status prod">Production build</span>
+          </div>
+          <p>Cloud and hosting system integrating billing, routing, automation, and operations into one environment.</p>
+        </article>
+        <article class="case">
+          <div class="case-head">
+            <h3>420 and Games Discord systems</h3>
+            <span class="status demo">Live personal tool</span>
+          </div>
+          <p>Community automation and operational bot workflows with deployment and support patterns.</p>
+        </article>
+        <article class="case">
+          <div class="case-head">
+            <h3>Diagnostic and monitoring tooling</h3>
+            <span class="status demo">Public demo repos</span>
+          </div>
+          <p>Rule-based diagnostics and infrastructure monitoring workflows for practical support operations.</p>
+        </article>
       </div>
-      <div class="exp-right">
-        <div class="exp-date">May 19–22, 2026</div>
-        <div class="exp-location">Remote</div>
+    </section>
+
+    <section id="projects-lab">
+      <p class="section-kicker">Personal Projects and Technical Lab</p>
+      <h2>Full portfolio archive retained as supporting evidence</h2>
+      <p class="section-sub">
+        Experimental builds, prototypes, internal tools, security labs, automation systems, and software concepts used to explore architecture and implementation patterns.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="personal-projects.html">Open Personal Projects and Lab</a>
+        <a class="btn btn-secondary" href="resume.html">View Resume</a>
       </div>
-    </div>
+    </section>
 
-    <div class="exp-card">
-      <div class="exp-left">
-        <div class="exp-role">Location Manager</div>
-        <div class="exp-company">MonsterFix</div>
-        <div class="exp-desc">
-          Managed a full face-to-face computer repair store end-to-end: opening procedures, customer intake, ticketing system,
-          inventory, hands-on repairs, and staff training. Serviced high-end desktops, workstations, laptops, cellphones,
-          tablets, all-in-ones, and performed component-level board repairs.
-        </div>
-        <div class="exp-tags">
-          <span class="skill-tag">Component-Level Repair</span>
-          <span class="skill-tag">Store Management</span>
-          <span class="skill-tag">Staff Training</span>
-          <span class="skill-tag">Customer Intake</span>
-          <span class="skill-tag">Ticketing Systems</span>
-          <span class="skill-tag">Inventory</span>
-        </div>
+    <section id="contact">
+      <p class="section-kicker">Contact</p>
+      <h2>Need a senior engineer to own technical execution?</h2>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="quote-intake.html">Start Quote Intake</a>
+        <a class="btn btn-secondary" href="mailto:mechaniel@gmail.com?subject=Technical%20Leadership%20Inquiry">Email Directly</a>
+        <a class="btn btn-secondary" href="resume.html">Resume</a>
       </div>
-      <div class="exp-right">
-        <div class="exp-date">Feb 2020 – May 2021</div>
-        <div class="exp-location">Long Beach, CA</div>
-      </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="exp-card">
-      <div class="exp-left">
-        <div class="exp-role">Technician</div>
-        <div class="exp-company">Home Tech Shop</div>
-        <div class="exp-desc">
-          Laptop, computer, and cellphone repair. Extended role into graphic design and early work
-          on hosting server setup and configuration.
-        </div>
-        <div class="exp-tags">
-          <span class="skill-tag">Laptop Repair</span>
-          <span class="skill-tag">Cellphone Repair</span>
-          <span class="skill-tag">Graphic Design</span>
-          <span class="skill-tag">Server Hosting</span>
-        </div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-date">Jan 2016 – Mar 2020</div>
-        <div class="exp-location">San Pedro, CA</div>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div class="exp-left">
-        <div class="exp-role">Technician</div>
-        <div class="exp-company">Just Tech Solution</div>
-        <div class="exp-desc">
-          Broad technical scope: computer diagnostics, phone &amp; tablet repairs, custom desktop builds,
-          custom application development, and bespoke data solutions for clients.
-          The real-world diagnostic patterns from this role directly informed the Diagnostic Platform's 140+ rule engine.
-        </div>
-        <div class="exp-tags">
-          <span class="skill-tag">Computer Diagnostics</span>
-          <span class="skill-tag">Custom Desktop Builds</span>
-          <span class="skill-tag">Custom Applications</span>
-          <span class="skill-tag">Data Solutions</span>
-          <span class="skill-tag">Phone &amp; Tablet Repair</span>
-        </div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-date">Sep 2014 – Jan 2016</div>
-        <div class="exp-location">San Pedro, CA</div>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div class="exp-left">
-        <div class="exp-role">Technician</div>
-        <div class="exp-company">ABC Computers</div>
-        <div class="exp-desc">
-          Started as a volunteer technician — the origin of a 15-year hands-on career in computer repair and custom hardware.
-        </div>
-        <div class="exp-tags">
-          <span class="skill-tag">Computer Repair</span>
-          <span class="skill-tag">Hardware</span>
-        </div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-date">Jan 2011 – Sep 2014</div>
-        <div class="exp-location">San Pedro, CA</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-</div>
-
-<!-- CERTS + LANGUAGES -->
-<section id="certs" style="max-width:1000px;">
-  <div class="certs-langs-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
-    <div>
-      <div class="section-header" style="margin-bottom:1.5rem;">
-        <p class="section-tag">// verified</p>
-        <h2 class="section-title" style="font-size:1.4rem;">Certifications</h2>
-        <div class="section-line"></div>
-      </div>
-      <!-- Active -->
-      <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;">Active</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.6rem;">
-        <div class="cert-card">
-          <span class="cert-icon">🦺</span>
-          <div>
-            <div class="cert-title">OSHA 10</div>
-            <div class="cert-sub">Occupational Safety &amp; Health Administration</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <span class="cert-icon">🏗️</span>
-          <div>
-            <div class="cert-title">Forklift Certification</div>
-            <div class="cert-sub">February 2023</div>
-          </div>
-        </div>
-        <div class="cert-card" style="border-color:rgba(0,217,255,.2);">
-          <span class="cert-icon">✅</span>
-          <div>
-            <div class="cert-title">Authorized to Work in the US</div>
-            <div class="cert-sub">For any employer · No sponsorship required</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lapsed / Pre-2022 -->
-      <div style="font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;">Lapsed · Pre-2022 <span style="font-weight:400;text-transform:none;letter-spacing:0;">(expired during recovery — knowledge retained)</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;">
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🖥️</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CompTIA A+</div>
-            <div class="cert-sub" style="font-size:.7rem;">Hardware &amp; OS Fundamentals</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🌐</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CompTIA Network+</div>
-            <div class="cert-sub" style="font-size:.7rem;">Networking Fundamentals</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">�</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CompTIA Linux+</div>
-            <div class="cert-sub" style="font-size:.7rem;">Linux Administration</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">☁️</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CompTIA Cloud+</div>
-            <div class="cert-sub" style="font-size:.7rem;">Cloud Infrastructure</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🖧</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CompTIA Server+</div>
-            <div class="cert-sub" style="font-size:.7rem;">Server Hardware &amp; Software</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🪟</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">MCSA: Windows 10</div>
-            <div class="cert-sub" style="font-size:.7rem;">Microsoft Certified Solutions Associate</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🖥️</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">MCSA: Windows Server</div>
-            <div class="cert-sub" style="font-size:.7rem;">Server 2016 Administration</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">⚙️</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">AZ-104</div>
-            <div class="cert-sub" style="font-size:.7rem;">Azure Administrator</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🔗</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CCNA</div>
-            <div class="cert-sub" style="font-size:.7rem;">Cisco Certified Network Associate</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🌉</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">CCNP Enterprise</div>
-            <div class="cert-sub" style="font-size:.7rem;">Cisco Certified Network Professional</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🏗️</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">AWS SAA-C02</div>
-            <div class="cert-sub" style="font-size:.7rem;">Solutions Architect Associate (2020)</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🐧</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">LPIC-1</div>
-            <div class="cert-sub" style="font-size:.7rem;">Linux Professional Institute Cert 1</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🐧</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">LPIC-2</div>
-            <div class="cert-sub" style="font-size:.7rem;">Linux Engineer</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📋</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">ITIL 4 Foundation</div>
-            <div class="cert-sub" style="font-size:.7rem;">IT Service Management Framework</div>
-          </div>
-        </div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📡</span>
-          <div>
-            <div class="cert-title" style="font-size:.82rem;">Wireless Network Admin</div>
-            <div class="cert-sub" style="font-size:.7rem;">CWNA · Certified Wireless Network Administrator</div>
-          </div>
-        </div>
-
-        <!-- ☁️ Cloud Computing -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">☁️ Cloud Computing</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">☁️</span>
-          <div><div class="cert-title" style="font-size:.82rem;">AWS SAP-C01</div><div class="cert-sub" style="font-size:.7rem;">Solutions Architect – Professional (2021)</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">⚡</span>
-          <div><div class="cert-title" style="font-size:.82rem;">AZ-303 / AZ-304</div><div class="cert-sub" style="font-size:.7rem;">Azure Solutions Architect Expert (pre-2022)</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🌐</span>
-          <div><div class="cert-title" style="font-size:.82rem;">GCP Associate Cloud Engineer</div><div class="cert-sub" style="font-size:.7rem;">Google Cloud Platform</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🏗️</span>
-          <div><div class="cert-title" style="font-size:.82rem;">GCP Professional Cloud Architect</div><div class="cert-sub" style="font-size:.7rem;">Google Cloud Platform</div></div>
-        </div>
-
-        <!-- 🌐 Networking & Infrastructure -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">🌐 Networking &amp; Infrastructure</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🔗</span>
-          <div><div class="cert-title" style="font-size:.82rem;">Juniper JNCIA-Junos</div><div class="cert-sub" style="font-size:.7rem;">Juniper Networks Associate</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📡</span>
-          <div><div class="cert-title" style="font-size:.82rem;">Aruba ACSA</div><div class="cert-sub" style="font-size:.7rem;">Aruba Certified Switching Associate</div></div>
-        </div>
-
-        <!-- ⚙️ Operating Systems -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">⚙️ Operating Systems</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🎩</span>
-          <div><div class="cert-title" style="font-size:.82rem;">RHCSA</div><div class="cert-sub" style="font-size:.7rem;">Red Hat Certified System Administrator</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">⚙️</span>
-          <div><div class="cert-title" style="font-size:.82rem;">RHCE</div><div class="cert-sub" style="font-size:.7rem;">Red Hat Certified Engineer</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🪟</span>
-          <div><div class="cert-title" style="font-size:.82rem;">MS-101 Endpoint Admin</div><div class="cert-sub" style="font-size:.7rem;">Microsoft 365 Endpoint Administrator Associate</div></div>
-        </div>
-
-        <!-- 🔄 DevOps & Containers -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">🔄 DevOps &amp; Containers</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">⚓</span>
-          <div><div class="cert-title" style="font-size:.82rem;">CKA</div><div class="cert-sub" style="font-size:.7rem;">Certified Kubernetes Administrator · CNCF</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🐳</span>
-          <div><div class="cert-title" style="font-size:.82rem;">Docker DCA</div><div class="cert-sub" style="font-size:.7rem;">Docker Certified Associate</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🌿</span>
-          <div><div class="cert-title" style="font-size:.82rem;">HashiCorp Terraform Associate</div><div class="cert-sub" style="font-size:.7rem;">Infrastructure as Code · HashiCorp</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🚀</span>
-          <div><div class="cert-title" style="font-size:.82rem;">AWS DevOps Engineer Pro</div><div class="cert-sub" style="font-size:.7rem;">DOP-C01 · Continuous Delivery on AWS (2021)</div></div>
-        </div>
-
-        <!-- 📊 Data & Databases -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">📊 Data &amp; Databases</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📊</span>
-          <div><div class="cert-title" style="font-size:.82rem;">DA-100 Power BI</div><div class="cert-sub" style="font-size:.7rem;">Microsoft Power BI Data Analyst Associate (2021)</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🏗️</span>
-          <div><div class="cert-title" style="font-size:.82rem;">GCP Professional Data Engineer</div><div class="cert-sub" style="font-size:.7rem;">Google Cloud Platform</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🗄️</span>
-          <div><div class="cert-title" style="font-size:.82rem;">Oracle SQL Associate</div><div class="cert-sub" style="font-size:.7rem;">Database SQL Certified Associate</div></div>
-        </div>
-
-        <!-- 📁 Project Management -->
-        <div style="grid-column:1/-1;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-top:.6rem;margin-bottom:.1rem;">📁 Project Management</div>
-
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📐</span>
-          <div><div class="cert-title" style="font-size:.82rem;">CAPM</div><div class="cert-sub" style="font-size:.7rem;">Certified Associate in PM · PMI</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">🏃</span>
-          <div><div class="cert-title" style="font-size:.82rem;">Certified ScrumMaster (CSM)</div><div class="cert-sub" style="font-size:.7rem;">Scrum Alliance</div></div>
-        </div>
-        <div class="cert-card" style="opacity:.75;padding:.7rem .9rem;">
-          <span class="cert-icon" style="font-size:1rem;">📁</span>
-          <div><div class="cert-title" style="font-size:.82rem;">CompTIA Project+</div><div class="cert-sub" style="font-size:.7rem;">IT Project Management</div></div>
-        </div>
-
-      </div>
-    </div>
-    <div>
-      <div class="section-header" style="margin-bottom:1.5rem;">
-        <p class="section-tag">// spoken</p>
-        <h2 class="section-title" style="font-size:1.4rem;">Languages</h2>
-        <div class="section-line"></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:.7rem;">
-        <div class="lang-pill">
-          <span style="font-size:1.1rem;">🇺🇸</span>
-          <span style="font-weight:600;">English</span>
-          <span class="lang-level">— Fluent / Bilingual</span>
-        </div>
-        <div class="lang-pill">
-          <span style="font-size:1.1rem;">🇭🇺</span>
-          <span style="font-weight:600;">Hungarian</span>
-          <span class="lang-level">— Intermediate</span>
-        </div>
-        <div class="lang-pill">
-          <span style="font-size:1.1rem;">🇪🇸</span>
-          <span style="font-weight:600;">Spanish</span>
-          <span class="lang-level">— Beginner</span>
-        </div>
-        <div class="lang-pill">
-          <span style="font-size:1.1rem;">🇸🇪</span>
-          <span style="font-weight:600;">Swedish</span>
-          <span class="lang-level">— Beginner</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">Daniel Pall <span style="color:var(--muted);font-weight:300;font-size:.85rem;letter-spacing:2px;">· mechaniel-coder</span></div>
-  <p style="color:var(--muted);font-size:.85rem;max-width:500px;margin:.5rem auto;">
-    Full-Stack Engineer · AI Architect · Security Researcher · Los Angeles, CA
-  </p>
-  <div class="footer-links" style="flex-wrap:wrap;justify-content:center;">
-    <a href="mailto:mechaniel@gmail.com">mechaniel@gmail.com</a>
-    <a href="tel:+12132196068">+1 213 219 6068</a>
-    <a href="https://github.com/mechaniel-coder" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/mechaniel-coder" target="_blank" style="color:#0A66C2;">LinkedIn</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="quote-intake.html">Get Quote</a>
-    <a href="upcloud-stack.html">UpCloud Stack</a>
-    <a href="#security">OSINT</a>
-    <a href="#ai">AI / LLM</a>
-  </div>
-  <div class="footer-copy">© 2026 Daniel Pall · Building real systems, not demos.</div>
-</footer>
-
-<script>
-  // Intersection Observer for scroll animations on project cards
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.project-card, .skill-card, .kali-tool, .timeline-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity .5s ease, transform .5s ease';
-    observer.observe(el);
-  });
-</script>
+  <footer>
+    Daniel Pall · Principal Engineer / Fractional CTO · Los Angeles, CA
+  </footer>
 </body>
 </html>
