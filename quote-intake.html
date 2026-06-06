@@ -278,8 +278,8 @@
       <article class="card">
         <h2>How Submission Works</h2>
         <p>
-          This page opens a prefilled quote request in your GitHub intake repository issue form.
-          You can review and submit in one click after filling this form.
+          This page prepares your full quote request and opens it directly in your email app.
+          No GitHub issue form is required.
         </p>
       </article>
     </section>
@@ -375,7 +375,7 @@
       </div>
 
       <div class="actions">
-        <button type="submit" class="btn btn-primary">Open Prefilled GitHub Quote Request</button>
+        <button type="submit" class="btn btn-primary">Send Quote Request</button>
         <a
           class="btn btn-secondary"
           href="mailto:mechaniel@gmail.com?subject=Fixed-Price%20Tech%20Fix%20Quote"
@@ -400,22 +400,32 @@
       const summaryValue = (data.get("summary") || "").toString().trim();
       const projectType = (data.get("project_type") || "Project").toString().trim();
       const shortSummary = summaryValue.slice(0, 72) || "New request";
-      const title = `Quote Request: ${projectType} - ${shortSummary}`;
+      const subject = `Quote Request: ${projectType} - ${shortSummary}`;
 
-      const params = new URLSearchParams({
-        template: "quote-request.yml",
-        title,
-      });
+      const entries = [
+        ["Contact Name", data.get("contact_name")],
+        ["Best Email", data.get("contact_email")],
+        ["Business or Community Name", data.get("business_name")],
+        ["Discord Username", data.get("contact_discord")],
+        ["Project Type", data.get("project_type")],
+        ["Problem Summary", data.get("summary")],
+        ["Desired Outcome", data.get("desired_outcome")],
+        ["Current Tech Stack and Environment", data.get("environment")],
+        ["Error Messages or Logs", data.get("logs_errors")],
+        ["Relevant Links", data.get("links")],
+        ["Urgency", data.get("urgency")],
+        ["Deadline", data.get("deadline")],
+        ["Budget Range", data.get("budget_range")],
+        ["Additional Context", data.get("additional_context")],
+      ];
 
-      for (const [key, value] of data.entries()) {
-        if (typeof value === "string" && value.trim().length > 0) {
-          params.set(key, value.trim());
-        }
-      }
+      const body = entries
+        .map(([label, value]) => `${label}:\n${(value || "").toString().trim() || "N/A"}`)
+        .join("\n\n");
 
-      const url = `https://github.com/mechaniel-coder/tech-fix-quote-intake/issues/new?${params.toString()}`;
-      window.open(url, "_blank", "noopener");
-      statusEl.textContent = "Opened prefilled GitHub quote request in a new tab.";
+      const mailto = `mailto:mechaniel@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+      statusEl.textContent = "Opened your email app with the quote request prefilled.";
     });
   </script>
 </body>
