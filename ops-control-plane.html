@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OpsCommand: CTO Operations Control Plane for hosting infrastructure governance, observability, incident response, and workflow operations." />
+  <link rel="canonical" href="https://mechaniel-coder.github.io/ops-control-plane.html" />
+  <meta property="og:title" content="OpsCommand | CTO Operations Control Plane" />
+  <meta property="og:description" content="Service health, incidents, deployments, backups, security controls, and business workflow observability for a live hosting stack." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mechaniel-coder.github.io/ops-control-plane.html" />
+  <meta property="og:site_name" content="Daniel Pall Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="OpsCommand | CTO Operations Control Plane" />
+  <meta name="twitter:description" content="Operational governance layer above cloud infrastructure: health, incidents, deployments, backup verification, security, and workflow tracing." />
+  <title>OpsCommand: CTO Operations Control Plane</title>
+  <style>
+    :root {
+      --bg: #0a1018;
+      --bg2: #101b2b;
+      --card: #152338;
+      --line: #264462;
+      --text: #e9eff8;
+      --muted: #9cb1cc;
+      --brand: #27d4ff;
+      --good: #46d588;
+      --warn: #f5b041;
+      --bad: #ef5f67;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #1a3558 0%, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1rem 2.4rem;
+    }
+    .wrap { max-width: 1140px; margin: 0 auto; }
+    .nav {
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.72rem;
+      color: var(--muted);
+      background: rgba(16, 27, 43, 0.9);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .nav a:hover { color: var(--brand); border-color: rgba(39, 212, 255, 0.45); }
+    section {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(16, 27, 43, 0.92);
+      padding: 1rem;
+      margin-top: 0.75rem;
+    }
+    .kicker {
+      color: var(--good);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.46rem;
+    }
+    h1 {
+      font-size: clamp(1.7rem, 5vw, 2.7rem);
+      line-height: 1.16;
+      margin-bottom: 0.7rem;
+    }
+    h2 {
+      color: var(--brand);
+      font-size: clamp(1.08rem, 3vw, 1.35rem);
+      margin-bottom: 0.72rem;
+    }
+    h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+    p { color: var(--muted); font-size: 0.94rem; }
+    .btn-row {
+      margin-top: 0.86rem;
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.52rem 0.84rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .btn.primary { background: var(--brand); color: #04202a; border-color: #0d9ab9; }
+    .btn.secondary { color: var(--text); }
+    .grid {
+      display: grid;
+      gap: 0.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      padding: 0.75rem;
+    }
+    .metric {
+      color: var(--brand);
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.16rem 0.52rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      display: inline-block;
+      margin-right: 0.35rem;
+      margin-top: 0.2rem;
+    }
+    .ok { color: var(--good); border-color: rgba(70, 213, 136, 0.5); background: rgba(70, 213, 136, 0.1); }
+    .warn { color: var(--warn); border-color: rgba(245, 176, 65, 0.5); background: rgba(245, 176, 65, 0.12); }
+    .bad { color: var(--bad); border-color: rgba(239, 95, 103, 0.5); background: rgba(239, 95, 103, 0.12); }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      background: var(--bg2);
+    }
+    th, td {
+      padding: 0.6rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.86rem;
+    }
+    th {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.74rem;
+      color: #c7ddff;
+      background: #15273f;
+    }
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 0.46rem;
+    }
+    .timeline li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg2);
+      padding: 0.5rem 0.68rem;
+      color: #d0e3fb;
+      font-size: 0.88rem;
+    }
+    .phase-grid {
+      display: grid;
+      gap: 0.62rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .phase {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.72rem;
+    }
+    .workflow {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.76rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      color: #d2e4ff;
+      font-size: 0.9rem;
+    }
+    .workflow span { color: var(--muted); margin: 0 0.36rem; }
+    .adr {
+      border-left: 3px solid var(--brand);
+      padding-left: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="upcloud-stack.html">Case Studies</a>
+      <a href="ops-control-plane.html">OpsCommand</a>
+      <a href="engineering-leadership.html">Leadership</a>
+      <a href="personal-projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="quote-intake.html">Contact</a>
+    </div>
+
+    <section>
+      <p class="kicker">Senior Engineering Build</p>
+      <h1>OpsCommand: CTO Operations Control Plane for Hosting Infrastructure</h1>
+      <p>
+        This build sits above the live hosting stack and focuses on governance, observability, incident response,
+        deployment control, backup verification, security posture, and business workflow traceability.
+      </p>
+      <div class="btn-row">
+        <a class="btn primary" href="#phase-roadmap">View Delivery Phases</a>
+        <a class="btn secondary" href="upcloud-stack.html">See Infrastructure Base Layer</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Service Health Dashboard</h2>
+      <div class="grid">
+        <article class="card"><div class="metric">13/13</div><p>Containers healthy</p></article>
+        <article class="card"><div class="metric">99.94%</div><p>7-day service uptime</p></article>
+        <article class="card"><div class="metric">31 ms</div><p>Median API response latency</p></article>
+        <article class="card"><div class="metric">12d</div><p>Last unplanned restart window</p></article>
+      </div>
+      <div class="table-wrap" style="margin-top:0.68rem;">
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Status</th>
+              <th>Uptime</th>
+              <th>Last Restart</th>
+              <th>Dependency Check</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Paymenter</td>
+              <td><span class="pill ok">Online</span></td>
+              <td>99.91%</td>
+              <td>2026-06-01 04:22</td>
+              <td>MariaDB + Redis reachable</td>
+              <td>Billing API healthy</td>
+            </tr>
+            <tr>
+              <td>Nginx Proxy Manager</td>
+              <td><span class="pill ok">Online</span></td>
+              <td>99.98%</td>
+              <td>2026-05-29 01:11</td>
+              <td>SSL renew queue clear</td>
+              <td>Host routes valid</td>
+            </tr>
+            <tr>
+              <td>Discord Bot</td>
+              <td><span class="pill warn">Degraded</span></td>
+              <td>99.72%</td>
+              <td>2026-06-04 22:05</td>
+              <td>Gateway reconnect spikes</td>
+              <td>Reconnect policy tuning pending</td>
+            </tr>
+            <tr>
+              <td>Nextdactyl Integration</td>
+              <td><span class="pill ok">Online</span></td>
+              <td>99.88%</td>
+              <td>2026-05-31 03:44</td>
+              <td>Panel API auth valid</td>
+              <td>Provisioning queue stable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Incident Management</h2>
+      <div class="card">
+        <h3>Active Incident Example</h3>
+        <p><strong>Incident:</strong> Paymenter unavailable</p>
+        <p><strong>Severity:</strong> <span class="pill bad">High</span></p>
+        <p><strong>Affected:</strong> billing portal, customer invoices, provisioning flow</p>
+        <p><strong>Detected by:</strong> synthetic health check + container liveness alert</p>
+      </div>
+      <ul class="timeline" style="margin-top:0.62rem;">
+        <li>14:02 UTC - Alert raised by health checker</li>
+        <li>14:05 UTC - Incident declared, on-call owner assigned</li>
+        <li>14:10 UTC - Mitigation: app restart + DB connectivity verification + route check</li>
+        <li>14:18 UTC - Service restored, customer path validated</li>
+        <li>14:42 UTC - Postmortem note: add DB timeout alert + Redis connectivity guard</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Deployment Ledger</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Change</th>
+              <th>Commit</th>
+              <th>Affected Services</th>
+              <th>Migration</th>
+              <th>Rollback</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-06-05</td>
+              <td>Health-check worker retry policy update</td>
+              <td>f7c3a4d</td>
+              <td>ops-control-worker, paymenter-monitor</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><span class="pill ok">Success</span></td>
+            </tr>
+            <tr>
+              <td>2026-06-03</td>
+              <td>Discord event ingest queue tuning</td>
+              <td>8ea2b11</td>
+              <td>skyhigh-bot, ops-control-api</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><span class="pill ok">Success</span></td>
+            </tr>
+            <tr>
+              <td>2026-05-31</td>
+              <td>Billing event webhook schema update</td>
+              <td>1ac68de</td>
+              <td>paymenter, ops-control-api</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><span class="pill warn">Monitored</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Backup and Restore Verification</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>MariaDB Backup</h3>
+          <p><span class="pill ok">Successful</span></p>
+          <p>Last backup: 2026-06-05 03:00 UTC</p>
+          <p>Restore test: Passed</p>
+          <p>Retention: 7 daily / 4 weekly / 3 monthly</p>
+          <p>Encryption: Enabled</p>
+        </article>
+        <article class="card">
+          <h3>Redis Snapshot</h3>
+          <p><span class="pill ok">Successful</span></p>
+          <p>Last backup: 2026-06-05 03:05 UTC</p>
+          <p>Restore test: Passed</p>
+          <p>Checksum verification: Valid</p>
+        </article>
+        <article class="card">
+          <h3>Alerting</h3>
+          <p><span class="pill warn">Watch</span> Backup size delta threshold enabled</p>
+          <p>Failure alert channel: Discord + email</p>
+          <p>Escalation path: on-call + incident board</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Security and Access Control View</h2>
+      <div class="grid">
+        <article class="card"><h3>Admin Port Exposure</h3><p><span class="pill ok">Restricted</span> Admin paths limited via firewall + routing rules.</p></article>
+        <article class="card"><h3>Cloudflare Route Protection</h3><p><span class="pill ok">Enabled</span> Protected routes and scoped tokens configured.</p></article>
+        <article class="card"><h3>Public vs Internal Services</h3><p><span class="pill ok">Mapped</span> Internal services not exposed directly.</p></article>
+        <article class="card"><h3>Secrets Rotation</h3><p><span class="pill warn">Due in 12d</span> API key rotation reminder active.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Business Workflow Map</h2>
+      <div class="workflow">
+        Customer signup <span>-></span> Paymenter account event <span>-></span> Provisioning queue
+        <span>-></span> Nextdactyl/Pterodactyl action <span>-></span> Discord role/ticket update
+        <span>-></span> Ops ledger event + compliance trail
+      </div>
+    </section>
+
+    <section>
+      <h2>Architecture Decision Records (ADR)</h2>
+      <div class="adr">
+        <h3>ADR-001: Docker Compose over Kubernetes</h3>
+        <p>Reason: faster delivery, lower operational burden, better fit for current scale. Tradeoff: lower native autoscaling. Future path: migrate critical services to k3s/managed Kubernetes when utilization warrants.</p>
+      </div>
+      <div class="adr">
+        <h3>ADR-002: Nginx Proxy Manager as reverse-proxy + SSL layer</h3>
+        <p>Reason: host-based routing speed and operational usability. Tradeoff: less dynamic than Traefik-native discovery. Future path: move to Traefik if service churn increases.</p>
+      </div>
+    </section>
+
+    <section id="phase-roadmap">
+      <h2>Build Order</h2>
+      <div class="phase-grid">
+        <article class="phase"><h3>Phase 1</h3><p>Read-only service health, uptime, SSL/domain and connectivity checks.</p></article>
+        <article class="phase"><h3>Phase 2</h3><p>Incident management and deployment ledger with rollback visibility.</p></article>
+        <article class="phase"><h3>Phase 3</h3><p>Backup verification, restore testing records, and security exposure dashboards.</p></article>
+        <article class="phase"><h3>Phase 4</h3><p>Business workflow observability for billing, provisioning, and Discord operations.</p></article>
+        <article class="phase"><h3>Phase 5</h3><p>Case-study evidence pack with architecture diagrams, screenshots, and outcomes.</p></article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
