@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="OpsCommand | CTO Operations Control Plane" />
   <meta name="twitter:description" content="Operational governance layer above cloud infrastructure: health, incidents, deployments, backup verification, security, and workflow tracing." />
-  <meta name="application-url" content="http://85.9.195.27:3000" />
+  <meta name="application-url" content="https://vps.mechaniel-coder.dev" />
   <title>OpsCommand: CTO Operations Control Plane</title>
   <style>
     :root {
@@ -198,6 +198,18 @@
       padding-left: 0.7rem;
       margin-bottom: 0.8rem;
     }
+    .gateway-status {
+      margin-top: 0.72rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg2);
+      padding: 0.7rem;
+      font-size: 0.86rem;
+      color: #d7e7fb;
+    }
+    .gateway-status strong { color: #eaf2ff; }
+    .gateway-status .bad { color: var(--bad); }
+    .gateway-status a { color: var(--brand); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -224,9 +236,12 @@
         while the live application runtime is hosted on the UpCloud VPS.
       </p>
       <div class="btn-row">
-        <a class="btn primary" href="http://85.9.195.27:3000" target="_blank" rel="noopener noreferrer">Open Live App on VPS</a>
+        <a id="app-launch-link" class="btn primary" href="https://vps.mechaniel-coder.dev" target="_blank" rel="noopener noreferrer">Open Live App on VPS</a>
         <a class="btn primary" href="#phase-roadmap">View Delivery Phases</a>
         <a class="btn secondary" href="upcloud-stack.html">See Infrastructure Base Layer</a>
+      </div>
+      <div id="gateway-status" class="gateway-status" role="status" aria-live="polite">
+        <strong>Endpoint check:</strong> validating <a href="https://vps.mechaniel-coder.dev" target="_blank" rel="noopener noreferrer">vps.mechaniel-coder.dev</a> ...
       </div>
     </section>
 
@@ -435,5 +450,31 @@
       </div>
     </section>
   </div>
+  <script>
+    (function () {
+      var primaryUrl = "https://vps.mechaniel-coder.dev";
+      var fallbackUrl = "http://85.9.195.27:3000";
+      var statusEl = document.getElementById("gateway-status");
+      var launchEl = document.getElementById("app-launch-link");
+      if (!statusEl || !launchEl) {
+        return;
+      }
+
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 5000);
+
+      fetch(primaryUrl, { mode: "no-cors", signal: controller.signal })
+        .then(function () {
+          clearTimeout(timeout);
+          launchEl.href = primaryUrl;
+          statusEl.innerHTML = "<strong>Endpoint check:</strong> domain route is reachable. Opening <a href=\"" + primaryUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + primaryUrl + "</a>.";
+        })
+        .catch(function () {
+          clearTimeout(timeout);
+          launchEl.href = fallbackUrl;
+          statusEl.innerHTML = "<strong>Endpoint check:</strong> <span class=\"bad\">domain route is not reachable yet</span>. Using fallback <a href=\"" + fallbackUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + fallbackUrl + "</a>.";
+        });
+    })();
+  </script>
 </body>
 </html>
