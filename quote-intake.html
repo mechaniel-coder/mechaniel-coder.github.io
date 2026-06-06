@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Submit a complete fixed-price quote request for websites, servers, Discord bots, hosting, payments, and automation work."
+  />
+  <link rel="canonical" href="https://mechaniel-coder.github.io/quote-intake.html" />
+  <meta property="og:title" content="Quote Intake | Daniel Pall" />
+  <meta
+    property="og:description"
+    content="Structured quote intake form for technical fixes and builds. Submit scope, stack, urgency, errors, and deadline in one place."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mechaniel-coder.github.io/quote-intake.html" />
+  <meta property="og:site_name" content="Daniel Pall Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Quote Intake | Daniel Pall" />
+  <meta
+    name="twitter:description"
+    content="Structured quote intake form for technical fixes and builds. Submit scope, stack, urgency, errors, and deadline in one place."
+  />
+  <title>Quote Intake | Daniel Pall</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #141720;
+      --surface2: #1b1f2e;
+      --border: #252a3a;
+      --accent: #4f8ef7;
+      --accent-dim: #2a4a8a;
+      --text: #e4e8f0;
+      --muted: #8892a4;
+      --green: #22c55e;
+      --warn: #f59e0b;
+      --radius: 10px;
+      --max: 960px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      padding: 60px 20px 36px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.45rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 760px;
+      margin: 0 auto 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .top-links {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent-dim);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 26px 0 40px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    li::before {
+      content: "\203A";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    form {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+
+    form h2 {
+      font-size: 1.15rem;
+      margin-bottom: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 760px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .span-2 {
+        grid-column: 1 / -1;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: #0f131b;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .notice {
+      margin: 14px 0 16px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fdd387;
+      background: rgba(245, 158, 11, 0.08);
+      font-size: 0.86rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .status {
+      font-size: 0.84rem;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Project Quote Intake</h1>
+      <p>
+        Submit your technical issue or build request in one structured form so I can give you
+        a fixed-price quote faster with less back-and-forth.
+      </p>
+      <div class="top-links">
+        <a class="btn btn-secondary" href="services.html">Back to Services</a>
+        <a class="btn btn-secondary" href="https://mechaniel-coder.github.io">Full Portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <article class="card">
+        <h2>What To Include</h2>
+        <ul>
+          <li>What is broken or what you need built</li>
+          <li>Platform and stack details</li>
+          <li>Error logs, screenshots, or failing behavior</li>
+          <li>Deadline and urgency level</li>
+          <li>Relevant links, repos, or app URLs</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>How Submission Works</h2>
+        <p>
+          This page opens a prefilled quote request in your GitHub intake repository issue form.
+          You can review and submit in one click after filling this form.
+        </p>
+      </article>
+    </section>
+
+    <form id="quoteForm">
+      <h2>Submit Quote Request</h2>
+      <div class="form-grid">
+        <div>
+          <label for="contact_name">Contact Name</label>
+          <input id="contact_name" name="contact_name" required />
+        </div>
+        <div>
+          <label for="contact_email">Best Email</label>
+          <input id="contact_email" name="contact_email" type="email" required />
+        </div>
+        <div>
+          <label for="business_name">Business or Community Name</label>
+          <input id="business_name" name="business_name" />
+        </div>
+        <div>
+          <label for="contact_discord">Discord Username</label>
+          <input id="contact_discord" name="contact_discord" />
+        </div>
+        <div class="span-2">
+          <label for="project_type">Project Type</label>
+          <select id="project_type" name="project_type" required>
+            <option value="">Select one</option>
+            <option>Discord bot fix or build</option>
+            <option>Website issue or feature</option>
+            <option>Payment integration fix</option>
+            <option>VPS or server troubleshooting</option>
+            <option>Docker or container setup</option>
+            <option>DNS, domain, or SSL issue</option>
+            <option>Automation or AI workflow</option>
+            <option>Monitoring and uptime setup</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="span-2">
+          <label for="summary">Problem Summary</label>
+          <textarea id="summary" name="summary" required></textarea>
+        </div>
+        <div class="span-2">
+          <label for="desired_outcome">Desired Outcome</label>
+          <textarea id="desired_outcome" name="desired_outcome" required></textarea>
+        </div>
+        <div class="span-2">
+          <label for="environment">Current Tech Stack and Environment</label>
+          <textarea id="environment" name="environment" required></textarea>
+        </div>
+        <div class="span-2">
+          <label for="logs_errors">Error Messages or Logs</label>
+          <textarea id="logs_errors" name="logs_errors"></textarea>
+        </div>
+        <div class="span-2">
+          <label for="links">Relevant Links</label>
+          <textarea id="links" name="links"></textarea>
+        </div>
+        <div>
+          <label for="urgency">Urgency</label>
+          <select id="urgency" name="urgency" required>
+            <option value="">Select one</option>
+            <option>Standard (3 to 7 days)</option>
+            <option>Priority (1 to 3 days)</option>
+            <option>Emergency (same day)</option>
+          </select>
+        </div>
+        <div>
+          <label for="deadline">Deadline</label>
+          <input id="deadline" name="deadline" placeholder="YYYY-MM-DD" required />
+        </div>
+        <div class="span-2">
+          <label for="budget_range">Budget Range</label>
+          <select id="budget_range" name="budget_range" required>
+            <option value="">Select one</option>
+            <option>Under 300 USD</option>
+            <option>300 to 750 USD</option>
+            <option>750 to 1500 USD</option>
+            <option>1500 to 3000 USD</option>
+            <option>3000+ USD</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="span-2">
+          <label for="additional_context">Additional Context</label>
+          <textarea id="additional_context" name="additional_context"></textarea>
+          <p class="hint">Optional, but helpful for faster quoting.</p>
+        </div>
+      </div>
+
+      <div class="notice">
+        Do not include secrets, passwords, API keys, private tokens, or private key files in this form.
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Open Prefilled GitHub Quote Request</button>
+        <a
+          class="btn btn-secondary"
+          href="mailto:mechaniel@gmail.com?subject=Fixed-Price%20Tech%20Fix%20Quote"
+        >Email Instead</a>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer>
+    &copy; 2026 Daniel Pall · Structured Quote Intake
+  </footer>
+
+  <script>
+    const form = document.getElementById("quoteForm");
+    const statusEl = document.getElementById("status");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const summaryValue = (data.get("summary") || "").toString().trim();
+      const projectType = (data.get("project_type") || "Project").toString().trim();
+      const shortSummary = summaryValue.slice(0, 72) || "New request";
+      const title = `Quote Request: ${projectType} - ${shortSummary}`;
+
+      const params = new URLSearchParams({
+        template: "quote-request.yml",
+        title,
+      });
+
+      for (const [key, value] of data.entries()) {
+        if (typeof value === "string" && value.trim().length > 0) {
+          params.set(key, value.trim());
+        }
+      }
+
+      const url = `https://github.com/mechaniel-coder/tech-fix-quote-intake/issues/new?${params.toString()}`;
+      window.open(url, "_blank", "noopener");
+      statusEl.textContent = "Opened prefilled GitHub quote request in a new tab.";
+    });
+  </script>
+</body>
+</html>
