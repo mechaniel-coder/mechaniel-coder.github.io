@@ -241,7 +241,10 @@
         <a class="btn secondary" href="upcloud-stack.html">See Infrastructure Base Layer</a>
       </div>
       <div id="gateway-status" class="gateway-status" role="status" aria-live="polite">
-        <strong>Endpoint check:</strong> validating <a href="http://85.9.195.27:3000" target="_blank" rel="noopener noreferrer">85.9.195.27:3000</a> ...
+        <strong>Access options:</strong>
+        <a href="http://85.9.195.27:3000" target="_blank" rel="noopener noreferrer">Direct IP (most compatible)</a>
+        | <a href="https://85-9-195-27.us-nyc1.upcloud.host" target="_blank" rel="noopener noreferrer">Secure hostname</a>
+        <div style="margin-top:0.35rem;color:#b9cbe2;">If one link is blocked by your network, use the other.</div>
       </div>
     </section>
 
@@ -450,31 +453,5 @@
       </div>
     </section>
   </div>
-  <script>
-    (function () {
-      var primaryUrl = "http://85.9.195.27:3000";
-      var fallbackUrl = "http://85.9.195.27:3000";
-      var statusEl = document.getElementById("gateway-status");
-      var launchEl = document.getElementById("app-launch-link");
-      if (!statusEl || !launchEl) {
-        return;
-      }
-
-      var controller = new AbortController();
-      var timeout = setTimeout(function () { controller.abort(); }, 5000);
-
-      fetch(primaryUrl, { mode: "no-cors", signal: controller.signal })
-        .then(function () {
-          clearTimeout(timeout);
-          launchEl.href = primaryUrl;
-          statusEl.innerHTML = "<strong>Endpoint check:</strong> domain route is reachable. Opening <a href=\"" + primaryUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + primaryUrl + "</a>.";
-        })
-        .catch(function () {
-          clearTimeout(timeout);
-          launchEl.href = fallbackUrl;
-          statusEl.innerHTML = "<strong>Endpoint check:</strong> <span class=\"bad\">domain route is not reachable yet</span>. Using fallback <a href=\"" + fallbackUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + fallbackUrl + "</a>.";
-        });
-    })();
-  </script>
 </body>
 </html>
