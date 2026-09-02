@@ -380,7 +380,7 @@
         <button type="submit" class="btn btn-primary">Send Quote Request</button>
         <a
           class="btn btn-secondary"
-          href="mailto:mechaniel@gmail.com?subject=Fixed-Price%20Tech%20Fix%20Quote"
+          href="mailto:TechyMechy@techstopllc.pro?subject=Fixed-Price%20Tech%20Fix%20Quote"
         >Email Instead</a>
       </div>
       <p id="status" class="status" aria-live="polite"></p>
@@ -425,7 +425,7 @@
         .map(([label, value]) => `${label}:\n${(value || "").toString().trim() || "N/A"}`)
         .join("\n\n");
 
-      const mailto = `mailto:mechaniel@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailto = `mailto:TechyMechy@techstopllc.pro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailto;
       statusEl.textContent = "Opened your email app with the quote request prefilled.";
     });
